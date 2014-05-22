@@ -1,0 +1,49 @@
+.parallax {
+  height: 280px;
+  background-image: url('/img/galeria-te/tetera.png'), url('/img/galeria-te/conejo.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 70% 110px, 35% 100px;
+  background-size: auto 260px, auto 280px;
+}
+.parallax #quote {
+  margin-top: 65px;
+  padding-left: 50%;
+  margin-left: -420px;
+}
+.parallax #quote p {
+  font-size: 28pt;
+  width: 400px;
+  font-weight: thin 100;
+}
+.parallax #quote p:before {
+  content: '"';
+}
+.parallax #quote p:after {
+  content: '"';
+}
+.parallax #quote span {
+  font-weight: bold;
+}
+#grid3d {
+  margin-top: 300px;
+}
+#grid3d .dummy-img {
+  margin-bottom: 70px;
+}
+#grid3d .dummy-img img {
+  width: 600px;
+}
+#grid3d h1 {
+  text-align: center;
+}
+#grid3d h1 span {
+  display: block;
+  font-size: 50%;
+}
+#grid3d .dummy-text {
+  width: 100%;
+  text-align: justify;
+  font-size: 16pt;
+  color: black;
+}

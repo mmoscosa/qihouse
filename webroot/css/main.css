@@ -1,0 +1,144 @@
+html,
+body {
+  @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+  font-family: 'Roboto', Helvetica !important;
+  font-weight: lighter !important;
+  color: #3d4542;
+}
+@font-face {
+  font-family: Bavoroir;
+  src: url(/fonts/Bavaroir-Reg.otf);
+}
+/* Here we set that all headers and spans shall use the custom Bavoroir Font  */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Bavoroir';
+}
+#logo {
+  margin-top: -25px;
+  opacity: 0;
+  z-index: 1000;
+}
+nav.navbar {
+  right: 3%;
+  padding-top: 50px;
+  background: none;
+  background-color: white;
+  border: none;
+  text-transform: uppercase;
+  transition: opacity 0.25s ease-in-out;
+  border-bottom: 1px solid #ccc;
+}
+nav.navbar:hover {
+  opacity: 1;
+}
+nav.navbar a.active {
+  text-decoration: underline;
+  color: black;
+}
+nav .doble-renglon {
+  margin-top: -20px;
+}
+nav ul.nav {
+  font-size: 9pt;
+}
+nav ul.nav.social {
+  margin-left: 100px;
+  height: 30px;
+}
+nav ul.nav.social li {
+  margin: auto 5px;
+  padding: auto 5px;
+}
+nav ul.nav.social li a {
+  font-size: 10pt;
+  padding: 15px 5px;
+}
+#content.container {
+  min-height: 800px;
+  padding-top: 80px;
+}
+.footer {
+  background-image: url('/img/gato-footer.png');
+  background-repeat: no-repeat;
+  background-attachment: relative;
+  background-position: 600px -25px;
+  background-size: auto;
+  margin: 25px 0 0 0;
+  padding: 25px 0;
+}
+.footer input {
+  background-color: transparent;
+}
+.footer .social-nav {
+  font-size: 14pt;
+}
+.footer .social-nav ul li {
+  padding: 0 5px;
+}
+.bottom-footer {
+  margin: 0;
+  background-color: #d7d5d5;
+  padding: 25px 0;
+}
+.bottom-footer ul.nav li a {
+  margin-top: -18px;
+}
+#blog {
+  margin-top: 25px;
+}
+#blog h2 {
+  color: black;
+  margin-top: 4px;
+  background-color: white;
+  padding: 0 15px;
+  font-family: 'Roboto', Helvetica !important;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+#blog h2:before {
+  background-image: url('/img/title_bar.png');
+  content: '';
+  background-repeat: no-repeat;
+}
+#blog hr {
+  width: 400px;
+  margin-bottom: -10px;
+}
+#blog #posts {
+  text-align: center;
+}
+#blog #posts .feed-container {
+  padding-top: 50px;
+}
+#blog #posts .feed-container .post-container .post-title {
+  font-weight: bold;
+  padding: 15px 0 0 18px;
+  font-size: 12pt;
+}
+#blog #posts .feed-container .post-container img.post-image {
+  width: 100%;
+  height: 250px;
+}
+#blog #posts .feed-container .post-container img.post-image:hover {
+  -webkit-filter: blur(2px) saturate(0%) brightness(15%);
+}
+#blog #posts .feed-container .post-container .post-date.well {
+  margin-top: -20px;
+  margin-left: 10px;
+  padding: 5px;
+  height: 80px;
+}
+#blog #posts .feed-container .post-container .post-day {
+  font-size: 15pt;
+  font-weight: bold;
+}
+#blog #posts .feed-container .post-container .post-month {
+  text-transform: uppercase;
+}
+#blog #posts .feed-container .post-container .post-body {
+  text-align: justify;
+}

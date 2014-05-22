@@ -1,0 +1,166 @@
+
+video{
+	&#video-slide1{
+		position: fixed; right: 0; bottom: 0;
+		min-width: 100%; min-height: 100%;
+		width: auto; height: auto; z-index: -100;
+		background: url(polina.jpg) no-repeat;
+		background-size: cover;
+	}
+}
+#screen-video{
+	min-width: 100%; min-height: 100%;
+	width: auto; height: auto; z-index: -100;
+	background-color: black;
+	background-size: cover;
+	opacity: 0.70;
+}
+
+.slides-container{
+	.logo-slide1{
+		position: fixed;
+		top: 20%;
+		left: 50%;
+		margin-left: -321px/2;
+	}
+	h1{
+		top: 20%;
+		left: 50%;
+		margin-top: 160px;
+		margin-left: -321px/2;
+		position: fixed;
+		color: white;
+		font-weight: lighter;
+	}
+	ul{
+		position: fixed;
+		color: white;
+		top: 20%;
+		left: 50%;
+		margin-top: 270px;
+		margin-left: -460px;
+		display: inline;
+		list-style: none;
+		font-family: 'Roboto', Helvetica !important;
+		li{
+			display: inline-block;
+			border: 2px solid white;
+			border-bottom: 4px solid white;
+			border-right: 4px solid white;
+			padding: 10px;
+			margin: 0 13px;
+			width: 250px;
+			text-align: center;
+			font-size: 13pt;
+			font-weight: lighter;
+			font-family: 'Roboto', Helvetica !important;
+		}
+	}
+}
+
+#slide1-contatiner{
+	h1{
+		font-weight: lighter;
+		font-family: 'Roboto', Helvetica !important;
+	}
+}
+
+.hide-blurb (){
+	.hideit{
+		opacity: 0;
+		h1{
+			color: rgb(112,106,101);
+			font-size: 30pt;
+			padding-left: 30px;
+		}
+		p{
+			@size: 350px;
+			position: fixed;
+			text-align: center;
+			width: @size;
+			left:50%;
+			margin-left: (-@size/2)+10px;
+			span{
+				font-weight: bolder;
+			}
+		}
+	}
+}
+#slide2-contatiner{
+	.hide-blurb();
+	#tea1{
+		position: fixed;
+		top:-300px;
+		left:50%;
+		margin-left: -310px;
+	}
+
+	#tea2{
+		position: fixed;
+		top:-300px;
+		left:50%;
+		margin-left: -50px;
+	}
+
+	#tea3{
+		position: fixed;
+		top:-300px;
+		left:50%;
+		margin-left: 110px;
+	}
+}
+
+#slide3-contatiner{
+	.hide-blurb();
+	#tigre{
+		position: fixed;
+		top:-300px;
+		left:50%;
+		margin-left: -173px;
+		margin-top: 50px;
+		
+	}
+	#tetera{
+		position: fixed;
+		top:-300px;
+		left:50%;
+		margin-left: -90px;
+	}
+}
+
+#slide4-contatiner{
+	.hide-blurb();
+	#boxes{
+		position: fixed;
+		top:-300px;
+		left:50%;
+		margin-left: -250px;
+		margin-top: 50px;
+		
+	}
+}
+.slides-pagination{
+
+	bottom: 10%;
+	a{
+		border: 2px solid #fff;
+		@size: 13px;
+		height: @size;
+		width: @size;
+		margin: 0 10px;
+
+		&.current{
+			background: #fff;
+		}
+
+	}
+}
+
+.slides-navigation{
+	a{
+		padding: 0 20px;
+		font-size: 19pt;
+		color: #202020;
+		opacity: 0.30;
+	}
+}

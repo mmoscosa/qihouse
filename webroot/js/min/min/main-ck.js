@@ -1,0 +1,1 @@
+$(function(){var o,n;o=$("#logo"),n=window.location.pathname,console.log(n)});

@@ -1,0 +1,44 @@
+html,
+body {
+  @import url(http://fonts.googleapis.com/css?family=Roboto);
+  font-family: 'Roboto', Helvetica !important;
+  font-weight: lighter !important;
+}
+@font-face {
+  font-family: Bavoroir;
+  src: url(/fonts/Bavaroir-Reg.otf);
+}
+/* Here we set that all headers and spans shall use the custom Bavoroir Font  */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Bavoroir';
+}
+#logo {
+  opacity: 0;
+  position: fixed;
+  left: 3%;
+  top: 25px;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  z-index: 9999;
+}
+nav.navbar {
+  position: fixed;
+  right: 3%;
+  top: 20px;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  z-index: 9999;
+}
+footer {
+  position: fixed;
+  z-index: 9999;
+  bottom: 10px;
+  left: 50px;
+  color: black;
+}

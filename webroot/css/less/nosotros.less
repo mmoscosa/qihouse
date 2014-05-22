@@ -1,0 +1,64 @@
+.parallax{
+  &.intro{
+    height: 280px;
+    background-image: url('/img/nosotros/cajas.png'), url('/img/nosotros/tigre.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 35% 130px, 40% 50px;
+    background-size: auto 200px, auto auto;
+    #quote{
+      margin-top: 65px;
+      padding-left: 50%;
+      margin-left: -420px;
+      p{
+        font-size: 22pt;
+        width: 400px;
+        text-align: right;
+        margin-left: 450px;
+        font-weight: thin 100;
+        &:before{
+          content: '"';
+        }
+        &:after{
+          content: '"';
+        }
+      }
+    span{
+      font-weight: bold;
+      text-align: right;
+        margin-left: 750px;
+    }
+    }
+  }
+  &.brocheure{
+    margin-top: 50px;
+    height: 50px;
+    a{
+      color: #8b8b8b;
+    }
+  }
+}
+
+#blog{
+  margin-top: 150px;
+}
+#nosotros{
+	padding-top: 300px;
+	img{
+		&#quienes-somos{
+			width: 100%;
+			padding: 25px 0;
+		}
+		&#conocemos{
+			width: 100%;
+			padding: 25px 0;
+		}
+	}
+	#intro{
+		border-bottom: 1px solid #3d4542;
+		padding-bottom: 15px;
+		margin-bottom: 15px; 
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+}

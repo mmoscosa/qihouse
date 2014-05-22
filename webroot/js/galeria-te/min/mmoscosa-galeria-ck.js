@@ -1,0 +1,1 @@
+$(function(){var i,t;i=$(window).width(),t=$(".parallax"),t.css({position:"absolute",left:0}).width(i)});
