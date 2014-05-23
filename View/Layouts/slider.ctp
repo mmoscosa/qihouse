@@ -33,7 +33,6 @@
 		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('//cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css');
 		echo $this->Html->css('//cdn.jsdelivr.net/fontawesome/4.1/css/font-awesome.min.css');
-		echo $this->Html->css('main');
 		echo $this->Html->css('slider-layout');
 
 		echo $this->Html->script('//cdn.jsdelivr.net/jquery/2.1.0/jquery.min.js');
@@ -61,30 +60,14 @@
 <body>
 	<div id="container">
 		<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo')); ?>
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default navbar-slider" role="navigation">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2 pull-left">
 					</div>
 					<div class="col-md-10">
 						<div class="row">
-							<div class="pull-right col-md-3 doble-renglon">
-								<div class="row">
-						          <ul class="nav navbar-nav social">
-						          		<li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Instagram"><a href="http://instagram.com/qihouse"><i class="fa fa-instagram"></i> </a></li>
-							            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Twitter"><a href="https://twitter.com/qihouse"><i class="fa fa-twitter"></i> </a></li>
-							            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Facebook"><a href="https://www.facebook.com/qihouse.mx"><i class="fa fa-facebook"></i> </a></li>
-							            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><a href="http://www.pinterest.com/qihouse/"><i class="fa fa-pinterest"></i> </a></li>
-						          </ul>
-								</div>
-								<div class="row">
-									<ul class="nav navbar-nav pull-right">
-							            <li><a href="/">Login</a></li>
-							            <li><a href="/nosotros">Registrarse</a></li>
-						          </ul>
-								</div>
-							</div>
-							<div class="col-md-9 menu-principal">
+							<div class="col-md-12 menu-principal">
 								<ul class="nav navbar-nav pull-right">
 						            <li>
 						            	<a <?php echo ($title_for_layout == 'Home' ? 'class="active"' : '') ?> href="/">
@@ -128,6 +111,24 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<footer>
+		<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" id="doble-renglon">
+			<div class="pull-right col-md-3 doble-renglon">
+				<div class="row">
+		          <ul class="nav navbar-nav social">
+		          		<li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Instagram"><a href="http://instagram.com/qihouse"><i class="fa fa-instagram"></i> </a></li>
+			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Twitter"><a href="https://twitter.com/qihouse"><i class="fa fa-twitter"></i> </a></li>
+			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Facebook"><a href="https://www.facebook.com/qihouse.mx"><i class="fa fa-facebook"></i> </a></li>
+			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><a href="http://www.pinterest.com/qihouse/"><i class="fa fa-pinterest"></i> </a></li>
+		          </ul>
+				</div>
+				<div class="row">
+					<ul class="nav navbar-nav pull-right users">
+			            <li id="login"><a href="/">Login</a></li>
+			            <li><a href="/membresia">Registrarse</a></li>
+		          </ul>
+				</div>
+			</div>
+		</nav>
 			<p>Qi House <?php echo date('Y'); ?> Todos los derechos Reservados.</p>
 		</footer>
 	</div>

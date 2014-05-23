@@ -13,7 +13,7 @@ class Te extends AppModel {
                 ),
                 'thumbnailSizes' => array(
                     'vga' => '640x480',
-                    'thumb' => '300x320'
+                    'thumb' => '260x280'
                 )
             )
         )

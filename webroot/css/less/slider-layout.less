@@ -24,9 +24,25 @@ h1, h2, h3, h4, h5{
 	border: none;
 	text-transform: uppercase;
 	z-index: 9999;
+
 }
 nav{
-	&.navbar{
+	&#doble-renglon{
+		position: fixed;
+		background: transparent;
+		border: none;
+		ul{
+			&.social{
+				margin-left: 70px;
+			}
+			&.users{
+				margin-right: 80px;
+				width: 200px;
+				margin-top: -20px;
+			}
+		}
+	}
+	&.navbar-slider{
 		position: fixed;
 		right: 3%;
 		top: 20px;
@@ -35,6 +51,11 @@ nav{
 		text-transform: uppercase;
 		z-index: 9999;
 	}
+	&.video{
+		li>a{
+			color: white !important;
+		}
+	}
 }
 footer{
 	position: fixed;
@@ -42,4 +63,7 @@ footer{
 	bottom: 10px;
 	left: 50px;
 	color: black;
+	&.video{
+		color: white;
+	}
 }

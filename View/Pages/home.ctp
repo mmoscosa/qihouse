@@ -20,9 +20,9 @@
             <?php echo $this->Html->image('index/logo_slide1.png', array('alt'=>'qihouse slider', 'class'=>'logo-slide1')); ?>
             <h1>¿Eres nuevo en el té?</h1>
             <ul>
-                <li>Si ¿Por que debo tomarlo?</li>
-                <li>Amo el té ¡Sorprendeme!</li>
-                <li>Quiero ser socio</li>
+                <li><?php echo $this->Html->link('Si ¿Por que debo tomarlo?', '/club'); ?></li>
+                <li><?php echo $this->Html->link('Amo el té ¡Sorprendeme!', '/galeria'); ?></li>
+                <li><?php echo $this->Html->link('Quiero ser socio', '/membresia'); ?></li>
             </ul>
         </div>
     </li>

@@ -26,7 +26,20 @@ h5 {
   text-transform: uppercase;
   z-index: 9999;
 }
-nav.navbar {
+nav#doble-renglon {
+  position: fixed;
+  background: transparent;
+  border: none;
+}
+nav#doble-renglon ul.social {
+  margin-left: 70px;
+}
+nav#doble-renglon ul.users {
+  margin-right: 80px;
+  width: 200px;
+  margin-top: -20px;
+}
+nav.navbar-slider {
   position: fixed;
   right: 3%;
   top: 20px;
@@ -35,10 +48,16 @@ nav.navbar {
   text-transform: uppercase;
   z-index: 9999;
 }
+nav.video li > a {
+  color: white !important;
+}
 footer {
   position: fixed;
   z-index: 9999;
   bottom: 10px;
   left: 50px;
   color: black;
+}
+footer.video {
+  color: white;
 }
