@@ -1,3 +1,4 @@
+webroot/config.codekit
 tmp/**
 Config/database.php
 Config/database.php.default
