@@ -1,3 +1,4 @@
+.DS_Store
 webroot/config.codekit
 tmp/**
 Config/database.php
