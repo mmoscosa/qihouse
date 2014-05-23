@@ -2,4 +2,7 @@ tmp/**
 Config/database.php
 Config/database.php.default
 webroot/files/**
-
+webtoor/index.php
+webroot/adminer/
+webroot/chive/
+Config/core.php
