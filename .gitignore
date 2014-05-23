@@ -2,4 +2,5 @@ tmp/**
 Config/database.php
 Config/database.php.default
 webroot/files/**
-
+Plugin/
+webroot/index.php
