@@ -4,3 +4,7 @@ Config/database.php.default
 webroot/files/**
 Plugin/
 webroot/index.php
+webroot/adminer/
+webroot/chive/
+Config/core.php
+Plugins/**
