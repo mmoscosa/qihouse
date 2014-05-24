@@ -1,0 +1,45 @@
+#contacto {
+  margin-top: 40px;
+  background-image: url('/img/contacto/vibora.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 200px 130px;
+  background-size: auto auto;
+  background-color: transparent;
+}
+#contacto input {
+  background-color: transparent;
+}
+#contacto textarea {
+  background-color: transparent;
+}
+#contacto #top {
+  padding-top: 50px;
+}
+#contacto #vibora {
+  height: 450px;
+}
+#contacto #vibora img {
+  padding-left: 130px;
+  padding-top: 20px;
+}
+#contacto .parallax {
+  height: 300px;
+  padding: 0;
+}
+#contacto #bottom {
+  background-color: white;
+  height: 200px;
+  margin-top: 300px;
+}
+#contacto #bottom h1 {
+  font-family: "Roboto";
+  font-weight: 100;
+  margin-top: 40px;
+}
+#contacto #bottom img {
+  margin-top: 80px;
+}
+#blog {
+  margin-top: 200px;
+}

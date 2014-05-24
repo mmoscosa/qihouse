@@ -75,7 +75,16 @@ class PagesController extends AppController {
 
 	public function contacto()
 	{
+
 		$this->set('title_for_layout', 'Contacto');
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			$email = new CakeEmail('mailgun');
+			$email->from(array($data['Contacto']['email'] => $data['Contacto']['nombre']));
+			$email->to('info@qihouse.mx');
+			$email->subject('Contact Form');
+			$email->send($data['Contacto']['mensaje']);
+		}
 	}
 
 	public function nosotros()
