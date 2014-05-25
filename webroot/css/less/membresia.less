@@ -1,0 +1,108 @@
+#membresia{
+	margin-top: 50px;
+
+	.parallax{
+		background-image: url('/img/membresia/ox.png');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: 650px 10px;
+		background-size: auto auto;
+		height: 450px;
+		img{
+			margin-left: 20%;
+		}
+		#quote{
+			margin-left: 50%;
+			margin-top: -350px;
+			text-align: right;
+			width: 400px;
+			p{
+				font-size: 26pt;
+				font-weight: thin;
+				&:after{
+					content: '"';
+				}
+				&:before{
+					content: '"';
+				}
+			}
+			span{
+				font-weight: bolder;
+				font-size: 14pt;
+				padding-right: 10px;
+			}
+
+		}
+	}	
+
+	#tazas{
+		padding-top: 500px;
+		text-align: center;
+		vertical-align: bottom;
+    	display: table-cell;
+		img{
+			vertical-align: bottom
+		}
+		@font-face
+		{
+			font-family: Bavoroir;
+			src: url(/assets/fonts/Bavaroir-Reg.otf);
+		}
+		a{
+			font-family: "Bavoroir";
+			display: block;
+			color: black;
+			text-transform: uppercase;
+			font-size: 16pt;
+		}
+		.tipo-membresia{
+			height: 700px;
+			margin-top: 50px;
+			border-right: 1px solid #8b8b8b;
+			&:last-child{
+				border-right: none;
+			}
+			ul{
+				list-style: none;
+				text-align: left;
+				padding-left: 100px;
+				li{
+					padding: 8px;
+					text-transform: capitalize;
+					i{
+						margin-right: 5px;
+					}
+					&:after{
+						content: '.';
+					}
+				}
+			}
+			p{
+				text-align: left;
+			}
+			img{
+				&.tacita{
+					margin-top: 55px;
+				}
+			}
+			&:hover{
+				background-color: #bce2e9;
+				&:after{
+					content: 'Inscribirse';
+					font-family: "Bavoroir";
+					display: block;
+					color: black;
+					text-transform: uppercase;
+					font-size: 16pt;
+				}
+			}
+		}
+	}
+
+	.divider{
+		border-top: 1px solid #8b8b8b;
+		height: 2px;
+		background-color: white;
+	}
+}
+

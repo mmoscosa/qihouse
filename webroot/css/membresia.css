@@ -1,0 +1,100 @@
+#membresia {
+  margin-top: 50px;
+}
+#membresia .parallax {
+  background-image: url('/img/membresia/ox.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 650px 10px;
+  background-size: auto auto;
+  height: 450px;
+}
+#membresia .parallax img {
+  margin-left: 20%;
+}
+#membresia .parallax #quote {
+  margin-left: 50%;
+  margin-top: -350px;
+  text-align: right;
+  width: 400px;
+}
+#membresia .parallax #quote p {
+  font-size: 26pt;
+  font-weight: thin;
+}
+#membresia .parallax #quote p:after {
+  content: '"';
+}
+#membresia .parallax #quote p:before {
+  content: '"';
+}
+#membresia .parallax #quote span {
+  font-weight: bolder;
+  font-size: 14pt;
+  padding-right: 10px;
+}
+#membresia #tazas {
+  padding-top: 500px;
+  text-align: center;
+  vertical-align: bottom;
+  display: table-cell;
+}
+#membresia #tazas img {
+  vertical-align: bottom;
+}
+@font-face {
+  font-family: Bavoroir;
+  src: url(/assets/fonts/Bavaroir-Reg.otf);
+}
+#membresia #tazas a {
+  font-family: "Bavoroir";
+  display: block;
+  color: black;
+  text-transform: uppercase;
+  font-size: 16pt;
+}
+#membresia #tazas .tipo-membresia {
+  height: 700px;
+  margin-top: 50px;
+  border-right: 1px solid #8b8b8b;
+}
+#membresia #tazas .tipo-membresia:last-child {
+  border-right: none;
+}
+#membresia #tazas .tipo-membresia ul {
+  list-style: none;
+  text-align: left;
+  padding-left: 100px;
+}
+#membresia #tazas .tipo-membresia ul li {
+  padding: 8px;
+  text-transform: capitalize;
+}
+#membresia #tazas .tipo-membresia ul li i {
+  margin-right: 5px;
+}
+#membresia #tazas .tipo-membresia ul li:after {
+  content: '.';
+}
+#membresia #tazas .tipo-membresia p {
+  text-align: left;
+}
+#membresia #tazas .tipo-membresia img.tacita {
+  margin-top: 55px;
+}
+#membresia #tazas .tipo-membresia:hover {
+  background-color: #bce2e9;
+}
+#membresia #tazas .tipo-membresia:hover:after {
+  content: 'Inscribirse';
+  font-family: "Bavoroir";
+  display: block;
+  color: black;
+  text-transform: uppercase;
+  font-size: 16pt;
+}
+#membresia .divider {
+  border-top: 1px solid #8b8b8b;
+  height: 2px;
+  background-color: white;
+}
