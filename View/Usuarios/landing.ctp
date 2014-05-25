@@ -41,7 +41,7 @@
 					</li>
 					<li>
 						<i class="fa fa-bullseye"></i> 
-						muestras gratis de té para los embajadores del té*
+						muestras gratis de té para los embajadores del té
 					</li>
 					<li>
 						<i class="fa fa-bullseye"></i> 
@@ -73,7 +73,7 @@
 					</li>
 					<li>
 						<i class="fa fa-bullseye"></i> 
-						Encuestas en línea para la comunidad*
+						Encuestas en línea para la comunidad
 					</li>
 					<li>
 						<i class="fa fa-bullseye"></i> 
