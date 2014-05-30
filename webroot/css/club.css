@@ -18,6 +18,125 @@
 }
 .parallax.well#key {
   height: 300px;
+  padding: 0;
+}
+.parallax.well#key ul {
+  list-style: none;
+  display: inline;
+  padding: 0;
+  left: 50%;
+  position: absolute;
+  margin-left: -400px;
+}
+.parallax.well#key ul li {
+  text-align: center;
+  display: inline-block;
+  width: 200px;
+  margin-right: -3px;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.parallax.well#key ul li:nth-child(2) {
+  margin-left: 200px;
+}
+.parallax.well#key ul li:nth-child(3) {
+  margin-left: 400px;
+}
+.parallax.well#key ul li:nth-child(4) {
+  margin-left: 600px;
+}
+.parallax.well#key ul li .default-key {
+  height: 300px;
+}
+.parallax.well#key ul li .default-key.one {
+  background-color: #abdde0;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .default-key.one img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .default-key.one p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .default-key.two {
+  background-color: #e0abdc;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .default-key.two img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .default-key.two p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .default-key.two p {
+  margin-top: 30px;
+}
+.parallax.well#key ul li .default-key.three {
+  background-color: #c3e0ab;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .default-key.three img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .default-key.three p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .default-key.three p {
+  margin-top: 20px;
+}
+.parallax.well#key ul li .default-key.four {
+  background-color: #e0bdab;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .default-key.four img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .default-key.four p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .default-key.four p {
+  margin-top: 15px;
+}
+.parallax.well#key ul li .active-key.one {
+  background-color: #abdde0;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .active-key.one img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .active-key.one p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .active-key.two {
+  background-color: #e0abdc;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .active-key.two img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .active-key.two p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .active-key.three {
+  background-color: #c3e0ab;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .active-key.three img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .active-key.three p {
+  margin-top: 10px;
+}
+.parallax.well#key ul li .active-key.four {
+  background-color: #e0bdab;
+  padding-top: 90px;
+}
+.parallax.well#key ul li .active-key.four img {
+  margin-top: -20px;
+}
+.parallax.well#key ul li .active-key.four p {
+  margin-top: 10px;
 }
 .parallax.well#unete {
   text-align: center;
@@ -50,7 +169,7 @@
 }
 .parallax.well#clientes {
   height: 180px;
-  margin-top: 800px;
+  margin-top: 180px;
 }
 .parallax.well#clientes h1 {
   margin-top: -80px;
@@ -65,6 +184,15 @@
 .parallax.well#clientes ul li img {
   margin: auto 25px;
 }
+#extras {
+  margin-top: 730px;
+}
+#extras h1 {
+  margin-top: -50px;
+}
+#extras img {
+  width: 100%;
+}
 #blog {
-  margin-top: 700px;
+  margin-top: 500px;
 }

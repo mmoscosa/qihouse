@@ -20,7 +20,80 @@
 .parallax{
 	&.well{
 		&#key{
-			height: 300px;
+			@tamano: 300px;
+			height: @tamano;
+			padding: 0;
+			ul{
+				list-style: none;
+				display: inline;
+				padding: 0;
+				left: 50%;
+				position: absolute;
+				margin-left: -400px;
+				li{
+					@ancho: 200px;
+					text-align: center;
+					display: inline-block;
+					width: @ancho;
+					margin-right: -3px;
+					top: 0;
+					left: 0;
+					position: absolute;
+
+					&:nth-child(1){}
+					&:nth-child(2){margin-left: @ancho;}
+					&:nth-child(3){margin-left: @ancho * 2;}
+					&:nth-child(4){margin-left: @ancho * 3;}
+					.keySpecs(@color){
+						background-color: @color;
+						padding-top: 90px;
+						img{
+							margin-top: -20px;
+						}
+						p{
+							margin-top: 10px;
+						}
+					}
+					.default-key{
+						height: @tamano;
+						&.one{
+							.keySpecs(#abdde0);
+						}
+						&.two{
+							.keySpecs(#e0abdc);
+							p{
+								margin-top: 30px;
+							}
+						}
+						&.three{
+							.keySpecs(#c3e0ab);
+							p{
+								margin-top: 20px;
+							}
+						}
+						&.four{
+							.keySpecs(#e0bdab);
+							p{
+								margin-top: 15px;
+							}
+						}
+					}
+					.active-key{
+						&.one{
+							.keySpecs(#abdde0);
+						}
+						&.two{
+							.keySpecs(#e0abdc);
+						}
+						&.three{
+							.keySpecs(#c3e0ab);
+						}
+						&.four{
+							.keySpecs(#e0bdab);
+						}
+					}
+				}
+			}
 		}
 		&#unete{
 			text-align: center;
@@ -53,7 +126,7 @@
 		}
 		&#clientes{
 			height: 180px;
-			margin-top: 800px;
+			margin-top: 180px;
 			h1{
 				margin-top: -80px;
 			}
@@ -71,6 +144,16 @@
 	}
 }
 
+#extras{
+	margin-top:730px;
+	h1{
+		margin-top: -50px;
+	}
+	img{
+		width: 100%;
+	}
+}
+
 #blog{
-	margin-top:700px;
+	margin-top:500px;
 }
