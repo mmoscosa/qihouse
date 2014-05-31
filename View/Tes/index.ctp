@@ -11,7 +11,7 @@
 
 <div class="well parallax">
 	<div id="quote">
-		<p>Se bebé te para olvidar el ruido del mundo</p>
+		<p>Se bebe te para olvidar el ruido del mundo</p>
 		<span>T'ien Yihrng</span>
 	</div>
 </div>
