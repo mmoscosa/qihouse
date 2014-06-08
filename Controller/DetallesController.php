@@ -48,6 +48,7 @@ class DetallesController extends AppController {
  * @return void
  */
 	public function add($usuario_id = null, $tipo = null) {
+		
 		if(empty($usuario_id)){throw new NotFoundException(__('No se encuentra el usuario'));}
 		if (!empty($tipo)) {
 			$this->set(compact('tipo'));
