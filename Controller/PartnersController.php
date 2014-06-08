@@ -32,6 +32,7 @@ class PartnersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->checkAccess();
 		if (!$this->Partner->exists($id)) {
 			throw new NotFoundException(__('Invalid partner'));
 		}
