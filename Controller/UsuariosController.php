@@ -172,7 +172,7 @@ public function landing()
 	public function logout($id = null) {
 		$this->Session->destroy('login');
 		if ($this->Cookie->check('login')) {
-			$this->Cookie->destroy('login')
+			$this->Cookie->destroy('login');
 		}
 		if(Router::fullbaseUrl().'/' == $this->referer()){
 			$this->redirect($this->referer());
