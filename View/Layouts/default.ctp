@@ -70,8 +70,13 @@
 								</div>
 								<div class="row">
 									<ul class="nav navbar-nav pull-right">
-							            <li><a href="/">Login</a></li>
-							            <li><a href="/nosotros">Registrarse</a></li>
+										<?php if (!empty($loggedUser)): ?>
+											<li><?php echo $this->Html->link('Mi Qi House', array('controller'=>'Usuarios', 'action'=>'control_panel', $loggedUser['Usuario']['id'])); ?></li>
+											<li><?php echo $this->Html->link('Logout', array('controller'=>'Usuarios', 'action'=>'logout')); ?></li>
+										<?php else: ?>	
+								            <li><?php echo $this->Html->link('Login', '#',array('id'=>'login_button')); ?></li>
+								            <li><?php echo $this->Html->link('Registrarse', array('controller'=>'Usuarios', 'action'=>'landing')); ?></li>
+										<?php endif; ?>
 						          </ul>
 								</div>
 							</div>
@@ -92,11 +97,13 @@
 						            		té
 						            	</a>
 						            </li>
-						            <li>
-						            	<a <?php echo ($title_for_layout == 'Membresia' ? 'class="active"' : '') ?> href="/membresia">
-						            		Membresia
-						            	</a>
-						            </li>
+						            <?php if (empty($loggedUser)): ?>
+							            <li>
+							            	<a <?php echo ($title_for_layout == 'Membresia' ? 'class="active"' : '') ?> href="/membresia">
+							            		Membresia
+							            	</a>
+							            </li>
+						            <?php endif ?>
 						            <li>
 						            	<a <?php echo ($title_for_layout == 'Galeria del Te' ? 'class="active"' : '') ?> href="/galeria">
 						            		Galeria
@@ -146,9 +153,25 @@
 		     			</div>
 		     		</div>
 		     		<!--Direccion-->
-		     		<div class="col-md-4">
-		     			<h1>Direccion</h1>
-		     			<p>Paseo de la luna 455 - Solares. 45019, zapopan, Jalisco, Mexico</p>
+		     		<div class="col-md-4" id="tipos_footer">
+		     			<h1>Tes</h1>
+		     			<div class="row">
+		     				<div class="col-md-6"> 
+		     					<ul>
+		     						<li><i id="blanco" class="fa fa-leaf"></i> Blanco</li>
+		     						<li><i id="amarillo" class="fa fa-leaf"></i> Amarillo</li>
+		     						<li><i id="verde" class="fa fa-leaf"></i> Verde</li>
+		     						<li><i id="oolong" class="fa fa-leaf"></i> Oolong</li>
+		     					</ul>
+		     				</div>
+		     				<div class="col-md-6"> 
+		     					<ul>
+		     						<li><i id="rojo" class="fa fa-leaf"></i> Rojo</li>
+		     						<li><i id="negro" class="fa fa-leaf"></i> Negro</li>
+		     						<li><i id="puerh" class="fa fa-leaf"></i> Pu erh</li>
+		     					</ul>
+		     				</div>
+		     			</div>
 		     		</div>
 		     		<!--Subscribete-->
 		     		<div class="col-md-4">
@@ -190,6 +213,33 @@
      	</div>
 		<!--End Footer-->
 	</div>
+
+	 <div id="loginContent" style="display: none; min-width: 300px;">
+	     <?php echo $this->Form->create('Usuario', array(
+	                                    		'url' => array(
+	                                    		               'action'=>'login'
+	                                    		               ),
+												'inputDefaults' => array(
+													'div' => 'form-group',
+													'label' => false,
+													'wrapInput' => false,
+													'class' => 'form-control'
+												),
+										)); ?>
+		  
+		  <?php 
+		  	echo $this->Form->input('email', array('label' => 'Correo electronico'));
+			echo $this->Form->input('password', array('label' => 'Contraseña'));
+		  	echo $this->Form->submit('Entrar', array('div' => 'form-group','class' => 'btn btn-default pull-right')); 
+		  ?>
+		<?php echo $this->Form->end(); ?>
+	</div>  
+	<style type="text/css">
+	  	.popover{
+		    width:350px;
+		    height:200px;    
+		}
+	</style>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -199,6 +249,13 @@
 	  ga('create', 'UA-51494851-1', 'qihouse.mx');
 	  ga('send', 'pageview');
 
+	  $("#login_button").popover({
+	  	placement : 'bottom',
+        html : true, 
+        content: function() {
+          return $('#loginContent').html();
+        }
+    	});
 	</script>
 </body>
 </html>

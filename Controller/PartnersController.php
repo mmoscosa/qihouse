@@ -45,6 +45,7 @@ class PartnersController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->checkAccess('admin');
 		if ($this->request->is('post')) {
 			$this->Partner->create();
 			if ($this->Partner->save($this->request->data)) {
@@ -64,6 +65,7 @@ class PartnersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->checkAccess('admin');
 		if (!$this->Partner->exists($id)) {
 			throw new NotFoundException(__('Invalid partner'));
 		}
@@ -88,6 +90,7 @@ class PartnersController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->checkAccess('admin');
 		$this->Partner->id = $id;
 		if (!$this->Partner->exists()) {
 			throw new NotFoundException(__('Invalid partner'));

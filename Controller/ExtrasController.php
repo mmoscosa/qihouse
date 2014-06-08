@@ -33,6 +33,7 @@ class ExtrasController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->checkAccess();
 		if (!$this->Extra->exists($id)) {
 			throw new NotFoundException(__('Invalid extra'));
 		}
@@ -46,6 +47,7 @@ class ExtrasController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->checkAccess('admin');
 		if ($this->request->is('post')) {
 			$this->Extra->create();
 			if ($this->Extra->save($this->request->data)) {
@@ -65,6 +67,7 @@ class ExtrasController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->checkAccess('admin');
 		if (!$this->Extra->exists($id)) {
 			throw new NotFoundException(__('Invalid extra'));
 		}
@@ -89,6 +92,7 @@ class ExtrasController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->checkAccess('admin');
 		$this->Extra->id = $id;
 		if (!$this->Extra->exists()) {
 			throw new NotFoundException(__('Invalid extra'));

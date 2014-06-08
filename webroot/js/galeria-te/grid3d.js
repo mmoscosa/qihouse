@@ -91,6 +91,7 @@
 		var self = this,
 			loadContent = function() {
 				// simulating loading...
+				var currentDiv	=	self.contentItems[ pos ].id;
 				setTimeout( function() {
 					// hide loader
 					classie.removeClass( self.loader, 'show' );

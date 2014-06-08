@@ -14,6 +14,8 @@ class TesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+	public $helpers = array('Markdown.Markdown');
+
 
 /**
  * index method
@@ -41,12 +43,23 @@ class TesController extends AppController {
 		$this->set('te', $this->Te->find('first', $options));
 	}
 
+
+	public function comments($id = null)
+	{
+		$this->checkAccess();
+		$this->layout = NULL;
+		if (!$this->Te->exists($id)) {
+			throw new NotFoundException(__('Invalid te'));
+		}
+		$this->set(compact('id'));
+	}
 /**
  * add method
  *
  * @return void
  */
 	public function add() {
+		$this->checkAccess('admin');
 		if ($this->request->is('post')) {
 			$this->Te->create();
 			if ($this->Te->save($this->request->data)) {
@@ -66,6 +79,7 @@ class TesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->checkAccess('admin');
 		if (!$this->Te->exists($id)) {
 			throw new NotFoundException(__('Invalid te'));
 		}
@@ -90,6 +104,7 @@ class TesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->checkAccess('admin');
 		$this->Te->id = $id;
 		if (!$this->Te->exists()) {
 			throw new NotFoundException(__('Invalid te'));

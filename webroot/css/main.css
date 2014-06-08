@@ -22,6 +22,9 @@ h5 {
   opacity: 0;
   z-index: 1000;
 }
+.alert-content {
+  margin-top: 50px;
+}
 nav.navbar {
   right: 3%;
   padding-top: 50px;
@@ -141,4 +144,38 @@ nav ul.nav.social li a {
 }
 #blog #posts .feed-container .post-container .post-body {
   text-align: justify;
+}
+#tipos_footer ul {
+  list-style: none;
+}
+#tipos_footer ul li {
+  font-size: 14pt;
+}
+#tipos_footer ul li i#blanco {
+  color: #000;
+  padding-right: 10px;
+}
+#tipos_footer ul li i#amarillo {
+  color: #000;
+  padding-right: 10px;
+}
+#tipos_footer ul li i#verde {
+  color: #000;
+  padding-right: 10px;
+}
+#tipos_footer ul li i#oolong {
+  color: #000;
+  padding-right: 10px;
+}
+#tipos_footer ul li i#rojo {
+  color: #000;
+  padding-right: 10px;
+}
+#tipos_footer ul li i#negro {
+  color: #000;
+  padding-right: 10px;
+}
+#tipos_footer ul li i#puerh {
+  color: #000;
+  padding-right: 10px;
 }

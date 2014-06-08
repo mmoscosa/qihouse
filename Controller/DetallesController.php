@@ -21,6 +21,7 @@ class DetallesController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->checkAccess('admin');
 		$this->Detalle->recursive = 0;
 		$this->set('detalles', $this->Paginator->paginate());
 	}
@@ -33,6 +34,7 @@ class DetallesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		$this->checkAccess();
 		if (!$this->Detalle->exists($id)) {
 			throw new NotFoundException(__('Invalid detalle'));
 		}
@@ -46,6 +48,7 @@ class DetallesController extends AppController {
  * @return void
  */
 	public function add($usuario_id = null, $tipo = null) {
+		$this->checkAccess('admin');
 		if(empty($usuario_id)){throw new NotFoundException(__('No se encuentra el usuario'));}
 		if (!empty($tipo)) {
 			$this->set(compact('tipo'));
@@ -77,6 +80,7 @@ class DetallesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->checkAccess();
 		if (!$this->Detalle->exists($id)) {
 			throw new NotFoundException(__('Invalid detalle'));
 		}
@@ -103,6 +107,7 @@ class DetallesController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->checkAccess('admin');
 		$this->Detalle->id = $id;
 		if (!$this->Detalle->exists()) {
 			throw new NotFoundException(__('Invalid detalle'));

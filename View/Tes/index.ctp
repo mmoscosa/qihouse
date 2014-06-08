@@ -18,8 +18,8 @@
 <section class="grid3d vertical" id="grid3d">
 	<div class="grid-wrap">
 		<div class="grid">
-			<?php foreach ($tes as $te): ?>
-				<figure>
+			<?php foreach ($tes as $key => $te): ?>
+				<figure class="figure" title="<?php echo $te['Te']['nombre']; ?>" id="<?php echo $te['Te']['id']; ?>">
 					<?php echo $this->Html->image('/files/te/foto/'.$te['Te']['id'].'/thumb_'.$te['Te']['foto']); ?>
 				</figure>
 			<?php endforeach; ?>
@@ -27,7 +27,7 @@
 	</div><!-- /grid-wrap -->
 	<div class="content">
 		<?php foreach ($tes as $te): ?>
-			<div>
+			<div id="<?php echo $te['Te']['id'] ?>">
 				<h1 class="midwayHorizontal midway">
 					<?php echo $te['Te']['nombre']; ?>
 					<span><?php echo $te['Te']['nombre_original']; ?></span>
@@ -38,6 +38,10 @@
 				<p class="dummy-text">
 					<?php echo $te['Te']['descripcion']; ?>
 				</p>
+				<?php if (!empty($loggedUser)): ?>
+					<iframe width="100%"  frameborder="0" height="350px" id="iframe" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/tes/comments/'.$te['Te']['id']; ?>"></iframe>
+				<?php endif ?>
+
 			</div>
 		<?php endforeach; ?>
 		<span class="loading"></span>

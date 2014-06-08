@@ -84,11 +84,13 @@
 						            		té
 						            	</a>
 						            </li>
-						            <li>
-						            	<a <?php echo ($title_for_layout == 'Membresia' ? 'class="active"' : '') ?> href="/membresia">
-						            		Membresia
-						            	</a>
-						            </li>
+						            <?php if (empty($loggedUser)): ?>
+							            <li>
+							            	<a <?php echo ($title_for_layout == 'Membresia' ? 'class="active"' : '') ?> href="/membresia">
+							            		Membresia
+							            	</a>
+							            </li>
+						            <?php endif ?>
 						            <li>
 						            	<a <?php echo ($title_for_layout == 'Galeria del Te' ? 'class="active"' : '') ?> href="/galeria">
 						            		Galeria
@@ -123,8 +125,13 @@
 				</div>
 				<div class="row">
 					<ul class="nav navbar-nav pull-right users">
-			            <li id="login"><a href="/">Login</a></li>
-			            <li><a href="/membresia">Registrarse</a></li>
+			            <?php if (!empty($loggedUser)): ?>
+							<li><?php echo $this->Html->link('Mi Qi House', array('controller'=>'Usuarios', 'action'=>'control_panel', $loggedUser['Usuario']['id'])); ?></li>
+							<li><?php echo $this->Html->link('Logout', array('controller'=>'Usuarios', 'action'=>'logout')); ?></li>
+						<?php else: ?>	
+				            <li><?php echo $this->Html->link('Login', '#',array('id'=>'login_button')); ?></li>
+				            <li><?php echo $this->Html->link('Registrarse', array('controller'=>'Usuarios', 'action'=>'landing')); ?></li>
+						<?php endif; ?>
 		          </ul>
 				</div>
 			</div>
@@ -132,6 +139,34 @@
 			<p>Qi House <?php echo date('Y'); ?> Todos los derechos Reservados.</p>
 		</footer>
 	</div>
+
+	 <div id="loginContent" style="display: none; min-width: 300px;">
+	     <?php echo $this->Form->create('Usuario', array(
+	                                    		'url' => array(
+	                                    		               'action'=>'login'
+	                                    		               ),
+												'inputDefaults' => array(
+													'div' => 'form-group',
+													'label' => false,
+													'wrapInput' => false,
+													'class' => 'form-control'
+												),
+										)); ?>
+		  
+		  <?php 
+		  	echo $this->Form->input('email', array('label' => 'Correo electronico'));
+			echo $this->Form->input('password', array('label' => 'Contraseña'));
+		  	echo $this->Form->submit('Entrar', array('div' => 'form-group','class' => 'btn btn-default pull-right')); 
+		  ?>
+		<?php echo $this->Form->end(); ?>
+	</div>  
+
+  	<style type="text/css">
+  	.popover{
+	    width:350px;
+	    height:200px;    
+	}
+	</style>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -141,6 +176,13 @@
 	  ga('create', 'UA-51494851-1', 'qihouse.mx');
 	  ga('send', 'pageview');
 
+	  $("#login_button").popover({
+	  	placement : 'top',
+        html : true, 
+        content: function() {
+          return $('#loginContent').html();
+        }
+    	});
 	</script>
 </body>
 </html>
