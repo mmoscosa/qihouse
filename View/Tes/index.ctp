@@ -35,9 +35,9 @@
 				<div class="dummy-img">
 					<?php echo $this->Html->image('/files/te/foto/'.$te['Te']['id'].'/'.$te['Te']['foto']); ?>
 				</div>
-				<p class="dummy-text">
-					<?php echo $te['Te']['descripcion']; ?>
-				</p>
+				<div class="dummy-text">
+					<?php echo $this->Markdown->transform($te['Te']['descripcion']); ?>
+				</div>
 				<?php if (!empty($loggedUser)): ?>
 					<iframe width="100%"  frameborder="0" height="350px" id="iframe" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/tes/comments/'.$te['Te']['id']; ?>"></iframe>
 				<?php endif ?>
