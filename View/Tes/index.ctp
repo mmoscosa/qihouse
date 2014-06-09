@@ -37,10 +37,11 @@
 				</div>
 				<div class="dummy-text">
 					<?php echo $this->Markdown->transform($te['Te']['descripcion']); ?>
+					
+					<?php if (!empty($loggedUser)): ?>
+						<iframe width="100%"  frameborder="0" height="350px" id="iframe" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/tes/comments/'.$te['Te']['id']; ?>"></iframe>
+					<?php endif ?>
 				</div>
-				<?php if (!empty($loggedUser)): ?>
-					<iframe width="100%"  frameborder="0" height="350px" id="iframe" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/tes/comments/'.$te['Te']['id']; ?>"></iframe>
-				<?php endif ?>
 
 			</div>
 		<?php endforeach; ?>
