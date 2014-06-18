@@ -1,0 +1,15 @@
+.wip {
+  position: fixed;
+  z-index: 9999;
+  border-bottom: 2px #3d4542 solid;
+  text-align: center;
+  background-color: #f2f2f2;
+  opacity: 0.65;
+  top: 0;
+}
+.wip p {
+  padding: 10px 50px 5px 50px;
+}
+.container {
+  margin-top: 50px;
+}

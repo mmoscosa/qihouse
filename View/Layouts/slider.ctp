@@ -34,6 +34,7 @@
 		echo $this->Html->css('//cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css');
 		echo $this->Html->css('//cdn.jsdelivr.net/fontawesome/4.1/css/font-awesome.min.css');
 		echo $this->Html->css('slider-layout');
+		echo $this->Html->css('wip');
 
 		echo $this->Html->script('//cdn.jsdelivr.net/jquery/2.1.0/jquery.min.js');
 		echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
@@ -58,6 +59,9 @@
 	<![endif]-->
 </head>
 <body>
+	<div class="wip">
+		<p>Gracias por visitar nuestra pagina - te recordamos que aun esta en construccion, por lo que te pedimos una disculpa por cualqier error que pudiera haber (puedes reportarlo <?php echo $this->Html->link('aqui', 'https://github.com/mmoscosa/qihouse/issues?state=open'); ?>) - mientras llegamos a una version final, por favor difruta nuestro contenido que preparamos para ti.</p>
+	</div>
 	<div id="container">
 		<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo')); ?>
 		<nav class="navbar navbar-default navbar-slider" role="navigation">
