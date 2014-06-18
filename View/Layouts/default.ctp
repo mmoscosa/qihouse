@@ -59,7 +59,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2 pull-left">
-						<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo')); ?>
+						<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo', 'url'=>array('controller'=>'pages', 'action'=>'home'))); ?>
 					</div>
 					<div class="col-md-10">
 						<div class="row">
@@ -86,16 +86,6 @@
 							</div>
 							<div class="col-md-9 menu-principal">
 								<ul class="nav navbar-nav pull-right">
-						            <li>
-						            	<a <?php echo ($title_for_layout == 'Home' ? 'class="active"' : '') ?> href="/">
-						            		Home
-						            	</a>
-						            </li>
-						            <li>
-						            	<a <?php echo ($title_for_layout == 'Nosotros' ? 'class="active"' : '') ?> href="/nosotros">
-						            		Nosotros
-						            	</a>
-						            </li>
 						            <li>
 						            	<a <?php echo ($title_for_layout == 'Club del Te' ? 'class="active"' : '') ?> href="/club">Club del 
 						            		té

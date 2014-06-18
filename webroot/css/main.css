@@ -18,7 +18,7 @@ h5 {
   font-family: 'Bavoroir';
 }
 #logo {
-  margin-top: -25px;
+  margin-top: 15px;
   opacity: 0;
   z-index: 1000;
 }
@@ -27,12 +27,12 @@ h5 {
 }
 nav.navbar {
   right: 3%;
-  padding-top: 50px;
   background: none;
   background-color: white;
   border: none;
   text-transform: uppercase;
   transition: opacity 0.25s ease-in-out;
+  height: 90px;
   border-bottom: 1px solid #ccc;
 }
 nav.navbar:hover {
@@ -46,6 +46,7 @@ nav .doble-renglon {
   margin-top: -20px;
 }
 nav ul.nav {
+  padding-top: 20px;
   font-size: 9pt;
 }
 nav ul.nav.social {

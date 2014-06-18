@@ -74,16 +74,6 @@
 							<div class="col-md-12 menu-principal">
 								<ul class="nav navbar-nav pull-right">
 						            <li>
-						            	<a <?php echo ($title_for_layout == 'Home' ? 'class="active"' : '') ?> href="/">
-						            		Home
-						            	</a>
-						            </li>
-						            <li>
-						            	<a <?php echo ($title_for_layout == 'Nosotros' ? 'class="active"' : '') ?> href="/nosotros">
-						            		Nosotros
-						            	</a>
-						            </li>
-						            <li>
 						            	<a <?php echo ($title_for_layout == 'Club del Te' ? 'class="active"' : '') ?> href="/club">Club del 
 						            		té
 						            	</a>
