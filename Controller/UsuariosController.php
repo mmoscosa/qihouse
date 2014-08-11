@@ -54,7 +54,7 @@ class UsuariosController extends AppController {
 			$this->Usuario->create();
 			if ($this->Usuario->save($this->request->data)) {
 				$this->Session->setFlash(__('The usuario has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'control_panel'));
 			} else {
 				$this->Session->setFlash(__('The usuario could not be saved. Please, try again.'));
 			}
@@ -74,7 +74,7 @@ class UsuariosController extends AppController {
 			$this->Usuario->create();
 			if ($this->Usuario->save($this->request->data)) {
 				$usuario_id = $this->Usuario->getLastInsertId();
-				return $this->redirect(array('controller' => 'detalles','action' => 'add', $usuario_id));
+				return $this->redirect(array('controller' => 'detalles','action' => 'add', $usuario_id, $tipo));
 			} else {
 				$this->Session->setFlash(__('The usuario could not be saved. Please, try again.'));
 			}
@@ -173,6 +173,9 @@ public function landing()
 		$this->Session->destroy('login');
 		if ($this->Cookie->check('login')) {
 			$this->Cookie->destroy('login');
+			if ($this->Cookie->check('ShoppingCart')) {
+				$this->Cookie->destroy('ShoppingCart');
+			}
 		}
 		if(Router::fullbaseUrl().'/' == $this->referer()){
 			$this->redirect($this->referer());

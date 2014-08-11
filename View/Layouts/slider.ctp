@@ -59,9 +59,6 @@
 	<![endif]-->
 </head>
 <body>
-	<div class="wip">
-		<p>Gracias por visitar nuestra pagina - te recordamos que aun esta en construccion, por lo que te pedimos una disculpa por cualqier error que pudiera haber (puedes reportarlo <?php echo $this->Html->link('aqui', 'https://github.com/mmoscosa/qihouse/issues?state=open'); ?>) - mientras llegamos a una version final, por favor difruta nuestro contenido que preparamos para ti.</p>
-	</div>
 	<div id="container">
 		<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo')); ?>
 		<nav class="navbar navbar-default navbar-slider" role="navigation">
@@ -86,8 +83,8 @@
 							            </li>
 						            <?php endif ?>
 						            <li>
-						            	<a <?php echo ($title_for_layout == 'Galeria del Te' ? 'class="active"' : '') ?> href="/galeria">
-						            		Galeria
+						            	<a <?php echo ($title_for_layout == 'Galeria del Te' ? 'class="active"' : '') ?> href="/bazar">
+						            		Bazar
 						            	</a>
 						            </li>
 						            <li>

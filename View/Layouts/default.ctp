@@ -36,7 +36,9 @@
 		echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js');
 		
 		echo $this->Html->script('midway.min');
+		echo $this->Html->script('currency');
 		echo $this->Html->script('jquery.rss.js');
+		
 		echo $this->Html->script('main');
 
 		echo $this->fetch('meta');
@@ -51,15 +53,12 @@
 	<![endif]-->
 </head>
 <body>
-	<div class="wip">
-		<p>Gracias por visitar nuestra pagina - te recordamos que aun esta en construccion, por lo que te pedimos una disculpa por cualqier error que pudiera haber (puedes reportarlo <?php echo $this->Html->link('aqui', 'https://github.com/mmoscosa/qihouse/issues?state=open'); ?>) - mientras llegamos a una version final, por favor difruta nuestro contenido que preparamos para ti.</p>
-	</div>
 	<div id="container">
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-top">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-2 pull-left">
-						<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo', 'url'=>array('controller'=>'pages', 'action'=>'home'))); ?>
+						<?php echo $this->Html->image('logo.png', array('alt'=>'qihouse logo', 'id'=>'logo', 'url'=>'http://'.$_SERVER['HTTP_HOST'])); ?>
 					</div>
 					<div class="col-md-10">
 						<div class="row">
@@ -70,6 +69,20 @@
 							            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Twitter"><a href="https://twitter.com/qihouse"><i class="fa fa-twitter"></i> </a></li>
 							            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Facebook"><a href="https://www.facebook.com/qihouse.mx"><i class="fa fa-facebook"></i> </a></li>
 							            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><a href="http://www.pinterest.com/qihouse/"><i class="fa fa-pinterest"></i> </a></li>
+						            	<li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Carrito de Compras">
+								            <?php 
+								            	echo $this->Html->link(
+								            	                       '<i class="fa fa-shopping-cart"></i>', 
+								            	                       array(
+								            	                        		'controller'=>'products',
+								            	                        		'action'=>'cart'
+								            	                             ),
+								            	                       array(
+								            	                             'escape' => false
+								            	                             )
+								            	                    	); 
+							            	?>
+						            	</li>
 						          </ul>
 								</div>
 								<div class="row">
@@ -99,8 +112,8 @@
 							            </li>
 						            <?php endif ?>
 						            <li>
-						            	<a <?php echo ($title_for_layout == 'Galeria del Te' ? 'class="active"' : '') ?> href="/galeria">
-						            		Galeria
+						            	<a <?php echo ( strpos($title_for_layout, 'Galeria del Te') ? 'class="active"' : '') ?> href="/bazar">
+						            		Bazar
 						            	</a>
 						            </li>
 						            <li>
@@ -152,17 +165,17 @@
 		     			<div class="row">
 		     				<div class="col-md-6"> 
 		     					<ul>
-		     						<li><i id="blanco" class="fa fa-leaf"></i> Blanco</li>
-		     						<li><i id="amarillo" class="fa fa-leaf"></i> Amarillo</li>
-		     						<li><i id="verde" class="fa fa-leaf"></i> Verde</li>
-		     						<li><i id="oolong" class="fa fa-leaf"></i> Oolong</li>
+		     						<li><a href="/bazar/blanco"><i id="blanco" class="fa fa-leaf"></i> Blanco</a></li>
+		     						<!-- <li><a href="/bazar/amarillo" class="disabled"><i id="amarillo" class="fa fa-leaf"></i> Amarillo</a></li> -->
+		     						<li><a href="/bazar/verde"><i id="verde" class="fa fa-leaf"></i> Verde</a></li>
+		     						<li><a href="/bazar/oolong"><i id="oolong" class="fa fa-leaf"></i> Oolong</a></li>
 		     					</ul>
 		     				</div>
 		     				<div class="col-md-6"> 
 		     					<ul>
-		     						<li><i id="rojo" class="fa fa-leaf"></i> Rojo</li>
-		     						<li><i id="negro" class="fa fa-leaf"></i> Negro</li>
-		     						<li><i id="puerh" class="fa fa-leaf"></i> Pu erh</li>
+		     						<li><a href="/bazar/rojo"><i id="rojo" class="fa fa-leaf"></i> Rojo</a></li>
+		     						<!-- <li><a href="/bazar/negro" class="disabled"><i id="negro" class="fa fa-leaf"></i> Negro</a></li> -->
+		     						<li><a href="/bazar/puerh"><i id="puerh" class="fa fa-leaf"></i> Pu erh</a></li>
 		     					</ul>
 		     				</div>
 		     			</div>
@@ -192,9 +205,11 @@
 		     		<div class="col-md-8">
 						<ul class="nav navbar-nav pull-right">
 				            <li><a href="/">Home</a></li>
-				            <li><a href="/nosotros">Nosotros</a></li>
 				            <li><a href="/club">Club del té</a></li>
-				            <li><a href="/membresia">Membresia</a></li>
+				            <?php if (empty($loggedUser)): ?>
+				            	<li><a href="/membresia">Membresia</a></li>
+				        	<?php endif; ?>
+				            <li><a href="/bazar">Bazar</a></li>
 				            <li><a href="/contacto">Contacto</a></li>
 			          </ul>
 		     		</div>

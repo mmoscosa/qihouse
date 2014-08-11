@@ -28,7 +28,7 @@
 }
 
 .grid figure {
-	margin: 10px;
+	margin: 30px 10px;
 	display: inline-block;
 	cursor: pointer;
 	-webkit-touch-callout: none;
@@ -298,3 +298,18 @@ p.dummy-text:nth-child(3) {
 	}
 
 }
+
+.shop-actions{
+	position: fixed;
+	top: 100px;
+	right: 0;
+	padding: 10px;
+	text-align: center;
+	min-width: 300px;
+}
+
+.shop-actions .shop-custom-label{
+	padding-top: 25px;
+}
+
+

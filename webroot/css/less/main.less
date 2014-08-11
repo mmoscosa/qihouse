@@ -1,27 +1,71 @@
-html, body{
-	@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
-	font-family: 'Roboto', Helvetica !important;
-	font-weight: lighter !important;
-	color: #3d4542;
+@font-face
+{
+	font-family: 'Bavoroir';
+	src: url(/fonts/Bavaroir-Reg.otf);
 }
 
 @font-face
 {
-	font-family: Bavoroir;
-	src: url(/fonts/Bavaroir-Reg.otf);
+	font-family: 'Roboto';
+	src: url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+}
+
+@font-face
+{
+	font-family: 'Open Sans';
+	src: url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300,800);
+}
+
+body {
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes fontfix {
+    from { opacity: 1; }
+    to   { opacity: 1; }
+}
+
+html, body{
+	font-family: 'Open Sans', sans-serif, 'Roboto', Helvetica !important; 
+	font-weight: lighter !important;
+	color: #3d4542;
+}
+
+a{
+	&.disabled{
+		pointer-events: none;
+   		cursor: default;
+   		text-decoration: line-through;
+	}
 }
 
 /* Here we set that all headers and spans shall use the custom Bavoroir Font  */
-h1, h2, h3, h4, h5{
+
+h4, h5{
 	font-family: 'Bavoroir';
 }
 
+h1{
+	font-family: 'Bavoroir';
+}
 
-
+h2, h3{
+	color: black;
+	margin-top: 4px;
+	padding: 0 15px;
+	font-family: 'Roboto', Helvetica !important;
+	font-weight: 200;
+	text-transform: uppercase;
+}
 #logo{
-	margin-top: 15px;
+	margin-top: 20px;
 	opacity: 0;
 	z-index: 1000;
+	height: 50px;
 }
 .alert-content{
 	margin-top: 50px;
@@ -34,7 +78,7 @@ nav{
 		border: none;
 		text-transform: uppercase;
 		transition: opacity 0.25s ease-in-out;
-		height: 90px;
+		height: 100px;
 		&:hover{
 			opacity: 1;
 		}
@@ -55,8 +99,10 @@ nav{
 		padding-top:20px; 
 		font-size: 9pt;
 		&.social{
-			margin-left: 100px;
+			padding-left: 35px;
 			height: 30px;
+			width: 200px;
+			float: right;
 			li{
 				margin: auto 5px;
 				padding: auto 5px;
@@ -71,7 +117,7 @@ nav{
 #content{
 	&.container{
 		min-height: 800px;
-		padding-top: 80px;
+		padding-top: 70px;
 	}
 }
 .footer{
@@ -88,6 +134,7 @@ nav{
 	.social-nav{
 		font-size: 14pt;
 		ul{
+			margin-left: -20px;
 			li{
 				padding: 0 5px;
 			}
@@ -98,7 +145,6 @@ nav{
 	margin: 0;
 	background-color: rgb(215, 213, 213);
 	padding: 25px 0;
-	
 	ul{
 		&.nav{
 			li{
@@ -165,16 +211,23 @@ nav{
 #tipos_footer{
 	ul{
 		list-style: none;
+		margin-left: -20px;
 		li{
 			font-size: 14pt;
+			a{
+				color: black;
+				&:hover{
+					text-decoration: none;
+				}
+			}
 			i{
-				&#blanco{color: #000; padding-right: 10px;}
-				&#amarillo{color: #000; padding-right: 10px;}
-				&#verde{color: #000; padding-right: 10px;}
-				&#oolong{color: #000; padding-right: 10px;}
-				&#rojo{color: #000; padding-right: 10px;}
-				&#negro{color: #000; padding-right: 10px;}
-				&#puerh{color: #000; padding-right: 10px;}
+				&#blanco{color: #C9C9C9; padding-right: 10px;}
+				&#amarillo{color: #DEE35D; padding-right: 10px;}
+				&#verde{color: #87E35D; padding-right: 10px;}
+				&#oolong{color: #5DA7E3; padding-right: 10px;}
+				&#rojo{color: #E35D5D; padding-right: 10px;}
+				&#negro{color: #616161; padding-right: 10px;}
+				&#puerh{color: #E3995D; padding-right: 10px;}
 			}
 		}
 	}
