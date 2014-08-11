@@ -1,26 +1,63 @@
+@font-face {
+  font-family: 'Bavoroir';
+  src: url(/fonts/Bavaroir-Reg.otf);
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300,800);
+}
+body {
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes fontfix {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
 html,
 body {
-  @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
-  font-family: 'Roboto', Helvetica !important;
+  font-family: 'Open Sans', sans-serif, 'Roboto', Helvetica !important;
   font-weight: lighter !important;
   color: #3d4542;
 }
-@font-face {
-  font-family: Bavoroir;
-  src: url(/fonts/Bavaroir-Reg.otf);
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: line-through;
 }
 /* Here we set that all headers and spans shall use the custom Bavoroir Font  */
-h1,
-h2,
-h3,
 h4,
 h5 {
   font-family: 'Bavoroir';
 }
+h1 {
+  font-family: 'Bavoroir';
+}
+h2,
+h3 {
+  color: black;
+  margin-top: 4px;
+  padding: 0 15px;
+  font-family: 'Roboto', Helvetica !important;
+  font-weight: 200;
+  text-transform: uppercase;
+}
 #logo {
-  margin-top: 15px;
+  margin-top: 20px;
   opacity: 0;
   z-index: 1000;
+  height: 50px;
 }
 .alert-content {
   margin-top: 50px;
@@ -32,7 +69,7 @@ nav.navbar {
   border: none;
   text-transform: uppercase;
   transition: opacity 0.25s ease-in-out;
-  height: 90px;
+  height: 100px;
   border-bottom: 1px solid #ccc;
 }
 nav.navbar:hover {
@@ -50,8 +87,10 @@ nav ul.nav {
   font-size: 9pt;
 }
 nav ul.nav.social {
-  margin-left: 100px;
+  padding-left: 35px;
   height: 30px;
+  width: 200px;
+  float: right;
 }
 nav ul.nav.social li {
   margin: auto 5px;
@@ -63,7 +102,7 @@ nav ul.nav.social li a {
 }
 #content.container {
   min-height: 800px;
-  padding-top: 80px;
+  padding-top: 70px;
 }
 .footer {
   background-image: url('/img/gato-footer.png');
@@ -79,6 +118,9 @@ nav ul.nav.social li a {
 }
 .footer .social-nav {
   font-size: 14pt;
+}
+.footer .social-nav ul {
+  margin-left: -20px;
 }
 .footer .social-nav ul li {
   padding: 0 5px;
@@ -148,35 +190,42 @@ nav ul.nav.social li a {
 }
 #tipos_footer ul {
   list-style: none;
+  margin-left: -20px;
 }
 #tipos_footer ul li {
   font-size: 14pt;
 }
+#tipos_footer ul li a {
+  color: black;
+}
+#tipos_footer ul li a:hover {
+  text-decoration: none;
+}
 #tipos_footer ul li i#blanco {
-  color: #000;
+  color: #C9C9C9;
   padding-right: 10px;
 }
 #tipos_footer ul li i#amarillo {
-  color: #000;
+  color: #DEE35D;
   padding-right: 10px;
 }
 #tipos_footer ul li i#verde {
-  color: #000;
+  color: #87E35D;
   padding-right: 10px;
 }
 #tipos_footer ul li i#oolong {
-  color: #000;
+  color: #5DA7E3;
   padding-right: 10px;
 }
 #tipos_footer ul li i#rojo {
-  color: #000;
+  color: #E35D5D;
   padding-right: 10px;
 }
 #tipos_footer ul li i#negro {
-  color: #000;
+  color: #616161;
   padding-right: 10px;
 }
 #tipos_footer ul li i#puerh {
-  color: #000;
+  color: #E3995D;
   padding-right: 10px;
 }

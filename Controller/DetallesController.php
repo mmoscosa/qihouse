@@ -13,7 +13,7 @@ class DetallesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator', 'Session');
 
 /**
  * index method
@@ -57,12 +57,17 @@ class DetallesController extends AppController {
 			if(!empty($this->request->data['Detalle']['giro']) && $this->request->data['Detalle']['giro'] == 'Otro' && !empty($this->request->data['giro']['otro'])){
 				$this->request->data['Detalle']['giro'] = $this->request->data['giro']['otro'];
 			}
+			if(!empty($this->request->data['Detalle']['mas_info'])){
+				$this->request->data['Detalle']['mas_info'] = json_encode($this->request->data['Detalle']['mas_info'], JSON_UNESCAPED_UNICODE);
+			}
+			if(!empty($this->request->data['Detalle']['por_que_toma_te'])){
+				$this->request->data['Detalle']['por_que_toma_te'] = json_encode($this->request->data['Detalle']['por_que_toma_te'], JSON_UNESCAPED_UNICODE);
+			}
 			$this->request->data['Detalle']['usuario_id'] = $usuario_id;
-			$this->request->data['Detalle']['mas_info'] = json_encode($this->request->data['Detalle']['mas_info'], JSON_UNESCAPED_UNICODE);
-			$this->request->data['Detalle']['por_que_toma_te'] = json_encode($this->request->data['Detalle']['por_que_toma_te'], JSON_UNESCAPED_UNICODE);
 			$this->Detalle->create();
+
 			if ($this->Detalle->save($this->request->data)) {
-				//$this->Session->setFlash(__('The detalle has been saved.'));
+				$this->Cookie->write('login', $usuario_id);
 				return $this->redirect(array('controller'=>'usuarios','action' => 'control_panel', $usuario_id));
 			} else {
 				//$this->Session->setFlash(__('The detalle could not be saved. Please, try again.'));
@@ -71,7 +76,6 @@ class DetallesController extends AppController {
 		$usuarios = $this->Detalle->Usuario->find('list');
 		$this->set(compact('usuarios'));
 	}
-
 /**
  * edit method
  *

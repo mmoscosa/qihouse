@@ -49,9 +49,51 @@ class Usuario extends AppModel {
  *
  * @var array
  */
-	public $hasMany = array(
-		'Detalle' => array(
+
+	public $hasOne = array(
+	    'Detalle' => array(
 			'className' => 'Detalle',
+			'foreignKey' => 'usuario_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+	);
+	public $hasMany = array(
+		'Card' => array(
+			'className' => 'Card',
+			'foreignKey' => 'usuario_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Address' => array(
+			'className' => 'Address',
+			'foreignKey' => 'usuario_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Order' => array(
+			'className' => 'Order',
 			'foreignKey' => 'usuario_id',
 			'dependent' => false,
 			'conditions' => '',

@@ -79,6 +79,15 @@ CakePlugin::loadAll();
  *
  * ));
  */
+
+
+Configure::write('openpay', array( 
+                 "public_key" =>  "pk_cd15aed8af9746588af5bbaa355fc84d",
+                 "private_key" =>  "sk_896a9752a2954b9990643ffb22499bc7",
+                 "merchant_id" =>  "mb82o6czp2sc6k7j5trk",
+                 "sandbox" =>  true
+                 ));
+
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'

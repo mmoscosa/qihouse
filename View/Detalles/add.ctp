@@ -16,11 +16,15 @@
 	<fieldset>
 		<legend><?php echo __('Add Detalle'); ?></legend>
 	<?php
-		echo $this->Form->input('nombre', array('label' => 'Nombre'));
-		echo $this->Form->input('avatar', array('type' => 'file', 'label' => 'Avatar'));
-		echo $this->Form->input('direccion', array('label' => 'Direccion'));
-		echo $this->Form->input('telefono', array('label' => 'Telefono'));
 		if(!empty($tipo)){
+			echo $this->Form->input('razon_social', array('label' => 'Razon Social'));
+			echo "<hr>";
+			echo $this->Form->label('Datos de representante');
+		}
+		echo $this->Form->input('nombre', array('label' => 'Nombre'));
+		echo $this->Form->input('apellido', array('label' => 'Apellido'));
+		if(!empty($tipo)){
+			echo "<hr>";
 			echo $this->Form->input('giro', array('label' => 'Giro', 'options'=> array(
 													                        'Case de Te' => 'Case de Te', 
 													                        'Cafeteria'  => 'Cafeteria' , 
@@ -33,7 +37,6 @@
 													'id'=>'giro'));
 			echo $this->Form->input('giro.otro', array('label' => '', 'id'=>'otro_giro', 'placeholder'=>'Favor de especificar'));
 			echo $this->Form->input('rfc', array('label' => 'RFC'));
-			echo $this->Form->input('representante', array('label' => 'Nombre del representante'));
 			echo $this->Form->input('trabajado_anteriormente', array('label' => '¿Ha trabajado con nosotros anteriormente?', 'options'=>array(
 			                        1=>'Si, me he entrevistado con representantes de Qi House', 
 			                        2=>'No, los encontré en internet' , 

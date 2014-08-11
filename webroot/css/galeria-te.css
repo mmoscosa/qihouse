@@ -3,7 +3,7 @@
   background-image: url('/img/galeria-te/tetera.png'), url('/img/galeria-te/conejo.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 70% 110px, 35% 100px;
+  background-position: 70% 100px, 35% 100px;
   background-size: auto 260px, auto 280px;
 }
 .parallax #quote {
@@ -25,15 +25,17 @@
 .parallax #quote span {
   font-weight: bold;
 }
+figure h4 {
+  font-family: 'Helvetica';
+  text-transform: uppercase;
+  text-align: center;
+}
 #grid3d {
   margin-top: 300px;
 }
-#grid3d .dummy-img {
-  margin-bottom: 80px;
-}
 #grid3d .dummy-img img {
   width: 600px;
-  margin-top: -90px;
+  margin-top: -20px;
 }
 #grid3d h1 {
   text-align: center;
@@ -47,4 +49,34 @@
   text-align: justify;
   font-size: 16pt;
   color: black;
+  margin-top: 190px;
+}
+.shop-actions {
+  margin-right: -255px;
+}
+.shop-actions h1,
+.shop-actions h2,
+.shop-actions h3,
+.shop-actions h4 {
+  font-family: 'Roboto', Helvetica !important;
+  font-weight: lighter !important;
+}
+.shop-actions .mayoreo {
+  display: none;
+}
+.shop-actions .comprar-menu-button {
+  cursor: pointer;
+  width: 50px;
+}
+.shop-actions .list-group {
+  position: relative;
+  width: 290px;
+}
+.shop-actions .comprar-menu {
+  margin-top: -62px;
+  margin-left: 48px;
+  height: 300px;
+}
+.sets-y-mas {
+  display: inline;
 }

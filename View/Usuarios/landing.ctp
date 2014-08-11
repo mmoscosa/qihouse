@@ -13,7 +13,7 @@
 	</div>
 	<div class="row" id="tazas">
 		<div class="col-md-12">
-			Agradecemos su interés por ser parte de nuestro club y de los beneficios que se adquieren.
+			<h3>Agradecemos su interés por ser parte de nuestro club y de los beneficios que se adquieren.</h3>
 		</div>
 		<div class="col-md-6 tipo-membresia" id="personal">
 			<h1>Particular</h1>
@@ -51,8 +51,7 @@
 			</p>
 			<?php echo $this->Html->image('membresia/taza.png', array('alt'=>'qihouse tazas', 'class'=>'tacita' ,'url'=>array(
 			                              'controller'	=>	'usuarios',
-			                              'action'		=>	'register',
-			                              '1'
+			                              'action'		=>	'register'
 			))); ?>
 		</div>
 		<div class="col-md-6 tipo-membresia" id="negocio">
@@ -88,7 +87,7 @@
 			<?php echo $this->Html->image('membresia/tazas.png', array('alt'=>'qihouse tazas', 'url'=>array(
 			                              'controller'	=>	'usuarios',
 			                              'action'		=>	'register',
-			                              '2'
+			                              '1'
 			))); ?>
 		</div>
 	</div>

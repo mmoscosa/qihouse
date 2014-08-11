@@ -56,7 +56,7 @@
 		<a href="/membresia">unete ahora</a>
 	</div>
 </div>
-
+<!-- 
 <div class="row" id="extras">
 	<div class="col-md-12">
 		<h1 class="midway-horizontal">Extras</h1>
@@ -95,3 +95,4 @@
 		<?php endforeach; ?>
 	</ul>
 </div>
+ -->

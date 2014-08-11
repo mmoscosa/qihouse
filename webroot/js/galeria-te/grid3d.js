@@ -97,14 +97,14 @@
 					classie.removeClass( self.loader, 'show' );
 					// in the end of the transition set class "show" to respective content item
 					classie.addClass( self.contentItems[ pos ], 'show' );
-				}, 1000 );
+				}, 500 );
 				// show content area
 				classie.addClass( self.contentEl, 'show' );
+				
 				// show loader
 				classie.addClass( self.loader, 'show' );
 				classie.addClass( document.body, 'noscroll' );
 				self.isAnimating = false;
-
 			};
 
 		// if no support just load the content (simple fallback - no animation at all)
@@ -125,7 +125,6 @@
 		
 		// append placeholder to the grid
 		this.grid.appendChild( this.placeholder );
-
 		// and animate it
 		var animFn = function() {
 			// give class "active" to current grid item (hides it)
