@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Address'); ?></legend>
 	<?php
-		echo $this->Form->input('usuario_id');
+		//echo $this->Form->input('usuario_id');
 		echo $this->Form->input('type');
 		echo $this->Form->input('phone_number');
 		echo $this->Form->input('address_1');

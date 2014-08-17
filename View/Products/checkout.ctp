@@ -39,7 +39,7 @@
                                 ?>
                             <?php endif; ?>
                             <div id="#shippingForm">
-                                <?php echo $this->Form->input('address.line1', array("class"=>"form-control", "placeholder"=>"Dirreccion", "type"=>"text",'label'=>'Direccion')); ?>
+                                <?php echo $this->Form->input('address.line1', array("class"=>"form-control", "placeholder"=>"Direccion", "type"=>"text",'label'=>'Direccion')); ?>
                                 <?php echo $this->Form->input('address.line2', array("class"=>"form-control", "type"=>"text", 'label'=>'')); ?>
                                 </div>
                         </div>
@@ -64,6 +64,9 @@
                                 </div>
                                 <div class="col-md-12">
                                 <?php echo $this->Form->input('telephone', array("class"=>"form-control", "placeholder"=>"33 31 10 10 10", "type"=>"text", 'label'=>'Telefono')); ?>
+                                <div class="pull-right">
+                                    <?php echo $this->Form->input('save_shippipng', array("type"=>"checkbox", 'label'=>'Guardar a mis Direcciones de envio')); ?>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -94,6 +97,9 @@
                                 <?php echo $this->Form->input('name', $params); ?>
                                 <?php echo $this->Form->input('expiry', array("class"=>"form-control", "placeholder"=>"MM/YY", "type"=>"text", "name"=>"expiry")); ?>
                                 <?php echo $this->Form->input('cvc', array("class"=>"form-control", "placeholder"=>"CVC", "type"=>"text", "name"=>"cvc")); ?>
+                                <div class="pull-right">
+                                    <?php echo $this->Form->input('save_card', array("type"=>"checkbox", 'label'=>'Guardar tarjeta')); ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -103,48 +109,53 @@
                     <hr/>
                     <div class="row">
                         <div class="col-md-7">
+                                <div id="billing_address">
                             <h2>Direccion de Cobro</h2>
-                            <div class="col-md-12">
-                            <?php if (!empty($loggedUser)): ?>
-                                <?php
-                                    echo $this->Form->input('cantidad', array(
-                                                    'options' => array($billingAddresses),
-                                                    'label'=>'',
-                                                    'class' => 'form-control',
-                                                    'id'=>'quantity',
-                                                    'empty' => 'Favor de elegir'
-                                    ));
-                                ?>
-                            <?php endif; ?>
-                            <?php echo $this->Form->input('address.line1', array("class"=>"form-control", "placeholder"=>"Dirreccion", "type"=>"text",'label'=>'Direccion')); ?>
-                            <?php echo $this->Form->input('address.line2', array("class"=>"form-control", "type"=>"text", 'label'=>'')); ?>
-                            </div>
-                            <div class="col-md-6">
-                                <?php echo $this->Form->input('address.state', array("class"=>"form-control", "placeholder"=>"Estado", "type"=>"text", 'label'=>'Estado')); ?>
-                            </div>
-                            <div class="col-md-6">
-                                <?php echo $this->Form->input('address.city', array("class"=>"form-control", "placeholder"=>"Ciudad", "type"=>"text", 'label'=>'Ciudad')); ?>
-                            </div>
-                            <div class="col-md-6">
-                                <?php echo $this->Form->input('address.postal_code', array("class"=>"form-control", "placeholder"=>"00000", "type"=>"text", 'label'=>'Codigo Postal')); ?>
-                            </div>
-                            <div class="col-md-6">
-                                <?php echo $this->Form->input('address.country', array(
-                                                'options' => array($countries),
-                                                'label'=>'',
-                                                'class' => 'form-control',
-                                                'id'=>'quantity',
-                                                'empty' => 'Favor de elegir'
-                                    ));
-                                ?>
-                            </div>
-                            <div class="col-md-12">
-                            <?php echo $this->Form->input('telephone', array("class"=>"form-control", "placeholder"=>"33 31 10 10 10", "type"=>"text", 'label'=>'Telefono')); ?>
-                            </div>
+                            <div class="col-md-12" >
+                                    <?php if (!empty($loggedUser)): ?>
+                                        <?php
+                                            echo $this->Form->input('cantidad', array(
+                                                            'options' => array($billingAddresses),
+                                                            'label'=>'',
+                                                            'class' => 'form-control',
+                                                            'id'=>'quantity',
+                                                            'empty' => 'Favor de elegir'
+                                            ));
+                                        ?>
+                                    <?php endif; ?>
+                                    <?php echo $this->Form->input('address.line1', array("class"=>"form-control", "placeholder"=>"Direccion", "type"=>"text",'label'=>'Direccion')); ?>
+                                    <?php echo $this->Form->input('address.line2', array("class"=>"form-control", "type"=>"text", 'label'=>'')); ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $this->Form->input('address.state', array("class"=>"form-control", "placeholder"=>"Estado", "type"=>"text", 'label'=>'Estado')); ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $this->Form->input('address.city', array("class"=>"form-control", "placeholder"=>"Ciudad", "type"=>"text", 'label'=>'Ciudad')); ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $this->Form->input('address.postal_code', array("class"=>"form-control", "placeholder"=>"00000", "type"=>"text", 'label'=>'Codigo Postal')); ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?php echo $this->Form->input('address.country', array(
+                                                        'options' => array($countries),
+                                                        'label'=>'',
+                                                        'class' => 'form-control',
+                                                        'id'=>'quantity',
+                                                        'empty' => 'Favor de elegir'
+                                            ));
+                                        ?>
+                                    </div>
+                                    <div class="col-md-12">
+                                    <?php echo $this->Form->input('telephone', array("class"=>"form-control", "placeholder"=>"33 31 10 10 10", "type"=>"text", 'label'=>'Telefono')); ?>
+                                        <div class="pull-right">
+                                            <?php echo $this->Form->input('save_billing', array("type"=>"checkbox", 'label'=>'Guardar a mis Direcciones de cobro')); ?>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         <div class="col-md-5">
                             <div class="checkbox">
-                                <?php echo $this->Form->input('same_address', array("type"=>"checkbox", 'label'=>'Mi direccion es igual a la direccion de envio')); ?>
+                                <?php echo $this->Form->input('same_address', array('id'=>'same_address',"type"=>"checkbox", 'label'=>'Mi Direccion es igual a la Direccion de envio')); ?>
                             </div>
                         </div>
                     </div>
@@ -165,5 +176,14 @@
     })
     $('#shippingAddress').change(function () {
        // $
+    });
+    $('#same_address').change(function() {
+       if($(this).is(":checked")) {
+          //'checked' event code
+          $("#billing_address").slideUp();
+          return;
+       }
+       //'unchecked' event code
+       $("#billing_address").slideDown();
     });
 </script>
