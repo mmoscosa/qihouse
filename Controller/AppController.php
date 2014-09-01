@@ -11,7 +11,6 @@
  */
 
 App::uses('Controller', 'Controller');
-App::import('Vendor', 'Openpay', array('file' => 'Openpay/Openpay.php'));
 /**
  * Application Controller
  *
@@ -26,11 +25,15 @@ class AppController extends Controller {
 		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
 		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
 		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+		'Seo.Seo',
 	);
+
 	public $components = array(
 	                            'DebugKit.Toolbar',
 	                            'Session',
-	                            'Cookie'
+	                            'Cookie',
+	                            'Seo.BlackList',
+								'Seo.ABTest',
 	                           );
 	
 	public function beforeFilter() {
@@ -43,6 +46,13 @@ class AppController extends Controller {
 		}
 		$cantidadesArray = array('50'=>'50gr', '100'=>'100gr', '150'=>'150gr', '200'=>'200gr', '250'=>'250gr','500'=>'500gr','1000'=>'1kg',);
 		$this->set(compact('cantidadesArray'));
+
+		if($test = $this->ABTest->getTest(array('debug' => true))){
+	        //Do things specific to this test
+	        $this->set('ABTest', $test);
+	        $this->view = $test['SeoABTest']['slug'];
+	    }
+	    return parent::beforeFilter();
     }
 
     public function checkAccess($role = null)

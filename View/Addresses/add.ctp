@@ -5,6 +5,9 @@
 	<?php
 		//echo $this->Form->input('usuario_id');
 		echo $this->Form->input('type');
+		if ($loggedUser) {
+			echo $this->Form->input('usuario_id', array('value'=>$loggedUser['Usuario']['id'], 'type'=>'hidden'));
+		}
 		echo $this->Form->input('phone_number');
 		echo $this->Form->input('address_1');
 		echo $this->Form->input('address_2');

@@ -12,7 +12,7 @@
 <div class="well parallax">
     <div id="quote">
         <p>Se bebe te para olvidar el ruido del mundo</p>
-        <span>T'ien Yihrng</span>
+        <span>T'ien Yiheng</span>
     </div>
 </div>
 <section class="grid3d vertical" id="grid3d">
@@ -73,7 +73,7 @@
           <!-- <button class="btn btn-default">Sets</button> -->
         </div>
         <div class="pull-right">
-          <button class="btn btn-default" data-toggle="modal" data-target="#comofunciona">Como Funciona</button>
+          <button class="btn btn-default" data-toggle="modal" data-target="#comofunciona">Como Funciona <i class="fa fa-question-circle"></i></button>
         </div>
         <div class="grid">
             <?php foreach ($tes as $key => $te): ?>

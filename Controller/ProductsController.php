@@ -227,6 +227,7 @@ class ProductsController extends AppController {
 			}
 			if($empty == true){
 				$this->set(compact('products'));
+				return $products;
 			}
 		}
 	}
@@ -279,6 +280,9 @@ class ProductsController extends AppController {
 
     public function checkout($value='')
     {
+    	if ($this->request->is('post')) {
+    	}
+
     	$logged = $this->loggedUser;
     	if($logged){
     		$this->loadModel('Address');
@@ -290,10 +294,8 @@ class ProductsController extends AppController {
 			                              ));
     		$this->set(compact('addresses'));
     	}
-    	$openpayData = Configure::read('openpay');
-		$openpay = Openpay::getInstance($openpayData["merchant_id"], $openpayData["private_key"]);
-    	
+    	$products = $this->cart();
     	$countries = $this->countryList();
-    	$this->set(compact('countries'));
+    	$this->set(compact('countries', 'products'));
     }
 }

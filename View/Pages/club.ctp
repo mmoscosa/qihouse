@@ -56,6 +56,13 @@
 		<a href="/membresia">unete ahora</a>
 	</div>
 </div>
+<div class="row" id="extras">
+</div>
+<div class="parallax well" id="clientes">
+	<h2 class="midway-horizontal midway-vertical">
+		<?php echo $this->Html->link('Encuentra tu bebida…', array('controller'=>'products', 'action'=>'tes')); ?>
+	</h2>
+</div>
 <!-- 
 <div class="row" id="extras">
 	<div class="col-md-12">
