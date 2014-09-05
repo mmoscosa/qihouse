@@ -23,7 +23,6 @@
 		echo $this->Html->css('//cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css');
 		echo $this->Html->css('//cdn.jsdelivr.net/fontawesome/4.1/css/font-awesome.min.css');
 		echo $this->Html->css('main');
-		echo $this->Html->css('wip');
 
 		echo $this->Html->script('//cdn.jsdelivr.net/jquery/2.1.0/jquery.min.js');
 		echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
@@ -38,9 +37,7 @@
 		echo $this->Html->script('currency');
 		echo $this->Html->script('jquery.rss.js');
 		
-		echo $this->Html->script('https://openpay.s3.amazonaws.com/openpay.v1.min.js');
-		echo $this->Html->script('https://openpay.s3.amazonaws.com/openpay-data.v1.min.js');
-		echo $this->Html->script('qihouse_openpay');
+		
 		
 		echo $this->Html->script('main');
 

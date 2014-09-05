@@ -1,3 +1,9 @@
 #payment-container {
   margin-top: 40px;
 }
+#payment-container #select_payment {
+  padding: 25px 12px 25px 12px;
+}
+#payment-container .col-md-8 {
+  border-right: 1px solid black;
+}

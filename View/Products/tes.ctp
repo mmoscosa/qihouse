@@ -123,7 +123,7 @@
                     <?php echo $this->Form->end(); ?>
 
                     <?php if (!empty($loggedUser)): ?>
-                        <iframe width="100%"  frameborder="0" height="350px" id="iframe" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/products/comments/'.$te['Product']['id']; ?>"></iframe>
+                        <iframe width="100%"  frameborder="0" height="350px" id="iframe" src="<?php echo 'https://'.$_SERVER['HTTP_HOST'].'/products/comments/'.$te['Product']['id']; ?>"></iframe>
                     <?php endif ?>
                 </div>
 

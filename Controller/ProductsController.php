@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Vendor', 'Openpay', array('file' => 'Openpay/Openpay.php'));
 /**
  * Products Controller
  *
@@ -281,6 +282,7 @@ class ProductsController extends AppController {
     public function checkout($value='')
     {
     	if ($this->request->is('post')) {
+    		$this->processPayment($this->data);
     	}
 
     	$logged = $this->loggedUser;
@@ -297,5 +299,46 @@ class ProductsController extends AppController {
     	$products = $this->cart();
     	$countries = $this->countryList();
     	$this->set(compact('countries', 'products'));
+    }
+
+    public function processPayment($data)
+    {
+    	$openpay = Configure::read('openpay');
+		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
+		if($data['Product']['payment_method'] == "card"){
+    		$chargeData = array(
+			    'method' => 'card',
+			    'source_id' => $data["token_id"],
+			    'amount' => (float)$data["amount"],
+			    'description' => $data["description"],
+			    'device_session_id' => $data["deviceIdHiddenFieldName"]
+		    );
+    		if($charge = $openpay->charges->create($chargeData)){
+    			$this->Cookie->delete('ShoppingCart');
+    			return $this->redirect(array('action' => 'cart'));
+    		}
+		}elseif($data['Product']['payment_method'] == "store"){
+			$chargeData = array(
+			    'method' => 'store',
+			    'amount' => (float)$data["amount"],
+			    'description' => 'Qi House (qihouse.mx) Ventas en linea [tienda]');
+
+			$charge = $openpay->charges->create($chargeData);
+			if($charge){
+				$this->Cookie->delete('ShoppingCart');
+    			return $this->redirect(array('action' => 'cart'));	
+			}
+		}elseif($data['Product']['payment_method'] == "bank"){
+			$chargeData = array(
+			    'method' => 'bank_account',
+			    'amount' => (float)$data["amount"],
+			    'description' => 'Qi House (qihouse.mx) Ventas en linea [banco]');
+
+			$charge = $openpay->charges->create($chargeData);
+			if($charge){
+				$this->Cookie->delete('ShoppingCart');
+    			return $this->redirect(array('action' => 'cart'));
+			}
+		}# code...
     }
 }

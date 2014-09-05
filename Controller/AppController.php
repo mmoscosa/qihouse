@@ -37,7 +37,6 @@ class AppController extends Controller {
 	                           );
 	
 	public function beforeFilter() {
-		parent::beforeFilter();
 		if($this->Cookie->check('login') || $this->Session->check('login')){
 			$this->loadModel('Usuario');
 			$loggedUser = $this->Usuario->find('first', $this->getLogged());
@@ -52,7 +51,7 @@ class AppController extends Controller {
 	        $this->set('ABTest', $test);
 	        $this->view = $test['SeoABTest']['slug'];
 	    }
-	    return parent::beforeFilter();
+	    parent::beforeFilter();
     }
 
     public function checkAccess($role = null)
