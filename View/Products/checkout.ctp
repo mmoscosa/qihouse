@@ -121,6 +121,45 @@
           </div>
         </div>
     <?php endif; ?>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <th>Resumen de Compra</th>
+      </thead>
+      <?php if(!empty($products)): ?>
+        <?php foreach ($products as $key => $product): ?>
+          <?php if(!is_array($product)){continue;} ?>
+            <tr>
+             <td>
+                <?php echo $product['Product']['name']." ( ".$product['Cantidad']."gr )"; ?>
+                <span class="pull-right">
+                  <small>
+                    <?php echo $this->Number->currency($product['Cantidad']*$product['Product']['price']); ?>    
+                  </small>
+                </span>
+              </td>
+            </tr>
+        <?php endforeach; ?>
+         <tr>
+          <td>
+           <p class="pull-right"><?php echo "Subtotal ".$this->Number->currency($products['Subtotal']); ?></p>
+          </td>
+        </tr>
+         <tr>
+          <td>
+           <p class="pull-right"><?php echo "Envio ".$this->Number->currency($products['Shipping']); ?></p>
+          </td>
+        </tr>
+         <tr>
+          <td>
+            <p class="pull-right">
+              <strong>
+                <?php echo "Total ".$this->Number->currency($products['Subtotal']+$products['Shipping']); ?>
+              </strong>
+            </p>
+          </td>
+        </tr>
+      <?php endif; ?>
+    </table>
     </div>
     <div class="col-md-8" id="select_payment">
       <div class="form-group">

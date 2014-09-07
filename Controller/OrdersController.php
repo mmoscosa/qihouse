@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Vendor', 'Openpay', array('file' => 'Openpay/Openpay.php'));
 /**
  * Orders Controller
  *
@@ -108,5 +109,15 @@ class OrdersController extends AppController {
 			$this->Session->setFlash(__('The order could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function payment_slip($id = null) {
+		$this->layout = null ;
+		$openpay = Configure::read('openpay');
+		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
+
+		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
+		$openpayDetails = $openpay->charges->get($order['Order']['token_id']);
+		$this->set(compact('openpayDetails'));
 	}
 }

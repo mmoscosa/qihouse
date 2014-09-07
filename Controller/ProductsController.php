@@ -305,6 +305,7 @@ class ProductsController extends AppController {
     {
     	$openpay = Configure::read('openpay');
 		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
+		$this->loadModel('Order');
 		if($data['Product']['payment_method'] == "card"){
     		$chargeData = array(
 			    'method' => 'card',
@@ -325,8 +326,16 @@ class ProductsController extends AppController {
 
 			$charge = $openpay->charges->create($chargeData);
 			if($charge){
+				$saveStore = array(
+				                   'token_id' => $charge->id,
+				                   'total' => $data['amount'],
+				                   'descripcion' => $data['description'],
+				                   );
+				$this->Order->create();
+				$this->Order->save($saveStore);
+				$orderId = $this->Order->getLastInsertID();
 				$this->Cookie->delete('ShoppingCart');
-    			return $this->redirect(array('action' => 'cart'));	
+    			return $this->redirect(array('controller'=>'orders','action' => 'payment_slip', $orderId));	
 			}
 		}elseif($data['Product']['payment_method'] == "bank"){
 			$chargeData = array(
@@ -335,6 +344,7 @@ class ProductsController extends AppController {
 			    'description' => 'Qi House (qihouse.mx) Ventas en linea [banco]');
 
 			$charge = $openpay->charges->create($chargeData);
+			//pr($charge->id);
 			if($charge){
 				$this->Cookie->delete('ShoppingCart');
     			return $this->redirect(array('action' => 'cart'));
