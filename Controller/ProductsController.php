@@ -281,6 +281,9 @@ class ProductsController extends AppController {
 
     public function checkout($value='')
     {
+    	if(empty($this->Cookie->check('ShoppingCart'))){
+    		return $this->redirect(array('action' => 'cart'));
+    	}
     	if ($this->request->is('post')) {
     		$this->processPayment($this->data);
     	}
@@ -315,6 +318,14 @@ class ProductsController extends AppController {
 			    'device_session_id' => $data["deviceIdHiddenFieldName"]
 		    );
     		if($charge = $openpay->charges->create($chargeData)){
+    			$saveCard = array(
+				                   'token_id' => $charge->id,
+				                   'total' => $data['amount'],
+				                   'descripcion' => $data['description'],
+				                   );
+				$this->Order->create();
+				$this->Order->save($saveCard);
+				$orderId = $this->Order->getLastInsertID();
     			$this->Cookie->delete('ShoppingCart');
     			return $this->redirect(array('action' => 'cart'));
     		}
@@ -346,8 +357,16 @@ class ProductsController extends AppController {
 			$charge = $openpay->charges->create($chargeData);
 			//pr($charge->id);
 			if($charge){
+				$saveBank = array(
+				                   'token_id' => $charge->id,
+				                   'total' => $data['amount'],
+				                   'descripcion' => $data['description'],
+				                   );
+				$this->Order->create();
+				$this->Order->save($saveBank);
+				$orderId = $this->Order->getLastInsertID();
 				$this->Cookie->delete('ShoppingCart');
-    			return $this->redirect(array('action' => 'cart'));
+    			return $this->redirect(array('controller'=>'orders','action' => 'bank_transfer', $orderId));	
 			}
 		}# code...
     }

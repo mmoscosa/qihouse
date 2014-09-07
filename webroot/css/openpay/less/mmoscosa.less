@@ -1,0 +1,111 @@
+@import "../../less/lesshat.less";
+
+html, body{
+	@brandColor: lighten(#e0bdab, 5%);
+	background: #cecece;
+	.actions{
+		position: fixed;
+		right: 20px;
+		top: 25px;
+		ul{
+			list-style: none;
+			li{
+				margin: 10px 0;
+				button{
+					width: 100%;
+				} 
+			}
+		}
+	}
+	.page{
+		background: white;
+		border: 1px solid #ccc;
+		min-height: 267mm;
+		width: 203mm;
+		margin: 25px;
+		padding: 20px;
+		.box-shadow(0 1px 10px rgba(20,20,20,0.5));
+		small{
+			&.misc{
+				display: block;
+			}
+		}
+		.payment_info{
+			background-color: @brandColor;
+			color: white;	
+			padding:  10px 15px;
+			h1{
+				margin-top: 0;
+			}
+			p{
+				font-size: 30pt;
+				font-weight: bold;
+				text-align: center;
+				small{
+					font-size: 20pt;
+				}
+				span{
+					font-size: 15pt;
+					display: block;
+					text-align: right;
+				}
+			}
+		}
+		.logos{
+			margin: 30px 0; 
+			.Logo_empresa{
+				img{
+					width: auto;
+					height: auto;
+				}
+			}
+			.Logo_paynet{
+				padding-top: 20px;
+				margin-right: -55px;
+				div{
+					font-size: 10pt;
+				}
+				img{
+					width: 100px;
+					height: auto;	
+				}
+			}
+		}
+		.Big_Bullet{
+			span{background-color: @brandColor;}
+		}
+
+		.Data{
+			&.payment{
+				margin-top: 10px;
+			}
+		}
+
+		.logos-tiendas{
+			padding-bottom: 15px;
+		}
+	}
+
+	@media print{
+		@page{margin:0px auto;}
+		.actions{display: none;}
+		.page{
+			border: none;
+			.box-shadow(none);
+			min-height: 257mm;
+			width: 203mm;
+			.payment_info{
+				margin-top: -15px;
+			}
+		}
+		a[href]:after {
+		  content: none !important;
+		}
+	}
+}
+
+#barcode{
+	width: 315px;
+	height: 80px;
+}
+

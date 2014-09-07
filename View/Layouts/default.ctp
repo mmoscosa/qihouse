@@ -38,7 +38,6 @@
 		echo $this->Html->script('jquery.rss.js');
 		
 		
-		
 		echo $this->Html->script('main');
 
 		echo $this->fetch('meta');

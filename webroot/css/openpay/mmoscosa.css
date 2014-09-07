@@ -1,0 +1,129 @@
+html,
+body {
+  background: #cecece;
+}
+html .actions,
+body .actions {
+  position: fixed;
+  right: 20px;
+  top: 25px;
+}
+html .actions ul,
+body .actions ul {
+  list-style: none;
+}
+html .actions ul li,
+body .actions ul li {
+  margin: 10px 0;
+}
+html .actions ul li button,
+body .actions ul li button {
+  width: 100%;
+}
+html .page,
+body .page {
+  background: white;
+  border: 1px solid #ccc;
+  min-height: 267mm;
+  width: 203mm;
+  margin: 25px;
+  padding: 20px;
+  -webkit-box-shadow: 0 1px 10px rgba(20, 20, 20, 0.5);
+  -moz-box-shadow: 0 1px 10px rgba(20, 20, 20, 0.5);
+  box-shadow: 0 1px 10px rgba(20, 20, 20, 0.5);
+}
+html .page small.misc,
+body .page small.misc {
+  display: block;
+}
+html .page .payment_info,
+body .page .payment_info {
+  background-color: #e7ccbe;
+  color: white;
+  padding: 10px 15px;
+}
+html .page .payment_info h1,
+body .page .payment_info h1 {
+  margin-top: 0;
+}
+html .page .payment_info p,
+body .page .payment_info p {
+  font-size: 30pt;
+  font-weight: bold;
+  text-align: center;
+}
+html .page .payment_info p small,
+body .page .payment_info p small {
+  font-size: 20pt;
+}
+html .page .payment_info p span,
+body .page .payment_info p span {
+  font-size: 15pt;
+  display: block;
+  text-align: right;
+}
+html .page .logos,
+body .page .logos {
+  margin: 30px 0;
+}
+html .page .logos .Logo_empresa img,
+body .page .logos .Logo_empresa img {
+  width: auto;
+  height: auto;
+}
+html .page .logos .Logo_paynet,
+body .page .logos .Logo_paynet {
+  padding-top: 20px;
+  margin-right: -55px;
+}
+html .page .logos .Logo_paynet div,
+body .page .logos .Logo_paynet div {
+  font-size: 10pt;
+}
+html .page .logos .Logo_paynet img,
+body .page .logos .Logo_paynet img {
+  width: 100px;
+  height: auto;
+}
+html .page .Big_Bullet span,
+body .page .Big_Bullet span {
+  background-color: #e7ccbe;
+}
+html .page .Data.payment,
+body .page .Data.payment {
+  margin-top: 10px;
+}
+html .page .logos-tiendas,
+body .page .logos-tiendas {
+  padding-bottom: 15px;
+}
+@media print {
+  @page {
+    margin: 0px auto;
+  }
+  html .actions,
+  body .actions {
+    display: none;
+  }
+  html .page,
+  body .page {
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    min-height: 257mm;
+    width: 203mm;
+  }
+  html .page .payment_info,
+  body .page .payment_info {
+    margin-top: -15px;
+  }
+  html a[href]:after,
+  body a[href]:after {
+    content: none !important;
+  }
+}
+#barcode {
+  width: 315px;
+  height: 80px;
+}
