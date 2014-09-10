@@ -68,6 +68,7 @@ html .products .invoice-recipient dl,
 body .products .invoice-recipient dl {
   padding-left: 120px;
   margin-top: -50px;
+  text-transform: capitalize;
 }
 html .page,
 body .page {
