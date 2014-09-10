@@ -20,6 +20,38 @@ html .actions ul li button,
 body .actions ul li button {
   width: 100%;
 }
+html .container,
+body .container {
+  margin: 0 auto;
+}
+html .products,
+body .products {
+  margin-top: 280mm;
+}
+html .products table,
+body .products table {
+  margin-top: 20px;
+}
+html .products .sidebar,
+body .products .sidebar {
+  padding-top: 50px;
+}
+html .products .invoice-recipient:before,
+body .products .invoice-recipient:before {
+  background: #f7f7f7;
+  border-radius: 999px;
+  color: #888;
+  content: "TO";
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  height: 52px;
+  line-height: 52px;
+  margin: -20px 0 0 50px;
+  position: absolute;
+  text-align: center;
+  width: 52px;
+}
 html .page,
 body .page {
   background: white;
@@ -64,7 +96,7 @@ body .page .payment_info p span {
 }
 html .page .logos,
 body .page .logos {
-  margin: 30px 0;
+  margin: 20px 0;
 }
 html .page .logos .Logo_empresa img,
 body .page .logos .Logo_empresa img {
@@ -101,8 +133,18 @@ body .page .logos-tiendas {
   @page {
     margin: 0px auto;
   }
+  html img,
+  body img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
   html .actions,
   body .actions {
+    display: none;
+  }
+  html .noprint,
+  body .noprint {
     display: none;
   }
   html .page,

@@ -13,10 +13,19 @@
     <h2>Direccion de envio</h2>
     <div class="col-md-8">
       <!-- Text input-->
+          <?php 
+            echo $this->Form->input('Shipping.id', 
+                                      array(
+                                              'type'=>'hidden',
+                                              'class' => 'form-control',
+                                              'placeholder'=> 'Direccion'
+                                            )
+                                    ); 
+          ?>
           <div class="form-group">
             <div class="col-sm-12">
               <?php 
-                echo $this->Form->input('Shipping.receipient', 
+                echo $this->Form->input('Shipping.recipient', 
                                           array(
                                                   'type'=>'text',
                                                   'class' => 'form-control',
@@ -29,7 +38,7 @@
           <div class="form-group">
             <div class="col-sm-12">
               <?php 
-                echo $this->Form->input('Shipping.addres_1', 
+                echo $this->Form->input('Shipping.address_1', 
                                           array(
                                                   'type'=>'text',
                                                   'class' => 'form-control',
@@ -44,7 +53,7 @@
           <div class="form-group">
             <div class="col-sm-12">
               <?php 
-                echo $this->Form->input('Shipping.addres_2', 
+                echo $this->Form->input('Shipping.address_2', 
                                           array(
                                                   'type'=>'text',
                                                   'class' => 'form-control',
@@ -86,7 +95,7 @@
 
             <div class="col-sm-6">
               <?php 
-                echo $this->Form->input('Shipping.cp', 
+                echo $this->Form->input('Shipping.postal_code', 
                                           array(
                                                   'type'=>'text',
                                                   'class' => 'form-control',
@@ -117,7 +126,7 @@
       <?php if (!empty($loggedUser)): ?>
         <div class="form-group">
           <div class="col-sm-12">
-            <?php echo $this->Form->input('save_shipping', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox')); ?>
+            <?php //echo $this->Form->input('save_shipping', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox')); ?>
           </div>
         </div>
     <?php endif; ?>
@@ -279,7 +288,7 @@
               <div class="form-group">
               <div class="col-sm-12">
                 <?php 
-                  echo $this->Form->input('Billing.addres_1', 
+                  echo $this->Form->input('Billing.address_1', 
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
@@ -294,7 +303,7 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <?php 
-                  echo $this->Form->input('Billing.addres_2', 
+                  echo $this->Form->input('Billing.address_2', 
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
@@ -336,7 +345,7 @@
 
               <div class="col-sm-6">
                 <?php 
-                  echo $this->Form->input('Billing.cp', 
+                  echo $this->Form->input('Billing.postal_code', 
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
@@ -367,14 +376,14 @@
       </div>
       <div class="col-md-4">
         <div class="card-wrapper"></div>
-        <?php if (!empty($loggedUser)): ?>
           <div class="form-group">
             <div class="col-sm-12">
               <?php echo $this->Form->input('same_shipping', array('label'=>'Utilizar la misma direccion de envio', 'type'=>'checkbox')); ?>
-              <?php echo $this->Form->input('save_billing', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox')); ?>
+              <?php if (!empty($loggedUser)): ?>
+                <?php //echo $this->Form->input('save_billing', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox')); ?>
+              <?php endif; ?>
             </div>
           </div>
-        <?php endif; ?>
       </div>
     </div>
     <div id="method_store">
