@@ -75,69 +75,58 @@
 <div class="container noprint">
     <div class="products ">
         <div class="page midway-horizontal">
-            <div class="row">
-                <div class="col-xs-7">
+            <div class="header row">
+                <div class="logo col-xs-6">
                     <?php echo $this->Html->image('logo.png'); ?>
-                    <h1>Resumen del pedido</h1>
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <td>Producto</td>
-                                <td>Cantidad</td>
-                                <td>Subtotal</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($order['Product'] as $key => $product): ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $product['name']; ?>
-                                        <small>(<?php echo $product['original_name']; ?>)</small>
-                                    </td>
-                                    <td><?php echo $this->Number->format($product['OrdersProduct']['quantity'], array('places' => 0,  'before' => '',))." gr"; ?></td>
-                                    <td><?php echo $this->Number->currency($product['OrdersProduct']['subtotal']); ?></td>
-                                </tr>
-                            <?php endforeach ?>
-                            <tr>
-                                <td colspan="3"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><strong class="pull-right">Envio:</strong></td>
-                                <td>
-                                    <?php if($order['Order']['total'] > 600): ?>
-                                        <strong>$0.00</strong>
-                                    <?php else: ?>
-                                        <strong>$40.00</strong>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><strong class="pull-right">Total:</strong></td>
-                                <td><strong><?php echo $this->Number->currency($order['Order']['total']); ?></strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
-                <div class="col-xs-5 sidebar">
-                    <h2>Direccion de Envio</h2>
+            </div>
+            <div class="info row">
+                <div class="col-xs-6 invoice-recipient">
                     <?php foreach ($order['Address'] as $key => $address):?>
                         <?php if($address['type'] === 2){continue;} ?>
                         <dl>
                             <dt><?php echo $address['recipient']; ?></dt>
-                            <dd><?php echo $address['address_1']; ?></dd>
-                            <dd><?php echo $address['address_2']; ?></dd>
-                            <dd><?php echo $address['city']; ?></dd>
-                            <dd><?php echo $address['state']; ?></dd>
-                            <dd><?php echo $address['postal_code']; ?></dd>
-                            <dd><?php echo $address['country_code']; ?></dd>
+                            <dd><?php echo $address['address_1'].' '.$address['address_2']; ?></dd>
+                            <dd><?php echo $address['city'].' '.$address['state']; ?></dd>
+                            <dd><?php echo $address['postal_code'].' '.$address['country_code']; ?></dd>
                         </dl>
                     <?php endforeach; ?>
                 </div>
+                <div class="col-xs-6">
+                    <h2 class="pull-right">Total: <?php echo $this->Number->currency($order['Order']['total']); ?></h2>
+                </div>
             </div>
-        </div>
+            <div class="details row">
+                <table class="table">
+                    <thead>
+                        <tr class="active">
+                            <td class="col-xs-6">Producto</td>
+                            <td class="col-xs-3">Cantidad</td>
+                            <td class="col-xs-3">Subtotal</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($order['Product'] as $key => $product): ?>
+                            <tr>
+                                <td>
+                                    <?php echo $product['name']; ?>
+                                    <small>(<?php echo $product['original_name']; ?>)</small>
+                                </td>
+                                <td><?php echo $this->Number->format($product['OrdersProduct']['quantity'], array('places' => 0, 'before' => '',))." gr"; ?></td>
+                                <td><?php echo $this->Number->currency($product['OrdersProduct']['subtotal']); ?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        <td colspan="2"><strong class="pull-right">Envio:</strong></td>
+                        <td>
+                            <?php if($order['Order']['total'] > 600): ?>
+                                <strong>$0.00</strong>
+                            <?php else: ?>
+                                <strong>$40.00</strong>
+                            <?php endif; ?>
+                        </td>
+                    </tbody>
+                </table>
+            </div>
     </div>
 </div>
 
