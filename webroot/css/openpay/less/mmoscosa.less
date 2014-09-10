@@ -30,20 +30,37 @@ html, body{
 		.sidebar{
 			padding-top: 50px;
 		}
-		.invoice-recipient:before {
-			background: #f7f7f7;
-			border-radius: 999px;
-			color: #888;
-			content: "TO";
-			display: block;
-			font-size: 14px;
-			font-weight: 600;
-			height: 52px;
-			line-height: 52px;
-			margin: -20px 0 0 50px;
-			position: absolute;
-			text-align: center;
-			width: 52px;
+
+		.header{
+			padding-bottom: 30px;
+			.logo{
+				padding-left: 70px;
+			}
+			.fecha{
+				text-align: right;
+			}
+		}
+		.invoice-recipient{
+			&:before {
+				background: #f7f7f7;
+				border-radius: 999px;
+				color: #888;
+				content: "TO";
+				display: block;
+				font-size: 14px;
+				font-weight: 600;
+				height: 52px;
+				line-height: 52px;
+				margin: -20px 0 0 50px;
+				position: absolute;
+				text-align: center;
+				width: 52px;
+			}
+
+			dl{
+				padding-left:  120px;
+				margin-top: -50px;
+			}
 		}
 	}
 

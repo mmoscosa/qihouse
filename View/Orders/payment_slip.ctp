@@ -99,11 +99,8 @@
     <div class="products ">
         <div class="page midway-horizontal">
             <div class="header row">
-                <div class="logo col-xs-9">
+                <div class="logo col-xs-6">
                     <?php echo $this->Html->image('logo.png'); ?>
-                </div>
-                <div class="fecha col-xs-3">
-                    <?php echo $this->Time->format($openpayDetails->serializableData['operation_date'], '%B %e, %Y'); ?>
                 </div>
             </div>
             <div class="info row">
@@ -119,7 +116,7 @@
                     <?php endforeach; ?>
                 </div>
                 <div class="col-xs-6">
-                    <strong class="pull-right"><?php echo $this->Number->currency($order['Order']['total']); ?></strong>
+                    <h2 class="pull-right">Total: <?php echo $this->Number->currency($order['Order']['total']); ?></h2>
                 </div>
             </div>
             <div class="details row">

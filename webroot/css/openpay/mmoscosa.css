@@ -36,6 +36,18 @@ html .products .sidebar,
 body .products .sidebar {
   padding-top: 50px;
 }
+html .products .header,
+body .products .header {
+  padding-bottom: 30px;
+}
+html .products .header .logo,
+body .products .header .logo {
+  padding-left: 70px;
+}
+html .products .header .fecha,
+body .products .header .fecha {
+  text-align: right;
+}
 html .products .invoice-recipient:before,
 body .products .invoice-recipient:before {
   background: #f7f7f7;
@@ -51,6 +63,11 @@ body .products .invoice-recipient:before {
   position: absolute;
   text-align: center;
   width: 52px;
+}
+html .products .invoice-recipient dl,
+body .products .invoice-recipient dl {
+  padding-left: 120px;
+  margin-top: -50px;
 }
 html .page,
 body .page {
