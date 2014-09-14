@@ -174,8 +174,8 @@
 		     				<div class="col-md-6"> 
 		     					<ul>
 		     						<li><a href="/bazar/rojo"><i id="rojo" class="fa fa-leaf"></i> Rojo</a></li>
-		     						<!-- <li><a href="/bazar/negro" class="disabled"><i id="negro" class="fa fa-leaf"></i> Negro</a></li> -->
 		     						<li><a href="/bazar/puerh"><i id="puerh" class="fa fa-leaf"></i> Pu erh</a></li>
+		     						<li><a href="/bazar/tizana"><i class="fa fa-leaf"></i> Tizana</a></li>
 		     					</ul>
 		     				</div>
 		     			</div>
