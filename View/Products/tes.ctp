@@ -58,7 +58,6 @@
           <a href="/bazar/tizana"
              class="btn btn-default 
              <?php $active = (strpos($title_for_layout,'tizana')) ? 'active' : null ; echo $active;?>"
-             disabled = true
             >
                 Tizana
             </a>
