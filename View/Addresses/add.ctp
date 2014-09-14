@@ -1,34 +1,70 @@
-<div class="addresses form">
 <?php echo $this->Form->create('Address'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Address'); ?></legend>
 	<?php
 		//echo $this->Form->input('usuario_id');
-		echo $this->Form->input('type');
 		if ($loggedUser) {
 			echo $this->Form->input('usuario_id', array('value'=>$loggedUser['Usuario']['id'], 'type'=>'hidden'));
 		}
-		echo $this->Form->input('phone_number');
-		echo $this->Form->input('address_1');
-		echo $this->Form->input('address_2');
-		echo $this->Form->input('country_code', array(
+	?>
+
+		<div class="form-group">
+            <div class="col-sm-12">
+            	<?php $options = array('1'=>'Direccion de Envio', '2'=>'Direccion de Cobro') ?>
+				<?php echo $this->Form->input('type', array(
+                                            'options' => array($options),
+                                            'empty' => 'Favor de elegir',
+                                            'required' => true,
+                                            'class' => 'form-control',
+                                            'label' => 'Tipo de Direccion'
+                                ));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-12">
+				<?php echo $this->Form->input('address_1', array('class' => 'form-control', 'label'=>'Direccion - Linea 1'));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-12">
+				<?php echo $this->Form->input('address_2', array('class' => 'form-control', 'label'=>'Direccion - Linea 2'));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-6">
+				<?php echo $this->Form->input('city', array('class' => 'form-control', 'label'=>'Ciudad'));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-6">
+				<?php echo $this->Form->input('state', array('class' => 'form-control', 'label'=>'Estado'));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-6">
+				<?php echo $this->Form->input('phone_number', array('class' => 'form-control', 'label'=>'Telefono'));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-6">
+				<?php echo $this->Form->input('country_code', array(
                                             'options' => array($countries),
                                             'empty' => 'Favor de elegir',
-                                            'required' => true
-                                ));
-		echo $this->Form->input('state');
-		echo $this->Form->input('city');
-		echo $this->Form->input('postal_code');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Addresses'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Usuarios'), array('controller' => 'usuarios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Usuario'), array('controller' => 'usuarios', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+                                            'required' => true,
+                                            'class' => 'form-control',
+                                            'label' => 'Pais' 
+                                ));?>
+            </div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-6 col-sm-offset-6">
+				<?php echo $this->Form->input('postal_code', array('class' => 'form-control', 'label'=>'Codigo Postal'));?>
+			</div>
+		</div>
+		<div class="form-group">
+            <div class="col-sm-12">
+            	<div class="pull-right">
+					<?php echo $this->Form->button('Guardar', array('class' => 'btn btn-primary',));?>
+				</div>
+			</div>
+		</div>
+	
+<?php echo $this->Form->end(); ?>

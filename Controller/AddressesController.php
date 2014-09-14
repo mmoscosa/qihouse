@@ -46,15 +46,13 @@ class AddressesController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->checkAccess();
 		$this->layout = null;
 		if ($this->request->is('post')) {
 			$this->Address->create();
 			if ($this->Address->save($this->request->data)) {
-				if($this->request->data['Address']['type'] == 1){
-				}else{
 					$this->Session->setFlash(__('The address has been saved.'));
-					return $this->redirect(array('action' => 'index'));
-				}
+					return $this->redirect(array('controller'=>'usuarios','action' => 'control_panel'));
 			} else {
 				$this->Session->setFlash(__('The address could not be saved. Please, try again.'));
 			}

@@ -28,6 +28,10 @@ html .products,
 body .products {
   margin-top: 280mm;
 }
+html .products.card,
+body .products.card {
+  margin-top: 0mm;
+}
 html .products table,
 body .products table {
   margin-top: 20px;
@@ -67,7 +71,7 @@ body .products .invoice-recipient:before {
 html .products .invoice-recipient dl,
 body .products .invoice-recipient dl {
   padding-left: 120px;
-  margin-top: -50px;
+  margin-top: -40px;
   text-transform: capitalize;
 }
 html .page,

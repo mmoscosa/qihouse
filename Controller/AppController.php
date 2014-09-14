@@ -56,6 +56,7 @@ class AppController extends Controller {
 
     public function checkAccess($role = null)
     {
+    	$this->loadModel('Usuario');
     	if ($this->Cookie->check('login') || $this->Session->check('login')) {
     		if ($role == 'admin') {
 	    		$loggedUser = $this->Usuario->find('first', $this->getLogged());

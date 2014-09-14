@@ -6,6 +6,9 @@
     echo $this->Html->script('https://openpay.s3.amazonaws.com/openpay-data.v1.min.js');
     echo $this->Html->script('checkout');
     echo $this->Html->script('qihouse_openpay');
+    if(empty($allAddresses)){
+      $allAddresses = array();
+    }
 ?>
 
 <div id="payment-container" class="row">
@@ -25,108 +28,177 @@
           <div class="form-group">
             <div class="col-sm-12">
               <?php 
-                echo $this->Form->input('Shipping.recipient', 
-                                          array(
-                                                  'type'=>'text',
-                                                  'class' => 'form-control',
-                                                  'placeholder'=> 'Nombre de Destinatario'
-                                                )
-                                        ); 
+
+                if(!empty($loggedUser)){
+                  $userOptions = array(
+                                    'type'=>'hidden',
+                                    'class' => 'form-control',
+                                    'value' => $loggedUser['Usuario']['id']
+                                  );
+                }else{
+                  $userOptions = array(
+                                    'type'=>'hidden',
+                                    'class' => 'form-control',
+                                    'value'=> NULL
+                                  );
+                }
+                echo $this->Form->input('Shipping.usuario_id', $userOptions); 
+
+
+                if(!empty($loggedUser)){
+                  $options = array(
+                                    'type'=>'text',
+                                    'class' => 'form-control',
+                                    'value' => $loggedUser['Detalle']['nombre'].' '.$loggedUser['Detalle']['apellido']
+                                  );
+                }else{
+                  $options = array(
+                                    'type'=>'text',
+                                    'class' => 'form-control',
+                                    'label' => 'Destinatario',
+                                    'placeholder'=> 'Nombre de Destinatario', 
+                                  );
+                }
+                echo $this->Form->input('Shipping.recipient', $options); 
               ?>
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <?php 
-                echo $this->Form->input('Shipping.address_1', 
-                                          array(
-                                                  'type'=>'text',
-                                                  'class' => 'form-control',
-                                                  'placeholder'=> 'Direccion'
-                                                )
-                                        ); 
-              ?>
+          <div id="shipping_address">
+            <div class="form-group">
+              <div class="col-sm-12">
+                <?php 
+                  echo $this->Form->input('Shipping.address_1', 
+                                            array(
+                                                    'type'=>'text',
+                                                    'class' => 'form-control',
+                                                    'label' => 'Direccion - Liena 1',
+                                                    'placeholder'=> 'Direccion'
+                                                  )
+                                          ); 
+                ?>
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <div class="col-sm-12">
+                <?php 
+                  echo $this->Form->input('Shipping.address_2', 
+                                            array(
+                                                    'type'=>'text',
+                                                    'class' => 'form-control',
+                                                    'label' => 'Direccion - Linea 2',
+                                                    'placeholder'=> ''
+                                                  )
+                                          ); 
+                ?>
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <div class="col-sm-6">
+                <?php 
+                  echo $this->Form->input('Shipping.city', 
+                                            array(
+                                                    'type'=>'text',
+                                                    'class' => 'form-control',
+                                                    'label' => 'Ciudad',
+                                                    'placeholder'=> 'Ciudad'
+                                                  )
+                                          ); 
+                ?>
+              </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group">
+              <div class="col-sm-6">
+                <?php 
+                  echo $this->Form->input('Shipping.state', 
+                                            array(
+                                                    'type'=>'text',
+                                                    'class' => 'form-control',
+                                                    'label' => 'Estado',
+                                                    'placeholder'=> 'Estado'
+                                                  )
+                                          ); 
+                ?>
+              </div>
+              <div class="form-group">
+              <div class="col-sm-6">
+                <?php echo $this->Form->input('phone_number', array('class' => 'form-control','label' => 'Telefono',));?>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-6">
+                <?php 
+                  echo $this->Form->input('Shipping.country_code', array(
+                                              'options' => array($countries),
+                                              'empty' => 'Favor de elegir Pais',
+                                              'label' => 'Pais',
+                                              'class' => 'form-control',
+                                              'required' => true
+                                  ));
+                ?>
+              </div>
+            </div>
+              <div class="col-sm-6 col-sm-offset-6">
+                <?php 
+                  echo $this->Form->input('Shipping.postal_code', 
+                                            array(
+                                                    'type'=>'text',
+                                                    'class' => 'form-control',
+                                                    'label' => 'Codigo Postal',
+                                                    'placeholder'=> 'Codigo Postal'
+                                                  )
+                                          ); 
+                ?>
+              </div>
             </div>
           </div>
+          <?php foreach ($allAddresses as $key => $address):?>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <div id="shipping_<?php echo $address['Address']['id']; ?>" class="address-shipping-hidden">
+                  <dl class="col-sm-4">
+                    <dt>Direccion:</dt>
+                      <dd><?php echo $address['Address']['address_1']; ?></dd>
+                      <dd><?php echo $address['Address']['address_2']; ?></dd>
+                    <dt>Ciudad</dt>
+                      <dd><?php echo $address['Address']['city']; ?></dd>
+                    <dt>Estado</dt>
+                      <dd><?php echo $address['Address']['state']; ?></dd>
+                  </dl>
 
-          <!-- Text input-->
-          <div class="form-group">
-            <div class="col-sm-12">
-              <?php 
-                echo $this->Form->input('Shipping.address_2', 
-                                          array(
-                                                  'type'=>'text',
-                                                  'class' => 'form-control',
-                                                  'placeholder'=> ''
-                                                )
-                                        ); 
-              ?>
+                  <dl class="col-sm-4">
+                    <dt>Pais</dt>
+                      <dd><?php echo $address['Address']['country_code']; ?></dd>
+                    <dt>Codigo Postal</dt>
+                      <dd><?php echo $address['Address']['postal_code']; ?></dd>
+                    <dt>Telefono</dt>
+                      <dd><?php echo $address['Address']['phone_number']; ?></dd>
+                  </dl>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <div class="col-sm-12">
-              <?php 
-                echo $this->Form->input('Shipping.city', 
-                                          array(
-                                                  'type'=>'text',
-                                                  'class' => 'form-control',
-                                                  'placeholder'=> 'Ciudad'
-                                                )
-                                        ); 
-              ?>
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <div class="col-sm-6">
-              <?php 
-                echo $this->Form->input('Shipping.state', 
-                                          array(
-                                                  'type'=>'text',
-                                                  'class' => 'form-control',
-                                                  'placeholder'=> 'Estado'
-                                                )
-                                        ); 
-              ?>
-            </div>
-
-            <div class="col-sm-6">
-              <?php 
-                echo $this->Form->input('Shipping.postal_code', 
-                                          array(
-                                                  'type'=>'text',
-                                                  'class' => 'form-control',
-                                                  'placeholder'=> 'Codigo Postal'
-                                                )
-                                        ); 
-              ?>
-            </div>
-          </div>
-
-
-
-          <!-- Text input-->
-          <div class="form-group">
-            <div class="col-sm-12">
-              <?php 
-                echo $this->Form->input('Shipping.country_code', array(
-                                            'options' => array($countries),
-                                            'empty' => 'Favor de elegir Pais',
-                                            'class' => 'form-control',
-                                            'required' => true
-                                ));
-              ?>
-            </div>
-          </div>
+          <?php endforeach; ?>
     </div>
     <div class="col-md-4">
       <?php if (!empty($loggedUser)): ?>
         <div class="form-group">
+            <?php 
+                echo $this->Form->input('Product.savedShipping', array(
+                                            'options' => array($shippingAddresseses),
+                                            'empty' => 'Favor de elegir Direccion',
+                                            'class' => 'form-control',
+                                            'id' => 'ProductSavedShippingAddress',
+                                            'label' => 'Direcciones de Envio Guardadas',
+                                            'required' => true
+                                ));; ?>
           <div class="col-sm-12">
-            <?php //echo $this->Form->input('save_shipping', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox')); ?>
+            <div id="save_shipping">
+              <?php echo $this->Form->input('save_shipping', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox', 'checked'=>true)); ?>
+            </div>
           </div>
         </div>
     <?php endif; ?>
@@ -285,13 +357,30 @@
               data-openpay-card="expiration_year" />          
 
             <div id="billing_address">
-              <div class="form-group">
+              <div class="form-group"  id="billing_addres_first">
               <div class="col-sm-12">
                 <?php 
-                  echo $this->Form->input('Billing.address_1', 
+
+                  if(!empty($loggedUser)){
+                  $userOptions = array(
+                                    'type'=>'hidden',
+                                    'class' => 'form-control',
+                                    'value' => $loggedUser['Usuario']['id']
+                                  );
+                }else{
+                  $userOptions = array(
+                                    'type'=>'hidden',
+                                    'class' => 'form-control',
+                                    'value'=> NULL
+                                  );
+                }
+                echo $this->Form->input('Billing.usuario_id', $userOptions); 
+
+                echo $this->Form->input('Billing.address_1', 
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
+                                                    'label' => 'Direccion - Linea 1',
                                                     'placeholder'=> 'Direccion'
                                                   )
                                           ); 
@@ -307,6 +396,7 @@
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
+                                                    'label' => 'Direccion - Linea 2',
                                                     'placeholder'=> ''
                                                   )
                                           ); 
@@ -316,12 +406,13 @@
 
             <!-- Text input-->
             <div class="form-group">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <?php 
                   echo $this->Form->input('Billing.city', 
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
+                                                    'label' => 'Ciudad',
                                                     'placeholder'=> 'Ciudad'
                                                   )
                                           ); 
@@ -337,50 +428,108 @@
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
+                                                    'label' => 'Estado',
                                                     'placeholder'=> 'Estado'
                                                   )
                                           ); 
                 ?>
               </div>
-
+              </div>
+              <!-- Text input-->
+            <div class="form-group">
               <div class="col-sm-6">
+                <?php 
+                  echo $this->Form->input('Billing.phone_number', 
+                                            array(
+                                                    'type'=>'text',
+                                                    'class' => 'form-control',
+                                                    'label' => 'Telefono',
+                                                    'placeholder'=> 'Telefono'
+                                                  )
+                                          ); 
+                ?>
+              </div>
+              </div>
+              <div class="form-group">
+              <div class="col-sm-6">
+                <?php 
+                  echo $this->Form->input('Billing.country_code', array(
+                                              'options' => array($countries),
+                                              'empty' => 'Favor de elegir Pais',
+                                              'class' => 'form-control',
+                                              'label' => 'Pais',
+                                              'required' => true
+                                  ));
+                ?>
+              </div>
+            </div>
+              <div class="form-group">
+              <div class="col-sm-6 col-sm-offset-6">
                 <?php 
                   echo $this->Form->input('Billing.postal_code', 
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
+                                                    'label' => 'Codigo Postal',
                                                     'placeholder'=> 'Codigo Postal'
                                                   )
                                           ); 
                 ?>
               </div>
             </div>
+          </div>
 
-
-
-            <!-- Text input-->
+          <?php foreach ($allAddresses as $key => $address):?>
             <div class="form-group">
               <div class="col-sm-12">
-                <?php 
-                  echo $this->Form->input('Billing.country_code', array(
-                                              'options' => array($countries),
-                                              'empty' => 'Favor de elegir Pais',
-                                              'class' => 'form-control',
-                                              'required' => true
-                                  ));
-                ?>
+                <div id="billing_<?php echo $address['Address']['id']; ?>" class="address-billing-hidden">
+                  <dl class="col-sm-4">
+                    <dt>Direccion:</dt>
+                      <dd><?php echo $address['Address']['address_1']; ?></dd>
+                      <dd><?php echo $address['Address']['address_2']; ?></dd>
+                    <dt>Ciudad</dt>
+                      <dd><?php echo $address['Address']['city']; ?></dd>
+                    <dt>Estado</dt>
+                      <dd><?php echo $address['Address']['state']; ?></dd>
+                  </dl>
+
+                  <dl class="col-sm-4">
+                    <dt>Pais</dt>
+                      <dd><?php echo $address['Address']['country_code']; ?></dd>
+                    <dt>Codigo Postal</dt>
+                      <dd><?php echo $address['Address']['postal_code']; ?></dd>
+                    <dt>Telefono</dt>
+                      <dd><?php echo $address['Address']['phone_number']; ?></dd>
+                  </dl>
+                </div>
               </div>
             </div>
-          </div>
-          <input type="submit" id="pay-button" class="btn btn-primary pull-right" value="Pagar"/>
+          <?php endforeach; ?>
+
+          <div class="form-group" id="pay-card-button">
+              <div class="col-sm-12">
+                <input type="submit" id="pay-button" class="btn btn-primary pull-right" value="Pagar"/>
+              </div>
+            </div>
       </div>
       <div class="col-md-4">
         <div class="card-wrapper"></div>
-          <div class="form-group">
+          <div class="form-group" id="billing_address_sidebar">
             <div class="col-sm-12">
+            <?php 
+                echo $this->Form->input('Product.savedBilling', array(
+                                            'options' => array($billingAddresseses),
+                                            'empty' => 'Favor de elegir Direccion',
+                                            'class' => 'form-control',
+                                            'label' => 'Direcciones de Cobro Guardadas',
+                                            'id' => 'ProductSavedBillingAddress',
+                                            'required' => true
+                                ));; ?>
               <?php echo $this->Form->input('same_shipping', array('label'=>'Utilizar la misma direccion de envio', 'type'=>'checkbox')); ?>
               <?php if (!empty($loggedUser)): ?>
-                <?php //echo $this->Form->input('save_billing', array('label'=>'Guardar esta direccion para futuras compras', 'type'=>'checkbox')); ?>
+                <div id="save_billing">
+                  <?php echo $this->Form->input('save_billing', array('label'=>'Guardar esta direccion para futuras compras','type'=>'checkbox')); ?>
+                </div>
               <?php endif; ?>
             </div>
           </div>

@@ -37,8 +37,22 @@ class OrdersController extends AppController {
 		if (!$this->Order->exists($id)) {
 			throw new NotFoundException(__('Invalid order'));
 		}
-		$options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
-		$this->set('order', $this->Order->find('first', $options));
+		$this->layout = null ;
+		$openpay = Configure::read('openpay');
+		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
+		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
+		$openpayDetails = $openpay->charges->get($order['Order']['token_id']);
+		$payment_method = $openpayDetails->serializableData['method'];
+		if($payment_method === 'store'){
+			return $this->redirect(array('action' => 'payment_slip', $order['Order']['id']));
+		}elseif($payment_method === 'bank'){
+			return $this->redirect(array('action' => 'bank_transfer', $order['Order']['id']));
+		}elseif($payment_method === 'card'){
+			return $this->redirect(array('action' => 'card_invoice', $order['Order']['id']));
+		}else{
+			$this->Session->setFlash(__('Hubo un problema con la informacion de tu orden, favor de contactarnos ventas@qihouse.mx'), 'alert-box', array('class'=>'alert-danger alert-content'));
+			return $this->redirect(array('controller' => 'usuarios', 'action' => 'landing'));
+		}
 	}
 
 /**
@@ -127,5 +141,11 @@ class OrdersController extends AppController {
 		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
 		$openpayDetails = $openpay->charges->get($order['Order']['token_id']);
 		$this->set(compact('openpayDetails', 'order'));
+	}
+
+	public function card_invoice($id) {
+		$this->layout = null ;
+		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
+		$this->set(compact('order'));
 	}
 }

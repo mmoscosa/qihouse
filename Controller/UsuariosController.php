@@ -36,6 +36,10 @@ class UsuariosController extends AppController {
  */
 	public function control_panel($id = null) {
 		$this->checkAccess();
+		if(!$id){
+			$logged = $this->loggedUser;
+			return $this->redirect(array('controller'=>'usuarios','action' => 'control_panel', $logged['Usuario']['id']));
+		}
 		if (!$this->Usuario->exists($id)) {
 			throw new NotFoundException(__('Invalid usuario'));
 		}
