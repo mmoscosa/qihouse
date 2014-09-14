@@ -516,15 +516,17 @@
         <div class="card-wrapper"></div>
           <div class="form-group" id="billing_address_sidebar">
             <div class="col-sm-12">
-            <?php 
-                echo $this->Form->input('Product.savedBilling', array(
-                                            'options' => array($billingAddresseses),
-                                            'empty' => 'Favor de elegir Direccion',
-                                            'class' => 'form-control',
-                                            'label' => 'Direcciones de Cobro Guardadas',
-                                            'id' => 'ProductSavedBillingAddress',
-                                            'required' => true
-                                ));; ?>
+            <?php if (!empty($loggedUser)): ?>
+              <?php 
+                  echo $this->Form->input('Product.savedBilling', array(
+                                              'options' => array($billingAddresseses),
+                                              'empty' => 'Favor de elegir Direccion',
+                                              'class' => 'form-control',
+                                              'label' => 'Direcciones de Cobro Guardadas',
+                                              'id' => 'ProductSavedBillingAddress',
+                                              'required' => true
+                                  ));; ?>
+            <?php endif; ?>
               <?php echo $this->Form->input('same_shipping', array('label'=>'Utilizar la misma direccion de envio', 'type'=>'checkbox')); ?>
               <?php if (!empty($loggedUser)): ?>
                 <div id="save_billing">
