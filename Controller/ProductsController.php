@@ -281,7 +281,8 @@ class ProductsController extends AppController {
 
     public function checkout($value='')
     {
-    	if(empty($this->Cookie->check('ShoppingCart'))){
+    	$checkCart = $this->Cookie->check('ShoppingCart');
+    	if(empty($checkCart)){
     		return $this->redirect(array('action' => 'cart'));
     	}
     	if ($this->request->is('post')) {
