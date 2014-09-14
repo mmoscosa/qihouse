@@ -9,4 +9,3 @@ webroot/index.php
 webroot/adminer/
 webroot/chive/
 Config/core.php
-Plugins/**
