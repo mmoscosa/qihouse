@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -13,18 +12,17 @@
 	<!-- Description of the Site -->
 	<meta name="description" content="QiHouse - Tea with a whole different twist">
 	<link href="/img/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
-
-	<title>
-		<?php echo 'Qi House: '.$title_for_layout; ?>
-	</title>
+	
+		<?php echo $this->Seo->title('Qi House: '.$title_for_layout); ?>
+	
 	<?php
+		echo $this->Html->charset();
 		echo $this->Html->meta('icon');
 
 		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('//cdn.jsdelivr.net/bootstrap/3.1.1/css/bootstrap.min.css');
 		echo $this->Html->css('//cdn.jsdelivr.net/fontawesome/4.1/css/font-awesome.min.css');
 		echo $this->Html->css('main');
-		echo $this->Html->css('wip');
 
 		echo $this->Html->script('//cdn.jsdelivr.net/jquery/2.1.0/jquery.min.js');
 		echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js');
@@ -39,13 +37,15 @@
 		echo $this->Html->script('currency');
 		echo $this->Html->script('jquery.rss.js');
 		
+		
 		echo $this->Html->script('main');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-
+	<?php echo $this->Seo->metaTags(); ?>
+	<?php echo $this->Seo->canonical(); ?>
 	<!-- Custom Styles -->
 	
 	<!--[if IE]>
@@ -257,7 +257,8 @@
 
 	  ga('create', 'UA-51494851-1', 'qihouse.mx');
 	  ga('send', 'pageview');
-
+	  <?php echo $this->Seo->getABTestJS(); ?>
+	  
 	  $("#login_button").popover({
 	  	placement : 'bottom',
         html : true, 

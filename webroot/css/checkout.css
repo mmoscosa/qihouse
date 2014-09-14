@@ -1,3 +1,21 @@
 #payment-container {
   margin-top: 40px;
 }
+#payment-container #pay-card-button .col-sm-12 {
+  padding-top: 20px;
+}
+#payment-container #billing_address_sidebar {
+  margin-top: 30px;
+}
+#payment-container #billing_addres_first {
+  margin-top: 200px;
+}
+#payment-container #select_payment {
+  padding: 25px 12px 25px 12px;
+}
+#payment-container .address-shipping-hidden {
+  display: none;
+}
+#payment-container .address-billing-hidden {
+  display: none;
+}

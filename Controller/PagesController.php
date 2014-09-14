@@ -87,6 +87,22 @@ class PagesController extends AppController {
 		}
 	}
 
+	public function contacto_vip()
+	{
+
+		$this->set('title_for_layout', 'Contacto');
+		if ($this->request->is('post')) {
+			$data = $this->request->data;
+			$logged = $this->loggedUser;
+			$email = new CakeEmail('mailgun');
+			$email->from(array($logged['Usuario']['email'] => $logged['Detalle']['nombre'].' '.$logged['Detalle']['apellido']));
+			$email->to('admin@qihouse.mx');
+			$email->subject('Preferente - Contact Form');
+			$email->send($data['Contacto']['mensaje']);
+			return $this->redirect(array('controller'=>'usuarios','action' => 'control_panel'));
+		}
+	}
+
 	public function nosotros()
 	{
 		$this->set('title_for_layout', 'Nosotros');

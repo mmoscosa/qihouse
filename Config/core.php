@@ -22,7 +22,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 2);
+	Configure::write('debug', 0);
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -72,6 +72,11 @@
 		'log' => true
 	));
 
+	Configure::write('Exception', array(
+	    'handler' => 'SeoExceptionHandler::handle',
+	    'renderer' => 'ExceptionRenderer',
+	    'log' => true
+	));
 /**
  * Application wide charset encoding
  */
@@ -141,7 +146,7 @@
  *	`manager_index()` and `/manager/controller/index`
  *
  */
-	//Configure::write('Routing.prefixes', array('admin'));
+	Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.

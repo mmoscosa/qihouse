@@ -200,6 +200,10 @@ div.user-menu div.user-menu-content:not(.active) {
   height: 175px;
   overflow: auto;
 }
+.panel {
+  height: 230px;
+  overflow: auto;
+}
 /* -- media query for user profile image -- */
 @media (max-width: 767px) {
   .user-image {

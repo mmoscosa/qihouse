@@ -11,7 +11,6 @@
  */
 
 App::uses('Controller', 'Controller');
-App::import('Vendor', 'Openpay', array('file' => 'Openpay/Openpay.php'));
 /**
  * Application Controller
  *
@@ -26,15 +25,18 @@ class AppController extends Controller {
 		'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
 		'Form' => array('className' => 'BoostCake.BoostCakeForm'),
 		'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+		'Seo.Seo',
 	);
+
 	public $components = array(
 	                            'DebugKit.Toolbar',
 	                            'Session',
-	                            'Cookie'
+	                            'Cookie',
+	                            'Seo.BlackList',
+								'Seo.ABTest',
 	                           );
 	
 	public function beforeFilter() {
-		parent::beforeFilter();
 		if($this->Cookie->check('login') || $this->Session->check('login')){
 			$this->loadModel('Usuario');
 			$loggedUser = $this->Usuario->find('first', $this->getLogged());
@@ -43,10 +45,18 @@ class AppController extends Controller {
 		}
 		$cantidadesArray = array('50'=>'50gr', '100'=>'100gr', '150'=>'150gr', '200'=>'200gr', '250'=>'250gr','500'=>'500gr','1000'=>'1kg',);
 		$this->set(compact('cantidadesArray'));
+
+		if($test = $this->ABTest->getTest(array('debug' => true))){
+	        //Do things specific to this test
+	        $this->set('ABTest', $test);
+	        $this->view = $test['SeoABTest']['slug'];
+	    }
+	    parent::beforeFilter();
     }
 
     public function checkAccess($role = null)
     {
+    	$this->loadModel('Usuario');
     	if ($this->Cookie->check('login') || $this->Session->check('login')) {
     		if ($role == 'admin') {
 	    		$loggedUser = $this->Usuario->find('first', $this->getLogged());

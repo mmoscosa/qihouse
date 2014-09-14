@@ -21,7 +21,7 @@
             <h1>¿Eres nuevo en el té?</h1>
             <ul>
                 <li><?php echo $this->Html->link('Si ¿Por que debo tomarlo?', '/club'); ?></li>
-                <li><?php echo $this->Html->link('Amo el té ¡Sorprendeme!', '/galeria'); ?></li>
+                <li><?php echo $this->Html->link('Amo el té ¡Sorprendeme!', '/bazar'); ?></li>
                 <li><?php echo $this->Html->link('Quiero ser socio', '/membresia'); ?></li>
             </ul>
         </div>

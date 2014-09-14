@@ -93,9 +93,11 @@ Configure::write('Dispatcher.filters', array(
 	'CacheDispatcher'
 ));
 
+
 /**
  * Configures default file logging options
  */
+require_once(APP . 'Plugin' . DS . 'Seo' . DS . 'Lib' . DS . 'Error' . DS . 'SeoAppError.php');
 App::uses('CakeLog', 'Log');
 App::uses('CakeEmail', 'Network/Email');
 

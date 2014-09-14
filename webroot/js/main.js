@@ -32,7 +32,7 @@ function getBlog () {
                     effect: 'slideFastSynced',
                     outputMode: 'json_xml',
                     layoutTemplate: "<div class='feed-container'>{entries}</div>",
-                    entryTemplate: '<div class="post-container col-md-4"><img class="post-image" src="{teaserImageUrl}" /><div class="post-title">{title}</div><div class="row"><div class="col-md-2 well post-date"><div class="post-day post-day-{index}"></div><div class="post-month post-month-{index}"></div><div class="post-date-{index}">{date}</div></div><div class="col-md-9"><div class="post-body">{shortBody}</div></div></div></div>',
+                    entryTemplate: '<div class="post-container col-md-4"><a href="{url}" class="blog-address"><img class="post-image" src="{teaserImageUrl}" /></a><div class="post-title">{title}</div><div class="row"><div class="col-md-2 well post-date"><div class="post-day post-day-{index}"></div><div class="post-month post-month-{index}"></div><div class="post-date-{index}">{date}</div></div><div class="col-md-9"><div class="post-body">{shortBody}</div></div></div></div>',
                  },
                  function callback() {
                     date1 = $('div.post-date-0').text();
@@ -58,6 +58,9 @@ function getBlog () {
                     $('div.post-date-2').hide();
                     $('.post-image').hover(function(){
                         
+                    });
+                    $("a[href^='http://teadreamshouse.com']").each(function(){
+                      this.href = this.href.replace(/^http:\/\/beta\.stackoverflow\.com/, "http://stackoverflow.com");
                     });
                  }
             );

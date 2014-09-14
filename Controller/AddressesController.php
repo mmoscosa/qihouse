@@ -46,24 +46,13 @@ class AddressesController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->checkAccess();
 		$this->layout = null;
 		if ($this->request->is('post')) {
 			$this->Address->create();
 			if ($this->Address->save($this->request->data)) {
-				if($this->request->data['Address']['type'] == 1){
-					$address_id = $this->Address->getLastInsertId();
-					$openPayId = $this->__saveUserOpenPay($this->request->data);
-					if($openPayId){
-						$updatedAddress = $this->__updateAddress($address_id, $openPayId);
-						if($updatedAddress){
-							$this->Session->setFlash(__('The address has been saved.'));
-							return $this->redirect(array('action' => 'index'));
-						}
-					}
-				}else{
 					$this->Session->setFlash(__('The address has been saved.'));
-					return $this->redirect(array('action' => 'index'));
-				}
+					return $this->redirect(array('controller'=>'usuarios','action' => 'control_panel'));
 			} else {
 				$this->Session->setFlash(__('The address could not be saved. Please, try again.'));
 			}
@@ -124,55 +113,10 @@ class AddressesController extends AppController {
 
 	public function __updateAddress($address_id = null, $openPayId = null)
 	{
-		$this->layout = null;
-    	$this->autoRender = false;
-		$this->Address->id = $address_id;
-		$this->Address->set(array(
-		    'openpayId' => $openPayId,
-		));
-		if($this->Address->save()){
-			return true;
-		}
+		
 	}
 	public function __saveUserOpenPay($data= null)
 	{
-		$this->layout = null;
-    	$this->autoRender = false;
-    	$this->loadModel('Usuario');
-		$usuario = $this->Usuario->find('first', array('conditions'=>array('Usuario.id'=>$data['Address']['usuario_id']), 'fields'=>array('email'), 'recursive'=>2));
 		
-		$customerData = array(
-		    'name' => $usuario['Detalle']['nombre'],
-		    'last_name' => $usuario['Detalle']['apellido'],
-		    'external_id'=> $usuario['Usuario']['id'],
-		    'email' => $usuario['Usuario']['email'],
-		    'phone_number' => $data['Address']['phone_number'],
-		    'address' => array(
-		            'line1' => $data['Address']['address_1'],
-		            'line2' => $data['Address']['address_2'],
-		            'postal_code' => $data['Address']['postal_code'],
-		            'state' => $data['Address']['state'],
-		            'city' => $data['Address']['city'],
-		            'country_code' => $data['Address']['country_code'])
-	    );
-		$openpayData = Configure::read('openpay');
-		$openpay = Openpay::getInstance($openpayData["merchant_id"], $openpayData["private_key"]);
-		$customer = $openpay->customers->add($customerData);
-		
-		$today = date("Y-m-d");  
-		$findData = array(
-		    'creation[gte]' => $today,
-		    'creation[lte]' => $today,
-		    'offset' => 0);
-
-		$customerList = $openpay->customers->getList($findData);
-		
-		foreach ($customerList as $key => $customer) {
-			if($customer->serializableData['email'] == $usuario['Usuario']['email']){
-				$openPayId = $customer->id;
-				break;
-			}
-		}
-		return $openPayId;
 	}
 }
