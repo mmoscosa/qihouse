@@ -55,13 +55,13 @@
             >
                 Rojo
             </a>
-          <!-- <a href="/bazar/negro"
+          <a href="/bazar/tizana"
              class="btn btn-default 
-             <?php $active = (strpos($title_for_layout,'negro')) ? 'active' : null ; echo $active;?>"
+             <?php $active = (strpos($title_for_layout,'tizana')) ? 'active' : null ; echo $active;?>"
              disabled = true
             >
-                Negro
-            </a> -->
+                Tizana
+            </a>
           <a href="/bazar/puerh"
              class="btn btn-default 
              <?php $active = (strpos($title_for_layout,'puerh')) ? 'active' : null ; echo $active;?>"
