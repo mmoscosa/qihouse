@@ -126,7 +126,7 @@
               </div>
               <div class="form-group">
               <div class="col-sm-6">
-                <?php echo $this->Form->input('phone_number', array('class' => 'form-control','label' => 'Telefono',));?>
+                <?php echo $this->Form->input('Shipping.phone_number', array('class' => 'form-control','label' => 'Telefono',));?>
               </div>
             </div>
             <div class="form-group">
