@@ -58,7 +58,7 @@
                         </tr>
                         <tr class="active">
                             <td>Concepto de pago:</td>
-                            <td><?php echo $openpayDetails->serializableData['payment_method']->name; ?></td>
+                            <td><?php echo $order['Order']['descripcion'].': '.$openpayDetails->serializableData['payment_method']->name; ?></td>
                         </tr>
                     </body>
                 </table> 

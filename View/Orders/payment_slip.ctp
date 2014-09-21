@@ -50,7 +50,7 @@
                     <body>
                         <tr class="active">
                             <td>Descripción</td>
-                            <td><?php echo $openpayDetails->serializableData['description']; ?></td>
+                            <td><?php echo $order['Order']['descripcion']; ?></td>
                         </tr>
                         <tr class="active">
                             <td>Fecha y hora</td>

@@ -321,7 +321,6 @@ class ProductsController extends AppController {
 
     public function processPayment($data)
     {
-    	
 		if($data['Product']['payment_method'] == "card"){
     		$this->saveCard($data);
 		}elseif($data['Product']['payment_method'] == "store"){
@@ -337,10 +336,11 @@ class ProductsController extends AppController {
     	$chargeData = array(
 		    'method' => 'store',
 		    'amount' => (float)$data["amount"],
-		    'description' => 'Qi House (qihouse.mx) Ventas en linea [tienda]');
+		    'description' => $data["description"]);
 		$charge = $openpay->charges->create($chargeData);
 		
 		if($charge){
+			$data['description'] = 'Qi House (qihouse.mx) Ventas en linea [tienda]';
 			$order = $this->saveOrder($data, $charge); 
 			$this->saveHABTM($data, $order);
 			$this->saveAddress($data, $order);
@@ -363,6 +363,7 @@ class ProductsController extends AppController {
     	$charge = $openpay->charges->create($chargeData);
 
 		if($charge){
+			$data['description'] = 'Qi House (qihouse.mx) Ventas en linea [Tarjeta]';
 			$order = $this->saveOrder($data, $charge); 
 			$this->saveHABTM($data, $order);
 			$this->saveAddress($data, $order);
@@ -377,10 +378,11 @@ class ProductsController extends AppController {
     	$chargeData = array(
 		    'method' => 'bank_account',
 		    'amount' => (float)$data["amount"],
-		    'description' => 'Qi House (qihouse.mx) Ventas en linea [banco]');
+		    'description' => $data["description"]);
 
 		$charge = $openpay->charges->create($chargeData);
 		if($charge){
+			$data['description'] = 'Qi House (qihouse.mx) Ventas en linea [banco]';
 			$order = $this->saveOrder($data, $charge); 
 			$this->saveHABTM($data, $order);
 			$this->saveAddress($data, $order);
@@ -439,8 +441,10 @@ class ProductsController extends AppController {
 				                     'city' => $data['Shipping']['city'],
 				                     'postal_code' => $data['Shipping']['postal_code'],
 				                     );
-				if($data['Product']['save_shipping'] == 1){
-					$addressData['usuario_id'] = $data['Shipping']['usuario_id'];
+				if(!empty($data['Product']['save_shipping'])){
+					if($data['Product']['save_shipping'] == 1){
+						$addressData['usuario_id'] = $data['Shipping']['usuario_id'];
+					}
 				}
 				$this->Address->create();	
 				$this->Address->save($addressData);
@@ -486,8 +490,10 @@ class ProductsController extends AppController {
 					                     'city' => $data['Billing']['city'],
 					                     'postal_code' => $data['Billing']['postal_code'],
 					                     );
-					if($data['Product']['save_billing'] == 1){
-						$addressData['usuario_id'] = $data['Billing']['usuario_id'];
+					if(!empty($data['Product']['save_billing'])){
+						if($data['Product']['save_billing'] == 1){
+							$addressData['usuario_id'] = $data['Billing']['usuario_id'];
+						}
 					}
 					$this->Address->create();	
 					$this->Address->save($addressData);

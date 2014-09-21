@@ -267,13 +267,23 @@
             echo $this->Form->input('token_id', array('type'=>'hidden', 'id'=>'token_id', 'name'=>'token_id')); 
           ?>
           <?php 
+            $description = array();
+            foreach ($products as $key => $product) {
+              if(!is_array($product)){continue;}
+              $temp = array();
+              $temp['Producto'] = $product['Product']['name'];
+              $temp['Cantidad'] = $product['Cantidad'].'g x $'.$product['Product']['price'];
+              array_push($description, $temp);
+            }
+            $description = json_encode($description);
             echo $this->Form->input('description', 
                                       array(
                                               'type'=>'hidden',
                                               'id'=>'description', 
                                               'name'=>'description',
                                               'class' => 'form-control',
-                                              'value'=>'Qi House (qihouse.mx) Ventas en linea'
+                                              'maxlength'=>"255",
+                                              'value'=>$description
                                             )
                                     ); 
           ?>
@@ -288,6 +298,11 @@
                                           )
                                     ); 
           ?>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="http://www.openpay.mx/img/logo.png" id="openpay_logo"></a></p>
+              </div>
+            </div>
           <div class="form-group">
             <div class="col-sm-12">
               <?php 
@@ -538,6 +553,10 @@
       </div>
     </div>
     <div id="method_store">
+      <div class="col-sm-8">
+        <img src="http://www.openpay.mx/img/costos/costotienda.gif"> <a href="http://www.openpay.mx/tiendas-de-conveniencia.html" target="_blank"><small>Ver tiendas afiliadas</small></a>
+        <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="http://www.openpay.mx/img/logo.png" id="openpay_logo"></a></p>
+      </div>
       <div class="col-md-8">
         <input type="submit" id="pay-button-store" class="btn btn-primary pull-right" value="Pagar en Tienda"/>
       </div>
@@ -546,6 +565,9 @@
       </div>
     </div>
     <div id="method_bank">
+    <div class="col-sm-8">
+        <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="http://www.openpay.mx/img/logo.png" id="openpay_logo"></a></p>
+      </div>
       <div class="col-md-8">
         <input type="submit" id="pay-button-bank" class="btn btn-primary pull-right" value="Deposito en Banco"/>
       </div>
