@@ -66,19 +66,6 @@ class Usuario extends AppModel {
 		),
 	);
 	public $hasMany = array(
-		'Card' => array(
-			'className' => 'Card',
-			'foreignKey' => 'usuario_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
 		'Address' => array(
 			'className' => 'Address',
 			'foreignKey' => 'usuario_id',
