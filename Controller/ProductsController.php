@@ -332,12 +332,17 @@ class ProductsController extends AppController {
 
     public function saveStore($data)
     {	
-    	$openpay = $this->loadOpenPay();
-    	$chargeData = array(
-		    'method' => 'store',
-		    'amount' => (float)$data["amount"],
-		    'description' => $data["description"]);
-		$charge = $openpay->charges->create($chargeData);
+    	try{
+	    	$openpay = $this->loadOpenPay();
+	    	$chargeData = array(
+			    'method' => 'store',
+			    'amount' => (float)$data["amount"],
+			    'description' => $data["description"]);
+			$charge = $openpay->charges->create($chargeData);
+    	}catch(exception $e){
+    		$this->Session->setFlash(__('Hubo un problema al generar tu recibo, favor de intentar de nuevo (Lamentamos cualquier inconveniente que esto ocasionó)'), 'alert-box', array('class'=>'alert-danger alert-content'));
+    		$this->redirect(array('action' => 'checkout'));
+    	}
 		
 		if($charge){
 			$data['description'] = 'Qi House (qihouse.mx) Ventas en linea [tienda]';
@@ -351,17 +356,21 @@ class ProductsController extends AppController {
     }
 
     public function saveCard($data)
-    {
-    	$openpay = $this->loadOpenPay();
-    	$chargeData = array(
-		    'method' => 'card',
-		    'source_id' => $data["token_id"],
-		    'amount' => (float)$data["amount"],
-		    'description' => $data["description"],
-		    'device_session_id' => $data["deviceIdHiddenFieldName"]
-	    );
-    	$charge = $openpay->charges->create($chargeData);
-
+    {	
+    	try{
+	    	$openpay = $this->loadOpenPay();
+	    	$chargeData = array(
+			    'method' => 'card',
+			    'source_id' => $data["token_id"],
+			    'amount' => (float)$data["amount"],
+			    'description' => $data["description"],
+			    'device_session_id' => $data["deviceIdHiddenFieldName"]
+		    );
+	    	$charge = $openpay->charges->create($chargeData);	
+    	}catch(exception $e){
+    		$this->Session->setFlash(__('Hubo un problema al generar ficha de pago, favor de intentar de nuevo (Lamentamos cualquier inconveniente que esto ocasionó)'), 'alert-box', array('class'=>'alert-danger alert-content'));
+    		$this->redirect(array('action' => 'checkout'));
+    	}
 		if($charge){
 			$data['description'] = 'Qi House (qihouse.mx) Ventas en linea [Tarjeta]';
 			$order = $this->saveOrder($data, $charge); 
@@ -374,11 +383,16 @@ class ProductsController extends AppController {
 
     public function saveBank($data)
     {
-    	$openpay = $this->loadOpenPay();
-    	$chargeData = array(
-		    'method' => 'bank_account',
-		    'amount' => (float)$data["amount"],
-		    'description' => $data["description"]);
+    	try{
+	    	$openpay = $this->loadOpenPay();
+	    	$chargeData = array(
+			    'method' => 'bank_account',
+			    'amount' => (float)$data["amount"],
+			    'description' => $data["description"]);
+    	}catch(exception $e){
+    		$this->Session->setFlash(__('Hubo un problema con los datos de tu tarjeta, favor de revisar los datos e intentar de nuevo (Lamentamos cualquier inconveniente que esto ocasionó)'), 'alert-box', array('class'=>'alert-danger alert-content'));
+    		$this->redirect(array('action' => 'checkout'));
+    	}
 
 		$charge = $openpay->charges->create($chargeData);
 		if($charge){

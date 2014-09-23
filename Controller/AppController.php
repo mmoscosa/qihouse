@@ -36,6 +36,15 @@ class AppController extends Controller {
 								'Seo.ABTest',
 	                           );
 	
+	function handleError($code, $description, $file = null, $line = null, $context = null) {
+	    if (error_reporting() == 0 || $code === 3001 || $code === 8192) {
+	      return;
+	    }
+
+	    // throw error for further handling
+	    throw new exception(strip_tags($description));
+	}
+	
 	public function beforeFilter() {
 		if($this->Cookie->check('login') || $this->Session->check('login')){
 			$this->loadModel('Usuario');
