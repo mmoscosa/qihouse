@@ -71,7 +71,7 @@
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
-                                                    'label' => 'Direccion - Liena 1',
+                                                    'label' => 'Direccion - Linea 1',
                                                     'placeholder'=> 'Direccion'
                                                   )
                                           ); 
@@ -87,7 +87,7 @@
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
-                                                    'label' => 'Direccion - Linea 2',
+                                                    'label' => 'Colonia',
                                                     'placeholder'=> ''
                                                   )
                                           ); 
@@ -411,7 +411,7 @@
                                             array(
                                                     'type'=>'text',
                                                     'class' => 'form-control',
-                                                    'label' => 'Direccion - Linea 2',
+                                                    'label' => 'Colonia',
                                                     'placeholder'=> ''
                                                   )
                                           ); 
