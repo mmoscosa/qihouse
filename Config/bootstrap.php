@@ -82,10 +82,10 @@ CakePlugin::loadAll();
 
 
 Configure::write('openpay', array( 
-                 "public_key" =>  "pk_cd15aed8af9746588af5bbaa355fc84d",
-                 "private_key" =>  "sk_896a9752a2954b9990643ffb22499bc7",
-                 "merchant_id" =>  "mb82o6czp2sc6k7j5trk",
-                 "sandbox" =>  true
+                 "public_key" =>  "pk_86b5d01cf3c747ec9ce4da0e9805e53a",
+                 "private_key" =>  "sk_f748548c9f3348d2baddab69267ffd0c",
+                 "merchant_id" =>  "mzm1aurrzxczskubhhyk",
+                 "sandbox" =>  false
                  ));
 
 Configure::write('Dispatcher.filters', array(

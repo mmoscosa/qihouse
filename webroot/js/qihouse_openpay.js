@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    OpenPay.setId('mb82o6czp2sc6k7j5trk');
-    OpenPay.setApiKey('pk_cd15aed8af9746588af5bbaa355fc84d');
-    OpenPay.setSandboxMode(true);
+    OpenPay.setId('mzm1aurrzxczskubhhyk');
+    OpenPay.setApiKey('pk_86b5d01cf3c747ec9ce4da0e9805e53a');
+    OpenPay.setSandboxMode(false);
 
     var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
 
