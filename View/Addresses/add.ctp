@@ -25,7 +25,7 @@
 		</div>
 		<div class="form-group">
             <div class="col-sm-12">
-				<?php echo $this->Form->input('address_2', array('class' => 'form-control', 'label'=>'Direccion - Linea 2'));?>
+				<?php echo $this->Form->input('address_2', array('class' => 'form-control', 'label'=>'Colonia'));?>
 			</div>
 		</div>
 		<div class="form-group">
