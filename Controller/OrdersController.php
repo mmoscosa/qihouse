@@ -39,6 +39,7 @@ class OrdersController extends AppController {
 		}
 		$this->layout = null ;
 		$openpay = Configure::read('openpay');
+		Openpay::setProductionMode($openpay['production']);
 		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
 		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
 		$openpayDetails = $openpay->charges->get($order['Order']['token_id']);
@@ -128,6 +129,7 @@ class OrdersController extends AppController {
 	public function payment_slip($id = null) {
 		$this->layout = null ;
 		$openpay = Configure::read('openpay');
+		Openpay::setProductionMode($openpay['production']);
 		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
 		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
 		$openpayDetails = $openpay->charges->get($order['Order']['token_id']);
@@ -137,6 +139,7 @@ class OrdersController extends AppController {
 	public function bank_transfer($id = null) {
 		$this->layout = null ;
 		$openpay = Configure::read('openpay');
+		Openpay::setProductionMode($openpay['production']);
 		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
 		$order = $this->Order->find('first', array('conditions'=>array('Order.id'=>$id)));
 		$openpayDetails = $openpay->charges->get($order['Order']['token_id']);
