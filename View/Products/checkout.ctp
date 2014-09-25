@@ -1,9 +1,13 @@
 <?php 
     echo $this->Html->css('checkout');
     echo $this->Html->css('//cdnjs.cloudflare.com/ajax/libs/card/0.0.2/css/card.min.css');
+    echo $this->Html->css('parseley');
+
     echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/card/0.0.2/js/card.min.js');
     echo $this->Html->script('https://openpay.s3.amazonaws.com/openpay.v1.min.js');
     echo $this->Html->script('https://openpay.s3.amazonaws.com/openpay-data.v1.min.js');
+    echo $this->Html->script('parseley-es');
+    echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.0.5/parsley.min.js');
     echo $this->Html->script('checkout');
     echo $this->Html->script('qihouse_openpay');
     if(empty($allAddresses)){
@@ -12,7 +16,7 @@
 ?>
 
 <div id="payment-container" class="row">
-  <?php echo $this->Form->create(array('action'=>'checkout', 'id'=>'payment-form')); ?>
+  <?php echo $this->Form->create(array('action'=>'checkout', 'id'=>'payment-form', 'data-parsley-validate'=>true)); ?>
     <h2>Direccion de envio</h2>
     <div class="col-md-8">
       <!-- Text input-->
@@ -56,6 +60,7 @@
                                     'type'=>'text',
                                     'class' => 'form-control',
                                     'label' => 'Destinatario',
+                                    'required' => true,
                                     'placeholder'=> 'Nombre de Destinatario', 
                                   );
                 }
@@ -72,6 +77,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Direccion - Linea 1',
+                                                    'required' => true,
                                                     'placeholder'=> 'Direccion'
                                                   )
                                           ); 
@@ -104,6 +110,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Ciudad',
+                                                    'required' => true,
                                                     'placeholder'=> 'Ciudad'
                                                   )
                                           ); 
@@ -136,6 +143,7 @@
                                               'options' => array($countries),
                                               'empty' => 'Favor de elegir Pais',
                                               'label' => 'Pais',
+                                              'required' => true,
                                               'class' => 'form-control',
                                               'required' => true
                                   ));
@@ -149,6 +157,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Codigo Postal',
+                                                    'required' => true,
                                                     'placeholder'=> 'Codigo Postal'
                                                   )
                                           ); 
@@ -472,8 +481,7 @@
                                               'options' => array($countries),
                                               'empty' => 'Favor de elegir Pais',
                                               'class' => 'form-control',
-                                              'label' => 'Pais',
-                                              'required' => true
+                                              'label' => 'Pais'
                                   ));
                 ?>
               </div>
@@ -581,6 +589,7 @@
 
 
 <script type="text/javascript">
+  window.ParsleyValidator.setLocale('es');
   $('#payment-form').card({ 
         container: $('.card-wrapper'),
       });
