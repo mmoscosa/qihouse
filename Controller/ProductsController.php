@@ -534,6 +534,7 @@ class ProductsController extends AppController {
     public function loadOpenPay()
     {
     	$openpay = Configure::read('openpay');
+    	Openpay::setProductionMode($openpay['production']);
 		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
 		return $openpay;
     }
