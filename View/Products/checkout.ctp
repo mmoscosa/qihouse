@@ -157,7 +157,6 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Codigo Postal',
-                                                    'required' => true,
                                                     'placeholder'=> 'Codigo Postal'
                                                   )
                                           ); 
@@ -202,7 +201,6 @@
                                             'class' => 'form-control',
                                             'id' => 'ProductSavedShippingAddress',
                                             'label' => 'Direcciones de Envio Guardadas',
-                                            'required' => true
                                 ));; ?>
           <div class="col-sm-12">
             <div id="save_shipping">
@@ -546,8 +544,7 @@
                                               'empty' => 'Favor de elegir Direccion',
                                               'class' => 'form-control',
                                               'label' => 'Direcciones de Cobro Guardadas',
-                                              'id' => 'ProductSavedBillingAddress',
-                                              'required' => true
+                                              'id' => 'ProductSavedBillingAddress'
                                   ));; ?>
             <?php endif; ?>
               <?php echo $this->Form->input('same_shipping', array('label'=>'Utilizar la misma direccion de envio', 'type'=>'checkbox')); ?>
