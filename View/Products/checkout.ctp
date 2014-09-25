@@ -403,6 +403,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Direccion - Linea 1',
+                                                    'required' => true,
                                                     'placeholder'=> 'Direccion'
                                                   )
                                           ); 
@@ -435,6 +436,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Ciudad',
+                                                    'required' => true,
                                                     'placeholder'=> 'Ciudad'
                                                   )
                                           ); 
@@ -451,6 +453,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Estado',
+                                                    'required' => true,
                                                     'placeholder'=> 'Estado'
                                                   )
                                           ); 
@@ -479,6 +482,7 @@
                                               'options' => array($countries),
                                               'empty' => 'Favor de elegir Pais',
                                               'class' => 'form-control',
+                                              'required' => true,
                                               'label' => 'Pais'
                                   ));
                 ?>
@@ -492,6 +496,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Codigo Postal',
+                                                    'required' => true,
                                                     'placeholder'=> 'Codigo Postal'
                                                   )
                                           ); 

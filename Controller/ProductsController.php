@@ -487,32 +487,34 @@ class ProductsController extends AppController {
 					                     );
 						if($data['Product']['save_billing'] == 1){
 							$addressData['usuario_id'] = $data['Shipping']['usuario_id'];
+							$this->Address->create();	
+							$this->Address->save($addressData);
+							$addressId = $this->Address->getLastInsertID();
+							$this->linkAddress($addressId, $orderId);
 						}
-						$this->Address->create();	
-						$this->Address->save($addressData);
-						$addressId = $this->Address->getLastInsertID();
-						$this->linkAddress($addressId, $orderId);
 					}
 				}else{
-					$addressData = array(
-					                     'type' => 2,
-					                     'address_1' => $data['Billing']['address_1'],
-					                     'address_2' => $data['Billing']['address_2'],
-					                     'phone_number' => $data['Billing']['phone_number'],
-					                     'country_code' => $data['Billing']['country_code'],
-					                     'state' => $data['Billing']['state'],
-					                     'city' => $data['Billing']['city'],
-					                     'postal_code' => $data['Billing']['postal_code'],
-					                     );
-					if(!empty($data['Product']['save_billing'])){
-						if($data['Product']['save_billing'] == 1){
-							$addressData['usuario_id'] = $data['Billing']['usuario_id'];
+					if($data['Billing']['address_1'] !== 'parseley'){
+						$addressData = array(
+						                     'type' => 2,
+						                     'address_1' => $data['Billing']['address_1'],
+						                     'address_2' => $data['Billing']['address_2'],
+						                     'phone_number' => $data['Billing']['phone_number'],
+						                     'country_code' => $data['Billing']['country_code'],
+						                     'state' => $data['Billing']['state'],
+						                     'city' => $data['Billing']['city'],
+						                     'postal_code' => $data['Billing']['postal_code'],
+						                     );
+						if(!empty($data['Product']['save_billing'])){
+							if($data['Product']['save_billing'] == 1){
+								$addressData['usuario_id'] = $data['Billing']['usuario_id'];
+								$this->Address->create();	
+								$this->Address->save($addressData);
+								$addressId = $this->Address->getLastInsertID();
+								$this->linkAddress($addressId, $orderId);
+							}
 						}
 					}
-					$this->Address->create();	
-					$this->Address->save($addressData);
-					$addressId = $this->Address->getLastInsertID();
-					$this->linkAddress($addressId, $orderId);
 				}
 			}else{
 				$addressId = $data['Product']['savedBilling'];

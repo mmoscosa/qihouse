@@ -57,6 +57,11 @@ $(document).ready(function() {
         saved_billing_address.hide();
         billing_address.hide();
         save_billing.hide();
+        $('#BillingAddress1').val('parseley');
+        $('#BillingCity').val('parseley');
+        $('#BillingState').val('parseley');
+        $('#BillingPostalCode').val('parseley');
+        $('#BillingCountryCode').val('MX');
       }else{
         billing_address.show();
         save_billing.show();
@@ -65,14 +70,29 @@ $(document).ready(function() {
     selector.change(function(){
       selectedOption = $(this).val();
       if(selectedOption === 'card'){
+        $('#BillingAddress1').val('');
+        $('#BillingCity').val('');
+        $('#BillingState').val('');
+        $('#BillingPostalCode').val('');
+        $('#BillingCountryCode').val('');
         hideOptions();
         card.show();
       }
       if(selectedOption === 'store'){
+        $('#BillingAddress1').val('parseley');
+        $('#BillingCity').val('parseley');
+        $('#BillingState').val('parseley');
+        $('#BillingPostalCode').val('parseley');
+        $('#BillingCountryCode').val('MX');
         hideOptions();
         store.show();
       }
       if(selectedOption === 'bank'){
+        $('#BillingAddress1').val('parseley');
+        $('#BillingCity').val('parseley');
+        $('#BillingState').val('parseley');
+        $('#BillingPostalCode').val('parseley');
+        $('#BillingCountryCode').val('MX');
         hideOptions();
         bank.show();
       }
