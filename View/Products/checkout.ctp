@@ -65,6 +65,23 @@
                                   );
                 }
                 echo $this->Form->input('Shipping.recipient', $options); 
+
+                if(!empty($loggedUser)){
+                  $options = array(
+                                    'type'=>'hidden',
+                                    'class' => 'form-control',
+                                    'value' => $loggedUser['Usuario']['email']
+                                  );
+                }else{
+                  $options = array(
+                                    'type'=>'text',
+                                    'class' => 'form-control',
+                                    'label' => 'Correo electronico',
+                                    'required' => true,
+                                    'placeholder'=> 'correo@ejemplo.com', 
+                                  );
+                }
+                echo $this->Form->input('Shipping.recipientEmail', $options); 
               ?>
             </div>
           </div>

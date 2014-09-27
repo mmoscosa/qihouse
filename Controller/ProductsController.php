@@ -349,7 +349,7 @@ class ProductsController extends AppController {
 			$order = $this->saveOrder($data, $charge); 
 			$this->saveHABTM($data, $order);
 			$this->saveAddress($data, $order);
-			
+			$this->sendMails($order, $data);
 			$this->Cookie->delete('ShoppingCart');
 			return $this->redirect(array('controller'=>'orders','action' => 'payment_slip', $order));	
 		}
@@ -376,6 +376,7 @@ class ProductsController extends AppController {
 			$order = $this->saveOrder($data, $charge); 
 			$this->saveHABTM($data, $order);
 			$this->saveAddress($data, $order);
+			$this->sendMails($order, $data);
 			$this->Cookie->delete('ShoppingCart');
 			return $this->redirect(array('controller'=>'orders','action' => 'card_invoice', $order));	
 		}
@@ -400,6 +401,7 @@ class ProductsController extends AppController {
 			$order = $this->saveOrder($data, $charge); 
 			$this->saveHABTM($data, $order);
 			$this->saveAddress($data, $order);
+			$this->sendMails($order, $data);
 			$this->Cookie->delete('ShoppingCart');
 			return $this->redirect(array('controller'=>'orders','action' => 'bank_transfer', $order));	
 		}
@@ -540,4 +542,64 @@ class ProductsController extends AppController {
 		$openpay = Openpay::getInstance($openpay['merchant_id'], $openpay['private_key']);
 		return $openpay;
     }
+
+   	public function sendMails($order, $data)
+   	{
+   		if($data['Shipping']['recipientEmail']){
+   			if($data['Product']['payment_method'] == 'store'){
+	   			$orderUrl = Router::url(array('controller'=>'orders','action' => 'payment_slip', $order), true);
+	   			$options = 'Al haber haber elegido la opcion de pagar en tienda de conveniencia, es necesario se realice el pago  en cualquiera de las tiendas participantes antes de que enviemos cualquier orden. ';
+	   			$optionsQiHouse = 'El Cliente eligio pagar via Tienda por lo que es importante revisemos OpenPay para verificar el pago haya sido hecho antes de enviar cualquier pedido';
+   			}elseif($data['Product']['payment_method'] == 'bank'){
+	   			$orderUrl = Router::url(array('controller'=>'orders','action' => 'bank_transfer', $order), true);
+	   			$options = 'Al haber haber elegido la opcion de pagar en banco, es necesario realices la transferencia SPEI antes de que enviemos cualquier orden. ';
+	   			$optionsQiHouse = 'El Cliente eligio pagar via Banco por lo que es importante revisemos OpenPay para verificar el pago haya sido hecho antes de enviar cualquier pedido';
+   			}elseif($data['Product']['payment_method'] == 'card'){
+	   			$orderUrl = Router::url(array('controller'=>'orders','action' => 'card_invoice', $order), true);
+	   			$options = '';
+	   			$optionsQiHouse = '';
+   			}
+
+   			$messagge = "
+Hola {$data['Shipping']['recipient']},
+
+Hemos recibido tu pedido y nos pondremos en contacto contigo dentro de las siguientes 24 horas.
+
+Puedes acceder a tu pedido dirigiendote a la siguiente direccione electronica:
+
+{$orderUrl}
+
+{$options}
+
+Saludos Cordiales,
+
+Atentamente
+Qi House
+   			";
+	   		$clientEmail = new CakeEmail();
+			$clientEmail->from(array('ventas@qihouse.mx' => 'Ventas Qi House'));
+			$clientEmail->to($data['Shipping']['recipientEmail']);
+			$clientEmail->subject('Pedido QiHouse');
+			$clientEmail->send($messagge);
+   		}
+   			$messagge = "
+{$data['Shipping']['recipient']} Acaba de hacer un pedido. Debemos ponernos en contacto con el cliente dentro de las siguientes 24 horas.
+
+Puedes acceder al pedido a en la siguiente direccione electronica:
+
+{$orderUrl}
+
+{$optionsQiHouse}
+
+Felicidades por una venta mas!
+
+Atentamente
+Qi House
+   			";
+		$qihouseEmail = new CakeEmail();
+		$qihouseEmail->from(array('ventas@qihouse.mx' => 'Pedido Qi House'));
+		$qihouseEmail->to('ventas@qihouse.mx');
+		$qihouseEmail->subject('Pedido QiHouse');
+		$qihouseEmail->send($messagge);
+   	}
 }
