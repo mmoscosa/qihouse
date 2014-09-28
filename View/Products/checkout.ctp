@@ -268,6 +268,13 @@
              <p class="pull-right"><?php echo "Subtotal Promo ".$this->Number->currency($subtotalPromo); ?></p>
             </td>
           </tr>
+        <?php else: ?>
+          <tr>
+            <td>
+              <?php $subtotalPromo = $products['Subtotal'] - (($products['Subtotal']*$products['Coupon'])/100); ?>
+             <p class="pull-right"><?php echo "Cupon ".$this->Html->link('Aplicar', array('controller'=>'products', 'action'=>'cart')); ?></p>
+            </td>
+          </tr>
         <?php endif; ?>
         <tr>
           <td>
