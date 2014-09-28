@@ -1,5 +1,6 @@
 <?php 
     echo $this->Html->css('cart.css');
+    echo $this->Html->script('cart-coupon');
 ?>
 <div id="cart">
 <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -67,22 +68,91 @@
                     <td>   </td>
                     <td>   </td>
                     <td>   </td>
-                    <td><h5>Subtotal</h5></td>
-                    <td class="text-right"><h5><strong><?php echo $this->Number->currency($products['Subtotal'], 'USD'); ?></strong></h5></td>
+                    <td class="table-header"><h5>Subtotal</h5></td>
+                    <td class="text-right">
+                        <h5>
+                            <strong>
+                                <?php echo $this->Number->currency($products['Subtotal'], 'USD'); ?>
+                            </strong>
+                        </h5>
+                    </td>
                 </tr>
                 <tr>
                     <td>   </td>
                     <td>   </td>
                     <td>   </td>
-                    <td><h5 class="envios" data-toggle="modal" data-target="#enviosInfo">Costo estimado de envio <i class="fa fa-question-circle"></i></h5> </td>
+                    <td class="table-header"><h5 class="cupon" data-toggle="modal" data-target="#couponInfo">Cupon <i class="fa fa-question-circle"></i></h5> </td>
+                    <td class="text-right">
+                        <div class="row" id="coupon-form">
+                            <h5>
+                            <strong>
+                            <?php if(!isset($products['Coupon']) || empty($products['Coupon'])): ?>
+                                <?php echo $this->Form->create('Product', array('controller'=>'products', 'action'=>'coupon','role'=>"form", 'class'=>'form-horizontal')); ?>
+                                     <div class="col-md-8 form-group">
+                                        <?php echo $this->Form->input('coupon', array(
+                                                                      'label' => '',
+                                                                      'class' => 'form-control',
+                                                                      'id' => 'productCoupon'
+                                        )); ?>
+                                     </div>
+                                     <div class="col-md-4 form-group">
+                                        <?php echo $this->Form->button('Aplicar', array(
+                                                                       'class'=>'btn btn-default btn-info',
+                                                                       'id'=>'coupon-button'
+                                        )); ?>
+                                     </div>
+                                <?php echo $this->Form->end(); ?>
+                            <?php else: ?>
+                                <div id="appliedCoupon">
+                                    <?php echo $this->Number->toPercentage($products['Coupon']); ?>
+                                </div>
+                            <?php endif; ?>
+                            </strong>
+                        </h5>
+                        </div>
+                    </td>
+                </tr>
+                <?php if(!empty($products['SubtotalAfter']) || isset($products['SubtotalAfter'])): ?>
+                    <tr class="info">
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td class="table-header"><h5>Subtotal Promo</h5></td>
+                        <td class="text-right">
+                            <h5>
+                                <strong>
+                                    <?php echo $this->Number->currency($products['SubtotalAfter'], 'USD'); ?>
+                                </strong>
+                            </h5>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td class="table-header"><h5 class="envios" data-toggle="modal" data-target="#enviosInfo">Costo de envio <i class="fa fa-question-circle"></i></h5> </td>
                     <td class="text-right"><h5><strong><?php echo $this->Number->currency($products['Shipping'], 'USD'); ?></strong></h5></td>
                 </tr>
                 <tr>
                     <td>   </td>
                     <td>   </td>
                     <td>   </td>
-                    <td><h3>Total</h3></td>
-                    <td class="text-right"><h3><strong><?php $total = $products['Subtotal'] + $products['Shipping']; echo $this->Number->currency($total, 'USD');?></strong></h3></td>
+                    <td class="table-header"><h3>Total</h3></td>
+                    <td class="text-right">
+                        <h3>
+                            <strong>
+                                <?php
+                                    if(isset($products['SubtotalAfter']) && !empty($products['SubtotalAfter'])){
+                                        $total = $products['SubtotalAfter'] + $products['Shipping'];
+                                    }else{
+                                        $total = $products['Subtotal'] + $products['Shipping'];
+                                    }
+                                    echo $this->Number->currency($total, 'USD');
+                                ?>
+                            </strong>
+                        </h3>
+                    </td>
                 </tr>
         <?php endif; ?>
                 <tr>
@@ -152,6 +222,29 @@
           <li>Para ordenes fuera de México, el pedido mínimo sería de $1,000.00 MXN. Con tiempo estimado de entrega de 8-10 días en caso de que requiera la entrega en menos días, le podemos ofrecer el envío exprés con costo extra, dependiendo de el lugar de entrega.</li>
           <li>Para rastrear su orden, se les proporcionará el numero de guía en cuanto su paquete haya sido enviado.</li>
           <li>En caso de que exista alguna duda, siempre puede escribirnos para consultar sobre su orden.</li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="couponInfo" tabindex="-1" role="dialog" aria-labelledby="couponInfoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="couponInfoLabel">Cupones - info.</h4>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li>El cupon se aplica a la cantidad Subtotal.</li>
+            <ul>
+                <li>Si la cantidad antes de aplicar el cupon es menor a la correspondiente para obtener un envio gratuito entonces las politicas de envio siguen aplicando normalmente.</li>
+            </ul>
         </ol>
       </div>
       <div class="modal-footer">

@@ -161,7 +161,7 @@ class ProductsController extends AppController {
 	}
 
 
-    public function addToCart($id = null, $quantity = null) {
+  public function addToCart($id = null, $quantity = null) {
     	$this->autoRender = false;
     	$this->layout = null;
     	if ($this->request->is('post')) {	    	
@@ -171,6 +171,10 @@ class ProductsController extends AppController {
 			$id = $this->data['Product']['id'];
 			$quantity = $this->data['Product']['cantidad'];
 		}
+			if($this->Cookie->check('ShoppingCart')){
+	    		$products = $this->updateCart($this->data);
+	    		return $this->redirect(array('action' => 'cart'));
+	    	}
 			$product = $this->Product->find('first', array(
 			                                'conditions'=>array(
 			                                                    'Product.id' => $id,
@@ -184,38 +188,68 @@ class ProductsController extends AppController {
 			                                                'Subcategory.subcategory',
 			                                                ),
 			                                ));
+    		$products = array();
 			$product['Cantidad'] = $quantity;
-			if($this->Cookie->check('ShoppingCart')){
-	    		$products = $this->Cookie->read('ShoppingCart');
-	    		$temp = array();
-	    		foreach ($products as $key => $cartProduct) {
-	    			if(!is_array($cartProduct)){continue;}
-	    			if($product['Product']['id'] == $cartProduct['Product']['id']){
-	    				$productSubtotal = $cartProduct['Product']['price'] * $cartProduct['Cantidad'];
-	    				continue;
-	    			}
-	    			array_push($temp, $cartProduct);
-	      		}
-	      		if(isset($productSubtotal)){
-	      			$temp['Subtotal'] = $products['Subtotal'] - $productSubtotal;
-					$temp['Shipping'] = $products['Shipping'];
-					$this->Cookie->delete('ShoppingCart');
-					$this->Cookie->write('ShoppingCart', $temp);
-					$products = $this->Cookie->read('ShoppingCart');
-	      		}
-	    	}else{
-	    		$products = array();
-	    		$products['Shipping'] = 40;
-	    		$products['Subtotal'] = 0;
-	    	}
-	    	$products['Subtotal'] = $products['Subtotal'] + ($product['Product']['price'] * $product['Cantidad']);
+    		array_push($products, $product);
+    		$products['Shipping'] = 40;
+    		$products['Subtotal'] = 0;
+	    	$products['Subtotal'] = $product['Cantidad']*$product['Product']['price'];
   			if($products['Subtotal']  >= 600){
   				$products['Shipping'] = 0;
   			}
-	    	array_push($products, $product);
 	    	$this->Cookie->write('ShoppingCart', $products);
 	    	return $this->redirect(array('action' => 'cart'));
     	
+	}
+
+	public function updateCart($data)
+	{
+		$shoppingCart = $this->Cookie->read('ShoppingCart');
+		$id = $data['Product']['id'];
+		$quantity = $data['Product']['cantidad'];
+		$newShoppingCart = array();
+		foreach ($shoppingCart as $key => $product) {
+			if (!is_array($product)) {continue;}
+			if($data['Product']['id'] === $product['Product']['id']){
+				unset($shoppingCart[$key]);
+			}else{
+				array_push($newShoppingCart, $product);
+			}
+		}
+		$addedProduct = $this->Product->find('first', array(
+		                                'conditions'=>array(
+		                                                    'Product.id' => $id,
+		                                                    ),
+		                                'fields'=>array(
+		                                                'Product.id',
+		                                                'Product.name',
+		                                                'Product.photo',
+		                                                'Product.price',
+		                                                'Category.category',
+		                                                'Subcategory.subcategory',
+		                                                ),
+		                                ));
+		$addedProduct['Cantidad'] = $quantity;
+		
+		array_push($newShoppingCart, $addedProduct);
+		//Update Subtotal
+		$newShoppingCart['Subtotal'] = 0;
+		foreach ($newShoppingCart as $key => $product) {
+			$newShoppingCart['Subtotal'] = $newShoppingCart['Subtotal'] + ($product['Product']['price'] * $product['Cantidad']);
+		}
+		//Update Shipping
+		if ($newShoppingCart['Subtotal'] >= 600) {
+			$newShoppingCart['Shipping'] = 0;
+		}else{
+			$newShoppingCart['Shipping'] = 40;
+		}
+		//Update SubtotalAfter
+		if(!empty($shoppingCart['Coupon'])){
+			$newShoppingCart['Coupon'] = $shoppingCart['Coupon'];
+			$newShoppingCart['SubtotalAfter'] = $newShoppingCart['Subtotal'] - (($newShoppingCart['Subtotal'] * $newShoppingCart['Coupon'])/100);
+		}
+		$this->Cookie->delete('ShoppingCart');
+		$this->Cookie->write('ShoppingCart', $newShoppingCart);
 	}
 
 	public function cart() {
@@ -249,8 +283,15 @@ class ProductsController extends AppController {
 				array_push($temp, $product);
 			}
 			$temp['Subtotal'] = $products['Subtotal'] - $productSubtotal;
-			$temp['Shipping'] = $products['Shipping'];
-
+			if($temp['Subtotal'] >= 600){
+				$temp['Shipping'] = 0;
+			}else{
+				$temp['Shipping'] = 40;
+			}
+			if(!empty($products['Coupon'])){
+				$temp['Coupon'] = $products['Coupon'];
+				$temp['SubtotalAfter'] = $temp['Subtotal'] - (($temp['Subtotal'] * $temp['Coupon'])/100);
+			}
 			$this->Cookie->delete('ShoppingCart');
 			$this->Cookie->write('ShoppingCart', $temp);
 			$this->redirect($this->referer());
@@ -602,4 +643,38 @@ Qi House
 		$qihouseEmail->subject('Pedido QiHouse');
 		$qihouseEmail->send($messagge);
    	}
+
+   	public function coupon() {
+		if ($this->request->is('post')) {
+			$today = date("Y-m-d");
+			$tmpCoupon = $this->data['Product']['coupon'];
+			$this->loadModel('Coupon');
+			$coupons = $this->Coupon->find('all');
+			foreach ($coupons as $key => $coupon) {
+				if($coupon['Coupon']['coupon'] === $tmpCoupon){
+					if($coupon['Coupon']['from_date'] <= $today && $coupon['Coupon']['to_date'] >= $today ){
+						//Valid Coupon and within date
+						$this->Session->setFlash(__('El cupon fue aplicado correctamente'), 'alert-box', array('class'=>'alert-info alert-content'));
+						if($this->Cookie->check('ShoppingCart')){
+							$shoppingCart = $this->Cookie->read('ShoppingCart');
+							$shoppingCart['Coupon'] = $coupon['Coupon']['discount'];
+							$shoppingCart['SubtotalAfter'] = $shoppingCart['Subtotal'] - (($shoppingCart['Subtotal'] * $shoppingCart['Coupon'])/100);
+							$this->Cookie->delete('ShoppingCart');
+							$this->Cookie->write('ShoppingCart', $shoppingCart);
+						}
+					
+					}else{
+						// Out of date
+						$this->Session->setFlash(__('El cupon ya vencio'), 'alert-box', array('class'=>'alert-danger alert-content'));
+					
+					}	
+				}else{
+					// Not even a coupon
+					$this->Session->setFlash(__('Cupon invalido'), 'alert-box', array('class'=>'alert-danger alert-content'));
+					
+				}
+			}
+			return $this->redirect(array('action' => 'cart'));
+		}   		
+	}
 }

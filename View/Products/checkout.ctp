@@ -13,6 +13,12 @@
     if(empty($allAddresses)){
       $allAddresses = array();
     }
+    $totalAmount = 0;
+    if(!empty($products)){
+      if (!empty($products['Coupon']) && !empty($products['SubtotalAfter'])) {
+          $totalAmount = $products['SubtotalAfter'] + $products['Shipping'];
+        }  
+    }
 ?>
 
 <div id="payment-container" class="row">
@@ -174,6 +180,7 @@
                                                     'type'=>'text',
                                                     'class' => 'form-control',
                                                     'label' => 'Codigo Postal',
+                                                    'required' => true,
                                                     'placeholder'=> 'Codigo Postal'
                                                   )
                                           ); 
@@ -233,7 +240,7 @@
       <?php if(!empty($products)): ?>
         <?php foreach ($products as $key => $product): ?>
           <?php if(!is_array($product)){continue;} ?>
-            <tr>
+            <tr class="info">
              <td>
                 <?php echo $product['Product']['name']." ( ".$product['Cantidad']."gr )"; ?>
                 <span class="pull-right">
@@ -249,16 +256,29 @@
            <p class="pull-right"><?php echo "Subtotal ".$this->Number->currency($products['Subtotal']); ?></p>
           </td>
         </tr>
-         <tr>
+        <?php if (!empty($products['Coupon']) && !empty($products['SubtotalAfter'])): ?>
+          <tr>
+            <td>
+             <p class="pull-right"><?php echo "Cupon ".$this->Number->toPercentage($products['Coupon']); ?></p>
+            </td>
+          </tr>
+          <tr class="warning">
+            <td>
+              <?php $subtotalPromo = $products['Subtotal'] - (($products['Subtotal']*$products['Coupon'])/100); ?>
+             <p class="pull-right"><?php echo "Subtotal Promo ".$this->Number->currency($subtotalPromo); ?></p>
+            </td>
+          </tr>
+        <?php endif; ?>
+        <tr>
           <td>
            <p class="pull-right"><?php echo "Envio ".$this->Number->currency($products['Shipping']); ?></p>
           </td>
         </tr>
-         <tr>
+         <tr class="danger">
           <td>
             <p class="pull-right">
               <strong>
-                <?php echo "Total ".$this->Number->currency($products['Subtotal']+$products['Shipping']); ?>
+                <?php echo "Total ".$this->Number->currency($totalAmount); ?>
               </strong>
             </p>
           </td>
@@ -318,7 +338,7 @@
                                             'id'=>'amount', 
                                             'name'=>'amount', 
                                             'class' => 'form-control',
-                                            'value'=> $products['Shipping'] + $products['Subtotal']
+                                            'value'=> $totalAmount
                                           )
                                     ); 
           ?>

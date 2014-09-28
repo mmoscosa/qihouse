@@ -22,3 +22,29 @@
 h5.envios {
   cursor: pointer;
 }
+h5.cupon {
+  cursor: pointer;
+}
+.table-header {
+  text-align: right;
+}
+.table-header h5,
+.table-header h3 {
+  padding-right: 80px;
+}
+#appliedCoupon {
+  margin-top: 30px;
+  margin-right: -13px;
+}
+#coupon-form {
+  margin-top: -20px;
+  padding-right: 30px;
+}
+#coupon-form input {
+  margin-left: -65px;
+  width: 110px;
+}
+#coupon-form #coupon-button {
+  margin-bottom: -48px;
+  font-family: sans-serif;
+}
