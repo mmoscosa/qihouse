@@ -649,10 +649,13 @@ Qi House
 			$today = date("Y-m-d");
 			$tmpCoupon = $this->data['Product']['coupon'];
 			$this->loadModel('Coupon');
-			$coupons = $this->Coupon->find('all');
-			foreach ($coupons as $key => $coupon) {
-				if($coupon['Coupon']['coupon'] == $tmpCoupon){
-					if($coupon['Coupon']['from_date'] <= $today && $coupon['Coupon']['to_date'] >= $today ){
+			$coupon = $this->Coupon->find('first', array(
+			                               'conditions' => array(
+			                                                     'Coupon.coupon' => $tmpCoupon
+			                                                     )
+			                               ));
+			if(!empty($coupon)){
+				if($coupon['Coupon']['from_date'] <= $today && $coupon['Coupon']['to_date'] >= $today ){
 						//Valid Coupon and within date
 						$this->Session->setFlash(__('El cupon fue aplicado correctamente'), 'alert-box', array('class'=>'alert-info alert-content'));
 						if($this->Cookie->check('ShoppingCart')){
@@ -668,12 +671,10 @@ Qi House
 						$this->Session->setFlash(__('El cupon ya vencio'), 'alert-box', array('class'=>'alert-danger alert-content'));
 					
 					}	
-				}else{
-					// Not even a coupon
-					$this->Session->setFlash(__('Cupon invalido'), 'alert-box', array('class'=>'alert-danger alert-content'));
-					
-				}
+			}else{
+				$this->Session->setFlash(__('Cupon invalido'), 'alert-box', array('class'=>'alert-danger alert-content'));
 			}
+
 			return $this->redirect(array('action' => 'cart'));
 		}   		
 	}
