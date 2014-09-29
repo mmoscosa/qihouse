@@ -651,7 +651,7 @@ Qi House
 			$this->loadModel('Coupon');
 			$coupons = $this->Coupon->find('all');
 			foreach ($coupons as $key => $coupon) {
-				if($coupon['Coupon']['coupon'] === $tmpCoupon){
+				if($coupon['Coupon']['coupon'] == $tmpCoupon){
 					if($coupon['Coupon']['from_date'] <= $today && $coupon['Coupon']['to_date'] >= $today ){
 						//Valid Coupon and within date
 						$this->Session->setFlash(__('El cupon fue aplicado correctamente'), 'alert-box', array('class'=>'alert-info alert-content'));
