@@ -113,9 +113,6 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Twitter"><a href="https://twitter.com/qihouse"><i class="fa fa-twitter"></i> </a></li>
 			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Facebook"><a href="https://www.facebook.com/qihouse.mx"><i class="fa fa-facebook"></i> </a></li>
 			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><a href="http://www.pinterest.com/qihouse/"><i class="fa fa-pinterest"></i> </a></li>
-			            <li class="tooltip-social" data-toggle="tooltip" data-placement="bottom" title="Supported by Mixpanel">
-					            	<a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
-					            </li>
 		          </ul>
 				</div>
 				<div class="row">
@@ -173,7 +170,7 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 	  <?php echo $this->Seo->getABTestJS(); ?>
 
 	  mixpanel.track("Video play");
-	  
+
 	  $("#login_button").popover({
 	  	placement : 'top',
         html : true, 
