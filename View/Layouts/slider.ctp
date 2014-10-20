@@ -172,6 +172,8 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 	  ga('send', 'pageview');
 	  <?php echo $this->Seo->getABTestJS(); ?>
 
+	  mixpanel.track("Video play");
+	  
 	  $("#login_button").popover({
 	  	placement : 'top',
         html : true, 
