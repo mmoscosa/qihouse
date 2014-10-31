@@ -256,15 +256,16 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 		}
 	</style>
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-51494851-1', 'qihouse.mx');
-	  ga('send', 'pageview');
-	  <?php echo $this->Seo->getABTestJS(); ?>
+		ga('create', 'UA-56299839-1', 'auto');
+		ga('send', 'pageview');
 	  
+	  <?php echo $this->Seo->getABTestJS(); ?>
+
 	  $("#login_button").popover({
 	  	placement : 'bottom',
         html : true, 
