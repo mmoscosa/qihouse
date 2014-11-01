@@ -47,6 +47,7 @@ class AppController extends Controller {
 	}
 	
 	public function beforeFilter() {
+	
 		if($this->Cookie->check('login') || $this->Session->check('login')){
 			$this->loadModel('Usuario');
 			$loggedUser = $this->Usuario->find('first', $this->getLogged());

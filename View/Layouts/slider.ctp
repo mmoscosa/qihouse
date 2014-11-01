@@ -91,7 +91,7 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 						            <?php if (empty($loggedUser)): ?>
 							            <li>
 							            	<a <?php echo ($title_for_layout == 'Membresia' ? 'class="active"' : '') ?> href="/membresia">
-							            		Membresia
+							            		Membres&Iacute;a
 							            	</a>
 							            </li>
 						            <?php endif ?>

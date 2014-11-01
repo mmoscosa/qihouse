@@ -53,7 +53,7 @@
 	<div class="midway-horizontal">
 		<h1>Nuestro Club</h1>
 		<p>Nos gusta atender a los miembros de nuestro club y compartir nuestros conocimientos con ellos. Si le interesa saber mas acerca de los beneficios de ser socio…</p>
-		<a href="/membresia">unete ahora</a>
+		<a href="/membresia">únete ahora</a>
 	</div>
 </div>
 <div class="row" id="extras">

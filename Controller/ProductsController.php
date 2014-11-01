@@ -28,6 +28,18 @@ class ProductsController extends AppController {
 		$this->set('products', $this->Paginator->paginate());
 	}
 
+	public function mobileapp($category=null)
+	{
+		header("Access-Control-Allow-Origin: *");
+		$this->layout = 'ajax';
+		$options = null;
+		if($category !== 'Todos'){
+			$options = array('Subcategory.subcategory' => $category);
+		}
+		$tes = $this->Product->find('all', array('conditions'=>$options));		
+		$this->set(compact('tes'));
+	}
+
 	public function tes($tipo = null) {
 		$this->set('title_for_layout', 'Galeria del Te');
 		if (!empty($tipo)) {
@@ -67,7 +79,7 @@ class ProductsController extends AppController {
 
 	public function comments($id = null)
 	{
-		$this->checkAccess();
+		//$this->checkAccess();
 		$this->layout = NULL;
 		if (!$this->Product->exists($id)) {
 			throw new NotFoundException(__('Invalid te'));

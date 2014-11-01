@@ -20,8 +20,8 @@
             <?php echo $this->Html->image('index/logo_slide1.png', array('alt'=>'qihouse slider', 'class'=>'logo-slide1')); ?>
             <h1>¿Eres nuevo en el té?</h1>
             <ul>
-                <li><?php echo $this->Html->link('Si ¿Por que debo tomarlo?', '/club'); ?></li>
-                <li><?php echo $this->Html->link('Amo el té ¡Sorprendeme!', '/bazar'); ?></li>
+                <li><?php echo $this->Html->link('Sí ¿Por qué debo tomarlo?', '/club'); ?></li>
+                <li><?php echo $this->Html->link('Amo el té ¡Sorpréndeme!', '/bazar'); ?></li>
                 <li><?php echo $this->Html->link('Quiero ser socio', '/membresia'); ?></li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
             <?php echo $this->Html->image('index/slide2/tea3.png', array('alt'=>'qihouse slider', 'class'=>'teas', 'id'=>'tea3')); ?>
             <div class="hideit">
               <h1>Somos especialistas</h1>
-              <p id="slide2-blurb"><span>Qi House</span> se espacializa en productos poco conocidos en lugares fuera de China - <span>hojas sueltas frescas, exquisitas y naturales</span>.</p>
+              <p id="slide2-blurb"><span>Qi House</span> se especializa en productos poco conocidos en lugares fuera de China - <span>hojas sueltas frescas, exquisitas y naturales</span>.</p>
             </div>
       </div>
     </li> 
@@ -47,7 +47,7 @@
       
         <div class="hideit">
               <h1>Somos especialistas</h1>
-              <p id="slide3-blurb"><span>Qi House</span> se espacializa en productos poco conocidos en lugares fuera de China - <span>hojas sueltas frescas, exquisitas y naturales</span>.</p>
+              <p id="slide3-blurb"><span>Qi House</span> se especializa en productos poco conocidos en lugares fuera de China - <span>hojas sueltas frescas, exquisitas y naturales</span>.</p>
             </div>
       </div>
 

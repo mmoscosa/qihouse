@@ -122,7 +122,7 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 						            <?php if (empty($loggedUser)): ?>
 							            <li>
 							            	<a <?php echo ($title_for_layout == 'Membresia' ? 'class="active"' : '') ?> href="/membresia">
-							            		Membresia
+							            		Membres&Iacute;a
 							            	</a>
 							            </li>
 						            <?php endif ?>
@@ -209,7 +209,7 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 													'class' => 'form-control'
 												),
 										)); ?>
-						<?php echo $this->Form->input('email', array('type' => 'email', 'label'=>'', 'placeholder'=>'Correo electronico')); ?>
+						<?php echo $this->Form->input('email', array('type' => 'email', 'label'=>'', 'placeholder'=>'Correo electrónico')); ?>
 						<?php echo $this->Form->end(); ?>
 		     		</div>
 		     	</div>
