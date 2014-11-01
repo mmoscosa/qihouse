@@ -256,7 +256,7 @@
            <p class="pull-right"><?php echo "Subtotal ".$this->Number->currency($products['Subtotal']); ?></p>
           </td>
         </tr>
-        <?php if (!empty($products['Coupon']) && !empty($products['SubtotalAfter'])): ?>
+        <?php if (isset($products['Coupon']) && !empty($products['SubtotalAfter'])): ?>
           <tr>
             <td>
              <p class="pull-right"><?php echo "Cupon ".$this->Number->toPercentage($products['Coupon']); ?></p>
@@ -271,7 +271,7 @@
         <?php else: ?>
           <tr>
             <td>
-              <?php $subtotalPromo = $products['Subtotal'] - (($products['Subtotal']*$products['Coupon'])/100); ?>
+              <?php $subtotalPromo = $products['Subtotal']; ?>
              <p class="pull-right"><?php echo "Cupon ".$this->Html->link('Aplicar', array('controller'=>'products', 'action'=>'cart')); ?></p>
             </td>
           </tr>
@@ -285,6 +285,7 @@
           <td>
             <p class="pull-right">
               <strong>
+                <?php $totalAmount = $subtotalPromo+$products['Shipping']; ?>
                 <?php echo "Total ".$this->Number->currency($totalAmount); ?>
               </strong>
             </p>
