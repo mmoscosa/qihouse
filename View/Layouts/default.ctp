@@ -149,7 +149,7 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<?php if($title_for_layout !== 'Carrito de Compras' || $title_for_layout !== 'Checkout' || $title_for_layout !== 'Bazar'): ?>
+		<?php if($title_for_layout !== 'Carrito de Compras' || $title_for_layout !== 'Checkout' || $title_for_layout !== 'Qi House: Bazar'): ?>
 			<div class="container" id="blog">
 				<div class="row">
 					<div class="col-md-12">
