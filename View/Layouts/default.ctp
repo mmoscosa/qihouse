@@ -35,6 +35,7 @@
 		
 		echo $this->Html->script('midway.min');
 		echo $this->Html->script('currency');
+		
 		echo $this->Html->script('jquery.rss.js');
 		
 		
@@ -148,16 +149,18 @@ mixpanel.init("45d763bd809097ff89bd36f5d9f181aa");</script><!-- end Mixpanel -->
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<div class="container" id="blog">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="midway-horizontal">Ultimos Posts</h2>
-					<hr/>
-					<div id="posts">
+		<?php if($title_for_layout !== 'Carrito de Compras' || $title_for_layout !== 'Checkout' || $title_for_layout !== 'Bazar'): ?>
+			<div class="container" id="blog">
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="midway-horizontal">Ultimos Posts</h2>
+						<hr/>
+						<div id="posts">
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 		<!--Footer-->
 		<div class="footer navbar navbar-default navbar-bottom">
 		    <div class="container">
