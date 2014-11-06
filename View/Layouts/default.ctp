@@ -30,7 +30,7 @@
 
 		echo $this->Html->script('//cdn.jsdelivr.net/bootstrap/3.1.1/js/bootstrap.min.js');
 		//echo $this->Html->script('//cdn.jsdelivr.net/isotope/2.0.0/isotope.pkgd.min.js');
-		//echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js');
+		echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.9/jquery.transit.min.js');
 		//echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/howler/1.1.17/howler.min.js');
 		
 		echo $this->Html->script('midway.min');
