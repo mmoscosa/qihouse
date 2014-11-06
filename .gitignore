@@ -8,3 +8,7 @@ Config/bootstrap.php
 webroot/files/**
 webroot/index.php
 Config/core.php
+Plugin/BoostCake
+Plugin/DebugKit
+Plugin/Mailgun
+Plugin/Upload
