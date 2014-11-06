@@ -1,6 +1,7 @@
 <?php 
     echo $this->Html->css('club');
     echo $this->Html->script('galeria-te/mmoscosa-galeria');
+    echo $this->Html->script('//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js');
 ?>
 <div id="club-header" class="row">
 	<h1>¿Eres Nuevo en el té?</h1>
@@ -63,6 +64,26 @@
 		<?php echo $this->Html->link('Encuentra tu bebida…', array('controller'=>'products', 'action'=>'tes')); ?>
 	</h2>
 </div>
+
+<div class="instagram"></div>
+
+<script>
+jQuery(function($) {
+  $('.instagram').on('willLoadInstagram', function(event, options) {
+    //console.log(options);
+  });
+  $('.instagram').on('didLoadInstagram', function(event, response) {
+    $.each(response.data, function(key, value){
+    	var thumbnail = value.images.thumbnail.url;
+    	$('.instagram').append('<img src="'+thumbnail+'" alt="Instagram Qi House">');
+    });
+  });
+  $('.instagram').instagram({
+    userId: 1119273841,
+    accessToken: '517020.d52f7f4.3967387ddb0a4ef5a7e62513798adfe1'
+  });
+});
+</script>
 <!-- 
 <div class="row" id="extras">
 	<div class="col-md-12">
