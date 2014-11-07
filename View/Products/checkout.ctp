@@ -298,7 +298,7 @@
       <div class="form-group">
           <div class="col-sm-12">
             <?php 
-              $payment_method = array('card'=>'Tarjeta de Credito', 'store'=>'Tienda de Conveniencia', 'bank'=>'Banco');
+              $payment_method = array('card'=>'Tarjeta de Credito', 'store'=>'Tienda de Conveniencia', 'bank'=>'Banco', 'paypal'=>'PayPal');
               echo $this->Form->input('payment_method', array(
                                         'options' => array($payment_method),
                                         'empty' => 'Favor de elegir',
@@ -352,7 +352,7 @@
           ?>
           <div class="form-group">
             <div class="col-sm-12">
-              <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="http://www.openpay.mx/img/logo.png" id="openpay_logo"></a></p>
+              <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="/img/openpay/checkout/logo.png" id="openpay_logo"></a></p>
               </div>
             </div>
           <div class="form-group">
@@ -609,8 +609,8 @@
     </div>
     <div id="method_store">
       <div class="col-sm-8">
-        <img src="http://www.openpay.mx/img/costos/costotienda.gif"> <a href="http://www.openpay.mx/tiendas-de-conveniencia.html" target="_blank"><small>Ver tiendas afiliadas</small></a>
-        <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="http://www.openpay.mx/img/logo.png" id="openpay_logo"></a></p>
+        <img src="/img/openpay/checkout/costotienda.gif"> <a href="http://www.openpay.mx/tiendas-de-conveniencia.html" target="_blank"><small>Ver tiendas afiliadas</small></a>
+        <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="/img/openpay/checkout/logo.png" id="openpay_logo"></a></p>
       </div>
       <div class="col-md-8">
         <input type="submit" id="pay-button-store" class="btn btn-primary pull-right" value="Pagar en Tienda"/>
@@ -621,7 +621,7 @@
     </div>
     <div id="method_bank">
     <div class="col-sm-8">
-        <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="http://www.openpay.mx/img/logo.png" id="openpay_logo"></a></p>
+        <p class="pull-right">Powered by: <a href="http://www.openpay.mx/" target="_blank"><img src="/img/openpay/checkout/logo.png" id="openpay_logo"></a></p>
       </div>
       <div class="col-md-8">
         <input type="submit" id="pay-button-bank" class="btn btn-primary pull-right" value="Deposito en Banco"/>

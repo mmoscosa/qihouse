@@ -177,17 +177,19 @@
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<?php if($title_for_layout !== 'Carrito de Compras' || $title_for_layout !== 'Checkout' || $title_for_layout !== 'Qi House: Bazar' || $title_for_layout !== 'Products'): ?>
-			<div class="container" id="blog">
-				<div class="row">
-					<div class="col-md-12">
-						<h2 class="midway-horizontal">Ultimos Posts</h2>
-						<hr/>
-						<div id="posts">
+		<?php if($title_for_layout !== 'Products'): ?>
+			<?php if($title_for_layout !== 'Checkout'): ?>
+				<div class="container" id="blog">
+					<div class="row">
+						<div class="col-md-12">
+							<h2 class="midway-horizontal">Ultimos Posts</h2>
+							<hr/>
+							<div id="posts">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			<?php endif; ?>
 		<?php endif; ?>
 		<!--Footer-->
 		<div class="footer navbar navbar-default navbar-bottom">
