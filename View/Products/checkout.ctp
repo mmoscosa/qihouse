@@ -630,6 +630,17 @@
       
       </div>
     </div>
+    <div id="method_paypal">
+    <div class="col-sm-8">
+        <p class="pull-right">Powered by: <a href="http://www.paypal.mx/" target="_blank"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" id="openpay_logo"></a></p>
+      </div>
+      <div class="col-md-8">
+        <input type="submit" id="pay-button-bank" class="btn btn-primary pull-right" value="Pago con paypal"/>
+      </div>
+      <div class="col-md-4">
+      
+      </div>
+    </div>
   <?php echo $this->Form->end(); ?>
 </div>
 

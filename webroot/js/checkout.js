@@ -1,9 +1,10 @@
 $(document).ready(function() {
-    var selector, selectedOption, card, store, bank, same_address, billing_address, save_billing, productSavedShippingAddress, shipping_address, saved_shipping_address, save_shipping, productSavedBillingAddress, saved_billing_address;
+    var selector, selectedOption, card, store, bank, same_address, billing_address, save_billing, productSavedShippingAddress, shipping_address, saved_shipping_address, save_shipping, productSavedBillingAddress, saved_billing_address, paypal;
     selector                        = $('#ProductPaymentMethod');
     card                            = $('#method_card');
     store                           = $('#method_store');
     bank                            = $('#method_bank');
+    paypal                          = $('#method_paypal');
     same_address                    = $('#ProductSameShipping');
     billing_address                 = $('#billing_address');
     productSavedShippingAddress     = $('#ProductSavedShippingAddress');
@@ -18,6 +19,7 @@ $(document).ready(function() {
       card.hide();
       store.hide();
       bank.hide();
+      paypal.hide();
     }
     hideOptions();
 
@@ -95,6 +97,16 @@ $(document).ready(function() {
         $('#BillingCountryCode').val('MX');
         hideOptions();
         bank.show();
+      }
+
+      if(selectedOption === 'paypal'){
+        $('#BillingAddress1').val('parseley');
+        $('#BillingCity').val('parseley');
+        $('#BillingState').val('parseley');
+        $('#BillingPostalCode').val('parseley');
+        $('#BillingCountryCode').val('MX');
+        hideOptions();
+        paypal.show();
       }
 
       if(selectedOption === ''){
