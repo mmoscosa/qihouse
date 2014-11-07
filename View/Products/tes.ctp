@@ -104,6 +104,24 @@
                     <?php echo $this->Html->image('/files/product/photo/'.$te['Product']['id'].'/xVga_'.$te['Product']['photo']); ?>
                 </div>
                 <div class="dummy-text">
+                    <?php echo $this->Form->create('Product', array('action'=>'addToCart', 'inputDefaults' => array(
+                                                    'div' => 'form-group',
+                                                    'label' => false,
+                                                    'wrapInput' => false,
+                                                    'class' => 'form-control'))); ?>
+                        <?php echo $this->Form->input('id', array('value'=>$te['Product']['id'], 'hidden'=>true)); ?>
+                        <?php echo $this->Form->input('cantidad', array(
+                                            'options' => array($cantidadesArray),
+                                            'empty' => 'Comprar: Favor de elegir cantidad',
+                                            'required' => true
+                                )); 
+                        ?>
+                        <?php echo $this->Form->submit('Agregar a carrito', array('class'=>'btn btn-default pull-right', 'escape'=>false)); ?>
+                    <?php echo $this->Form->end(); ?>
+                    </br>
+                    <hr/>
+                    <strong>Información</strong>
+                    </br>
                     <?php echo $this->Markdown->transform($te['Product']['description']); ?>
                     <hr/>
                     <?php echo $this->Form->create('Product', array('action'=>'addToCart', 'inputDefaults' => array(
@@ -114,7 +132,7 @@
                         <?php echo $this->Form->input('id', array('value'=>$te['Product']['id'], 'hidden'=>true)); ?>
                         <?php echo $this->Form->input('cantidad', array(
                                             'options' => array($cantidadesArray),
-                                            'empty' => 'Favor de elegir',
+                                            'empty' => 'Comprar: Favor de elegir cantidad',
                                             'required' => true
                                 )); 
                         ?>
