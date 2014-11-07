@@ -11,7 +11,7 @@
         $url = $baseURL.''.$path;
 	?>
 	<meta property="og:title" content="<?php echo 'Qi House: '.$title_for_layout; ?>"/>
-	<meta property="og:type" content="metadata"/>
+	<meta property="og:type" content="website"/>
 	<meta property="og:site_name" content="QiHouse - Tea with a whole different twist"/>
 	<meta property="og:description" content="QiHouse - Tea with a whole different twist"/>
 	<!-- keywords for the site, separated by commas     -->

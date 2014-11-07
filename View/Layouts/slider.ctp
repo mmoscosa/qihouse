@@ -22,7 +22,7 @@
         $url = $baseURL.''.$path;
 	?>
 	<meta property="og:title" content="<?php echo 'Qi House: '.$title_for_layout; ?>"/>
-	<meta property="og:type" content="metadata"/>
+	<meta property="og:type" content="website"/>
 	<meta property="og:site_name" content="QiHouse - Tea with a whole different twist"/>
 	<meta property="og:image" content="<?php echo $baseURL.'/img/index/logo_slide1.png'; ?>"/>
 	<meta property="og:description" content="QiHouse - Tea with a whole different twist" />
