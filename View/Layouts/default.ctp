@@ -49,11 +49,7 @@
 		echo $this->Html->script('midway.min');
 		echo $this->Html->script('currency');
 		
-		if($title_for_layout !== 'Products'): 
-			if($title_for_layout !== 'Checkout'): 
-				echo $this->Html->script('jquery.rss.js');
-			endif;
-		endif;
+		echo $this->Html->script('jquery.rss.js');
 		
 		
 		echo $this->Html->script('main');
