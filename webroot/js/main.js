@@ -77,7 +77,9 @@ $(function() {
     if(url !== '/'){
         logo.transition({ opacity: 1 });
         headSpace();
+        $('#blog-placeholder-title').hide();
         if(url !== '/checkout'){
+          $('#blog-placeholder-title').show();
           getBlog();
         }
     }

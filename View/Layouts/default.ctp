@@ -181,7 +181,7 @@
 				<div class="container" id="blog">
 					<div class="row">
 						<div class="col-md-12">
-							<h2 class="midway-horizontal">Ultimos Posts</h2>
+							<h2 class="midway-horizontal" id="blog-placeholder-title">Ultimos Posts</h2>
 							<hr/>
 							<div id="posts">
 							</div>
