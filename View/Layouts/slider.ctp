@@ -17,7 +17,7 @@
 
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<?php 
-		$baseURL = 'http://'.$_SERVER['HTTP_HOST'];
+		$baseURL = 'https://'.$_SERVER['HTTP_HOST'];
         $path = $_SERVER['REQUEST_URI'];
         $url = $baseURL.''.$path;
 	?>
