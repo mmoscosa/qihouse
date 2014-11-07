@@ -16,7 +16,17 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-	
+	<?php 
+		$baseURL = 'http://'.$_SERVER['HTTP_HOST'];
+        $path = $_SERVER['REQUEST_URI'];
+        $url = $baseURL.''.$path;
+	?>
+	<meta property="og:title" content="<?php echo 'Qi House: '.$title_for_layout; ?>"/>
+	<meta property="og:url" content="<?php echo $url; ?>"/>
+	<meta property="og:site_name" content="QiHouse - Tea with a whole different twist"/>
+	<meta property="og:image" content="<?php echo $baseURL.'/img/index/logo_slide1.png'; ?>"/>
+
+
 	<!-- keywords for the site, separated by commas     -->
 	<meta name="keywords" content="Tea, China, Mexico, Store, News">
 
