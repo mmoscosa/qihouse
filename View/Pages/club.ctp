@@ -65,7 +65,9 @@
 	</h2>
 </div>
 
-<div class="instagram"></div>
+<div class="instagram">
+	<h1>Siguenos en Instagram</h1>
+</div>
 
 <script>
 jQuery(function($) {
@@ -75,7 +77,7 @@ jQuery(function($) {
   $('.instagram').on('didLoadInstagram', function(event, response) {
     $.each(response.data, function(key, value){
     	var thumbnail = value.images.thumbnail.url;
-    	$('.instagram').append('<img src="'+thumbnail+'" alt="Instagram Qi House">');
+		$('.instagram').append('<a href="'+value.link+'" target="_blank">		                       <img src="'+thumbnail+'" class="instagram-photo" alt="Instagram Qi House"></a>');
     });
   });
   $('.instagram').instagram({

@@ -7,6 +7,7 @@
     echo $this->Html->script('galeria-te/helper');
     echo $this->Html->script('galeria-te/grid3d');
     echo $this->Html->script('galeria-te/mmoscosa-galeria');
+    echo $this->Html->script('galeria-te/mmoscosa-bazar');    
  ?>
 
 <div class="well parallax">
@@ -177,13 +178,29 @@
 <script>
     $('.figure').click(function(){
         setTimeout(function() {
-            var id, actions, view;
+            var id, actions, view, subcategories, pathname, url, inSubCategory, uniqueUrl;
+            
+            pathname = window.location.pathname;
+            url = pathname.split("/");
             view = $('.show').eq(1);
             id = $('.show').eq(1).attr('id');
+            
+            subcategories = <?php echo $subcategories; ?>;
+            
+            inSubCategory = findSubcateory(subcategories, url);
+            
+            if(inSubCategory != false){
+              uniqueUrl = '/bazar/'+inSubCategory+'/unique/'+id
+            }else{
+              uniqueUrl = '/bazar/unique/'+id
+            }
+
             actions = view.children('.shop-actions').children('.cartplaceholder');
             actions.load('/products/addToCart/'+id+' #content', function(){
                 $.getScript( "/js/cart.js" );
             });
+            var stateObj = { foo: id };
+            history.pushState(stateObj, "Qi House: Bazar", uniqueUrl);
         }, 1500);
     });
 

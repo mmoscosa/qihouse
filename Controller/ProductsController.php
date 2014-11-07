@@ -40,20 +40,22 @@ class ProductsController extends AppController {
 		$this->set(compact('tes'));
 	}
 
-	public function tes($tipo = null) {
+	public function tes($tipo = null, $te = null) {
 		$this->set('title_for_layout', 'Galeria del Te');
 		if (!empty($tipo)) {
-			$Subcategory = $this->Product->Subcategory->find('first', array(
-		                                           'recursive'=>0,
-		                                           'conditions'=>array(
-		                                                           		'Subcategory.subcategory' => $tipo    
-		                                                               ),
-		                                           'fields'=>array(
-		                                                           	'Subcategory.id'
-		                                                           ),
-		                                           ));
-			$subcategory = (!empty($Subcategory)) ? $Subcategory['Subcategory']['id'] : $this->redirect(array('action' => 'tes')); ;
-			$this->set('title_for_layout', 'Galeria del Te - '.$tipo);
+			if($tipo != 'unique'){
+				$Subcategory = $this->Product->Subcategory->find('first', array(
+			                                           'recursive'=>0,
+			                                           'conditions'=>array(
+			                                                           		'Subcategory.subcategory' => $tipo    
+			                                                               ),
+			                                           'fields'=>array(
+			                                                           	'Subcategory.id'
+			                                                           ),
+			                                           ));
+				$subcategory = (!empty($Subcategory)) ? $Subcategory['Subcategory']['id'] : $this->redirect(array('action' => 'tes')); ;
+				$this->set('title_for_layout', 'Galeria del Te - '.$tipo);
+			}
 		}
 		$category = $this->Product->Category->find('first', array(
 		                                           'recursive'=>0,
@@ -74,7 +76,13 @@ class ProductsController extends AppController {
 		                            'recursive' => -1,
 		                            'conditions'=>$options,
 		                            ));
-		$this->set(compact('tes'));
+		$subcategories = $this->Product->Subcategory->find('list');
+		$tmp = array();
+		foreach ($subcategories as $key => $subcategory) {
+			array_push($tmp, strtolower($subcategory));
+		}
+		$subcategories = json_encode($tmp);
+		$this->set(compact('tes', 'subcategories'));
 	}
 
 	public function comments($id = null)
