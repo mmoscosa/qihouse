@@ -106,12 +106,11 @@
                   $baseURL = 'http://'.$_SERVER['HTTP_HOST'];
                   $path = $_SERVER['REQUEST_URI'];
                   $path = explode('/', $path);
-                  $unique = array_search($te['Product']['id'], $path);
                   $imgPath = $baseURL."/files/product/photo/".$te['Product']['id']."/xVga_".$te['Product']['photo'];
                 ?>
-                <?php if($unique): ?>
+                
                   <link rel="image_src" href="<?php echo $imgPath ?>" />
-                <?php endif; ?>
+                
                 <div class="dummy-img">
                     <?php echo $this->Html->image('/files/product/photo/'.$te['Product']['id'].'/xVga_'.$te['Product']['photo']); ?>
                 </div>
