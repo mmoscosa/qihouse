@@ -24,6 +24,7 @@
 	Router::connect('/membresia', array('controller' => 'usuarios', 'action' => 'landing'));
 	Router::connect('/contacto', array('controller' => 'pages', 'action' => 'contacto'));
 	Router::connect('/checkout', array('controller' => 'products', 'action' => 'checkout'));
+	Router::connect('/paypalsuccess', array('controller' => 'products', 'action' => 'paypalsuccess'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

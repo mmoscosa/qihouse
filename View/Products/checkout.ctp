@@ -635,7 +635,7 @@
         <p class="pull-right">Powered by: <a href="http://www.paypal.mx/" target="_blank"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png" id="openpay_logo"></a></p>
       </div>
       <div class="col-md-8">
-        <input type="submit" id="pay-button-bank" class="btn btn-primary pull-right" value="Pago con paypal"/>
+        <input type="submit" id="pay-button-bank" disabled class="btn btn-primary pull-right" value="Pago con paypal (Próximamente)"/>
       </div>
       <div class="col-md-4">
       
