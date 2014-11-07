@@ -88,6 +88,7 @@
     </div><!-- /grid-wrap -->
     <div class="content">
         <?php foreach ($tes as $te): ?>
+
             <div id="<?php echo $te['Product']['id'] ?>">
                 <!-- <div class="shop-actions" id="<?php echo $te['Product']['id'] ?>">
                          <div class="list-group">
@@ -101,6 +102,16 @@
                     <?php echo $te['Product']['name']; ?>
                     <span><?php echo $te['Product']['original_name']; ?></span>
                 </h1>
+                <?php  
+                  $baseURL = 'http://'.$_SERVER['HTTP_HOST'];
+                  $path = $_SERVER['REQUEST_URI'];
+                  $path = explode('/', $path);
+                  $unique = array_search($te['Product']['id'], $path);
+                  $imgPath = $baseURL."/files/product/photo/".$te['Product']['id']."/xVga_".$te['Product']['photo'];
+                ?>
+                <?php if($unique): ?>
+                  <link rel="image_src" href="<?php echo $imgPath ?>" />
+                <?php endif; ?>
                 <div class="dummy-img">
                     <?php echo $this->Html->image('/files/product/photo/'.$te['Product']['id'].'/xVga_'.$te['Product']['photo']); ?>
                 </div>
