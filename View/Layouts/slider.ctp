@@ -26,6 +26,9 @@
 	<meta property="og:url" content="https://qihouse.mx"/>
 	<meta property="og:site_name" content="QiHouse - Tea with a whole different twist"/>
 	<meta property="og:image" content="<?php echo $baseURL.'/img/index/slide4/boxes.png'; ?>"/>
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="451" />
+	<meta property="og:image:height" content="248" />
 	<meta property="og:description" content="QiHouse - Tea with a whole different twist" />
 
 	<!-- keywords for the site, separated by commas     -->
