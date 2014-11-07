@@ -177,7 +177,6 @@
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
-		<?php if($title_for_layout !== 'Products'): ?>
 			<?php if($title_for_layout !== 'Checkout'): ?>
 				<div class="container" id="blog">
 					<div class="row">
@@ -190,7 +189,6 @@
 					</div>
 				</div>
 			<?php endif; ?>
-		<?php endif; ?>
 		<!--Footer-->
 		<div class="footer navbar navbar-default navbar-bottom">
 		    <div class="container">
