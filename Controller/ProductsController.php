@@ -651,8 +651,8 @@ Qi House
    			";
 		$qihouseEmail = new CakeEmail();
 		$qihouseEmail->from(array('ventas@qihouse.mx' => 'Pedido Qi House'));
-		//$qihouseEmail->to('ventas@qihouse.mx');
-		$qihouseEmail->to('mmoscosa@gmail.com');
+		$qihouseEmail->to('ventas@qihouse.mx');
+		//$qihouseEmail->to('mmoscosa@gmail.com');
 		$qihouseEmail->subject('Pedido QiHouse');
 		$qihouseEmail->send($messagge);
    	}
