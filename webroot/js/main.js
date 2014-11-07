@@ -77,8 +77,7 @@ $(function() {
     if(url !== '/'){
         logo.transition({ opacity: 1 });
         headSpace();
-        
-      if (url.indexOf('bazar') > -1 || url.indexOf('cart') > -1 || url.indexOf('checkout') > -1) {
+      if (location.pathname.indexOf('checkout') > -1) {
         getBlog();
       }
         
