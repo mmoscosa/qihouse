@@ -10,11 +10,6 @@
     echo $this->Html->script('galeria-te/mmoscosa-bazar');    
  ?>
 
-<?php 
-  echo $this->Html->meta(array('name' => 'og:image:type', 'content' => 'image/jpeg'),null,array('inline'=>false));
-  echo $this->Html->meta(array('name' => 'og:image:width', 'content' => '600'),null,array('inline'=>false));
-  echo $this->Html->meta(array('name' => 'og:image:height', 'content' => '600'),null,array('inline'=>false));
-?>
 <div class="well parallax">
     <div id="quote">
         <p>Se bebe té para olvidar el ruido del mundo</p>
@@ -99,7 +94,12 @@
                   $path = explode('/', $path);
                   $imgPath = $baseURL."/files/product/photo/".$te['Product']['id']."/xVga_".$te['Product']['photo'];
                 ?>
-            <?php echo $this->Html->meta(array('name' => 'og:image', 'content' => $imgPath),null,array('inline'=>false)); ?>
+            <?php 
+              echo $this->Html->meta(array('name' => 'og:image', 'content' => $imgPath),null,array('inline'=>false)); 
+              echo $this->Html->meta(array('name' => 'og:image:type', 'content' => 'image/jpeg'),null,array('inline'=>false));
+              echo $this->Html->meta(array('name' => 'og:image:width', 'content' => '600'),null,array('inline'=>false));
+              echo $this->Html->meta(array('name' => 'og:image:height', 'content' => '600'),null,array('inline'=>false));
+            ?>
             <div id="<?php echo $te['Product']['id'] ?>">
                 <!-- <div class="shop-actions" id="<?php echo $te['Product']['id'] ?>">
                          <div class="list-group">
