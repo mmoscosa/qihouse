@@ -77,6 +77,12 @@ $(function() {
     if(url !== '/'){
         logo.transition({ opacity: 1 });
         headSpace();
-        getBlog();
+        if(url !== '/checkout'){
+          if (url.indexOf('bazar') > -1) {
+              if (url.indexOf('cart') > -1) {
+                getBlog();
+              }
+          }
+        }
     }
 });
