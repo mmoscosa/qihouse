@@ -1,6 +1,5 @@
 <?php
 App::uses('AppController', 'Controller');
-App::uses('Paypal', 'Paypal.Lib');
 App::import('Vendor', 'Openpay', array('file' => 'Openpay/Openpay.php'));
 /**
  * Products Controller
@@ -614,56 +613,9 @@ class ProductsController extends AppController {
     public function loadPaypal()
     {
     	$paypal = Configure::read('paypal');
-    	$this->Paypal = new Paypal(array(
-		    'sandboxMode' => $paypal['sandboxMode'],
-		    'nvpUsername' => $paypal['nvpUsername'],
-		    'nvpPassword' => $paypal['nvpPassword'],
-		    'nvpSignature' => $paypal['nvpSignature'],
-		));
-		return $this->Paypal;
     }
 
-	public function savePaypal($data)
-    {
-
-    	$this->Paypal = $this->loadPaypal();
-     	
-     	$order = array(
-		    'description' => 'Your purchase with Acme clothes store',
-		    'currency' => 'GBP',
-		    'return' => 'http://dev.qihouse.mx/paypalsuccess',
-		    'cancel' => 'https://www.my-amazing-clothes-store.com/checkout.php',
-		    'custom' => 'bingbong',
-		    'items' => array(
-		        0 => array(
-		            'name' => 'Blue shoes',
-		            'description' => 'A pair of really great blue shoes',
-		            'tax' => 2.00,
-		            'shipping' => 0.00,
-		            'subtotal' => 8.00,
-		        ),
-		        1 => array(
-		            'name' => 'Red trousers',
-		            'description' => 'Tight pair of red pants, look good with a hat.',
-		            'tax' => 2.00,
-		            'shipping' => 2.00,
-		            'subtotal' => 6.00
-		        ),
-		    )
-		);
-		 try {
-		    $this->Paypal->setExpressCheckout($order);
-		} catch (Exception $e) {
-		    // $e->getMessage();
-		} 
-
-		try {
-		    $this->Paypal->getExpressCheckoutDetails($token);
-		} catch (Exception $e) {
-		    // $e->getMessage();
-		}       
-
-    }
+	
    	public function sendMails($order, $data)
    	{
    		if($data['Shipping']['recipientEmail']){
